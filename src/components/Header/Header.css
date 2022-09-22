@@ -6,50 +6,89 @@
   justify-content: space-between;
 }
 
-.header__logo {
-  padding: 18px 0;
+.header__burger-menu {
+  /* padding: 15px 4px 16px 0;
+  width: 40px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
-.header__wrapper {
-  display: flex;
-  align-items: center;
-  min-width: max-content;
+.header__logo {
+  padding: 18px 0 18px 4px;
+}
+
+.hidden.header__logo {
+  display: none;
 }
 
 .header__nav {
-  padding: 28px 50px 28px 0;
-}
-
-.header__nav-link {
-  padding-left: 20px;
-  text-decoration: none;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.28;
-  color: #000;
-}
-
-.header__nav-link:first-of-type {
-  padding-left: 0;
-  font-weight: 500;
+  display: none;
 }
 
 .header__profile-link {
-  display: inline-block;
-  padding: 7px 10px;
-  width: 100px;
-  height: 32px;
-  text-decoration: none;
-  text-align: end;
-  background-image: url('../../images/account-btn-icon.svg');
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-origin: content-box;
-  box-sizing: border-box;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  color: #000;
-  border: 2px solid rgba(170, 170, 170, 0.2);
-  border-radius: 50px;
+  display: none;
+}
+
+/* .header__burger-menu {
+  display: fixed;
+  z-index: 10;
+} */
+
+@media screen and (min-width: 768px) {
+  .header__logo {
+    padding: 18px 0;
+  }
+
+  .header__burger-menu {
+    display: none;
+  }
+
+  .header__wrapper {
+    display: flex;
+    align-items: center;
+    min-width: max-content;
+  }
+
+  .header__nav {
+    display: block;
+    padding: 28px 50px 28px 0;
+  }
+
+  .header__nav-link {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28;
+    color: #000;
+  }
+
+  .header__nav-link:first-of-type {
+    padding-left: 0;
+    font-weight: 500;
+  }
+
+  .header__profile-link {
+    display: inline-block;
+    padding: 7px 10px;
+    width: 100px;
+    height: 32px;
+    text-decoration: none;
+    text-align: end;
+    background-image: url('../../images/account-btn-icon.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-origin: content-box;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    color: #000;
+    border: 2px solid rgba(170, 170, 170, 0.2);
+    border-radius: 50px;
+  }
 }
