@@ -1,18 +1,33 @@
-.App {
-  text-align: center;
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts/fonts.css);
+
+.page {
+  background-color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
-.App-header {
-  background-color: #282c34;
+.page__container {
+  margin: 0 auto;
+  padding: 0 70px;
+  /* min-width: calc(320px - 19px * 2); */
+  max-width: 1280px;
+  min-height: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+@media screen and (min-width: 1280px) {
+  .page__container {
+    /* padding: 45px 0 60px; */
+  }
 }
