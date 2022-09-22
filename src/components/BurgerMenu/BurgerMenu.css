@@ -19,6 +19,8 @@
   height: 2.5px;
   display: flex;
   background-color: #000;
+  transform-origin: -1.5px;
+  transition: all 0.2s linear;
 }
 
 .burger-btn__row:first-of-type {
@@ -29,15 +31,20 @@
   position: fixed;
   top: 0;
   left: 0;
+  box-sizing: border-box;
+  padding: 156px 0 90px 0;
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   z-index: 9;
   background-color: #fff;
 }
 
 .opened.burger-menu {
-  display: block;
+  display: flex;
 }
 
 .burger-menu__links {
@@ -45,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
-  padding: 156px 0 0 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -73,9 +80,6 @@
 }
 
 .burger-menu__account-btn {
-  position: fixed;
-  right: calc(50% - 50px);
-  bottom: 90px;
   margin: 0 auto;
   display: flex;
   align-items: center;

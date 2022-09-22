@@ -1,16 +1,35 @@
 import './BurgerMenu.css';
 import { Link } from 'react-router-dom';
 
-const BurgerMenu = ({ opened }) => {
+const BurgerMenu = ({ isOpen }) => {
   return (
     <>
       <ul className="burger-btn">
-        <div className="burger-btn__row"></div>
-        <div className="burger-btn__row"></div>
-        <div className="burger-btn__row"></div>
+        <div className="burger-btn__row burger-btn__row_order_first"></div>
+        <div className="burger-btn__row burger-btn__row_order_second"></div>
+        <div className="burger-btn__row burger-btn__row_order_third"></div>
       </ul>
 
-      <div className={`burger-menu ${opened ? 'opened' : ''}`}>
+      <style jsx="true">
+        {`
+          .burger-btn__row_order_first {
+            transform: ${isOpen ? 'rotate(45deg)' : 'rotate(0)'};
+          }
+
+          .burger-btn__row_order_second {
+            transform: ${isOpen ? 'translateX(100%)' : 'translateX(0)'};
+            opacity: ${isOpen ? 0 : 1};
+          }
+
+          .burger-btn__row_order_third {
+            transform: ${isOpen ? 'rotate(-45deg)' : 'rotate(0)'};
+          }
+        `}
+      </style>
+
+      <div
+        className={`burger-menu ${isOpen ? 'opened' : ''}`}
+      >
         <ul className="burger-menu__links ">
           <li className="burger-menu__item">
             <Link className="burger-menu__link" to="/">
@@ -29,7 +48,7 @@ const BurgerMenu = ({ opened }) => {
           </li>
         </ul>
         <Link className="burger-menu__account-btn" to="/profile">
-          Аккаунт <span className='burger-menu__account-icon'></span>
+          Аккаунт <span className="burger-menu__account-icon"></span>
         </Link>
       </div>
     </>
