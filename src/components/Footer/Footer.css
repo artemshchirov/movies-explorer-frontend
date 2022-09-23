@@ -1,5 +1,8 @@
 .footer {
-  padding: 10px 0;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
   max-height: 243px;
   display: flex;
   flex-direction: column;
@@ -12,7 +15,7 @@
 
 .footer__companies {
   margin: 0;
-  padding: 69px 0 21px;
+  padding: 79px 0 21px;
   text-align: center;
   font-weight: 400;
   font-size: 12px;
@@ -56,7 +59,10 @@
 
 @media screen and (min-width: 768px) {
   .footer {
-    max-height: 172px;
+    right: 30px;
+    bottom: 0;
+    left: 30px;
+    max-height: 182px;
     justify-content: end;
   }
 
@@ -94,5 +100,12 @@
   .footer__nav-link:first-of-type {
     padding-top: 20px;
     padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .footer {
+    right: 70px;
+    left: 70px;
   }
 }
