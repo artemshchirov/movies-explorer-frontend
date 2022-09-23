@@ -27,9 +27,7 @@ const BurgerMenu = ({ isOpen }) => {
         `}
       </style>
 
-      <div
-        className={`burger-menu ${isOpen ? 'opened' : ''}`}
-      >
+      <div className={`burger-menu ${isOpen ? 'opened' : ''}`}>
         <ul className="burger-menu__links ">
           <li className="burger-menu__item">
             <Link className="burger-menu__link" to="/">
@@ -51,6 +49,8 @@ const BurgerMenu = ({ isOpen }) => {
           Аккаунт <span className="burger-menu__account-icon"></span>
         </Link>
       </div>
+
+      <div className={`overlay ${isOpen ? 'visible' : ''}`}></div>
     </>
   );
 };

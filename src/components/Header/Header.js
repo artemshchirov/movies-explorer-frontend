@@ -38,8 +38,10 @@ const Header = () => {
       </div>
 
       <div className="header__burger-menu" onClick={toggleHamburger}>
-        <BurgerMenu opened={burgerMenuOpen} />
+        <BurgerMenu isOpen={burgerMenuOpen} />
       </div>
+
+      
     </>
   );
 };
