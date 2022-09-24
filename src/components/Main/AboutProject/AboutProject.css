@@ -4,12 +4,9 @@
   box-sizing: border-box;
 }
 
-.page__about {
-  margin: 0 auto;
-  max-width: 1280px;
-}
-
 .about__wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
   padding-bottom: 28px;
   border-bottom: 1px solid #000;
 }
@@ -51,12 +48,12 @@
   padding-top: 60px;
 }
 
-  .about__subtitle {
-    margin: 0;
-    padding-top: 16px;
-    font-size: 11px;
-    line-height: 1.45;
-  }
+.about__subtitle {
+  margin: 0;
+  padding-top: 16px;
+  font-size: 11px;
+  line-height: 1.45;
+}
 
 .timeline {
   margin: 0 auto;

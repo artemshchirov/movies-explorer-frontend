@@ -6,12 +6,9 @@
   box-sizing: border-box;
 }
 
-.page__profile {
-  margin: 0 auto;
-  max-width: 1280px;
-}
-
 .profile__wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
   padding-bottom: 28px;
   border-bottom: 1px solid #000;
 }
@@ -73,7 +70,7 @@
 
 @media screen and (min-width: 767px) {
   .profile {
-    padding: 90px 50px;
+    padding: 90px 50px 91px;
   }
 
   .profile__wrapper {
@@ -85,7 +82,7 @@
   }
 
   .profile__about {
-    padding: 66px 0 90px;
+    padding-top: 66px;
     flex-direction: row-reverse;
     justify-content: center;
   }
@@ -130,7 +127,7 @@
 
 @media screen and (min-width: 1279px) {
   .profile {
-    padding: 100px 70px;
+    padding: 110px 70px 100px;
   }
 
   .profile__image {

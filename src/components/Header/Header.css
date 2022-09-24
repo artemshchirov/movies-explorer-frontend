@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.profile {
+.account {
   display: none;
 }
 
@@ -70,7 +70,7 @@
     font-weight: 500;
   }
 
-  .profile {
+  .account {
     display: inline-block;
     padding: 7px 10px;
     width: 100px;
