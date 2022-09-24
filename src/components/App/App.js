@@ -13,15 +13,17 @@ function App() {
   return (
     <div className="page">
       <div className="page__container">
-        <Header />
-        <Routes>
-          <Route exact path={'/'} element={<Main />} />
-          <Route path={'/movies'} element={<Movies />} />
-          <Route path={'/saved-movies'} element={<SavedMovies />} />
-          <Route path={'/profile'} element={<Profile />} />
-          <Route path={'/signup'} element={<Register />} />
-          <Route path={'/signin'} element={<Login />} />
-        </Routes>
+        <div className="content-wrapper">
+          {/* <Header /> */}
+          <Routes>
+            <Route exact path={'/'} element={<Main />} />
+            <Route path={'/movies'} element={<Movies />} />
+            <Route path={'/saved-movies'} element={<SavedMovies />} />
+            <Route path={'/profile'} element={<Profile />} />
+            <Route path={'/signup'} element={<Register />} />
+            <Route path={'/signin'} element={<Login />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </div>

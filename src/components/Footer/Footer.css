@@ -1,8 +1,4 @@
 .footer {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  left: 10px;
   max-height: 243px;
   display: flex;
   flex-direction: column;
@@ -59,9 +55,6 @@
 
 @media screen and (min-width: 768px) {
   .footer {
-    right: 30px;
-    bottom: 0;
-    left: 30px;
     max-height: 182px;
     justify-content: end;
   }
@@ -100,12 +93,5 @@
   .footer__nav-link:first-of-type {
     padding-top: 20px;
     padding-left: 0;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .footer {
-    right: 70px;
-    left: 70px;
   }
 }

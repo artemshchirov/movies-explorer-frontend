@@ -11,24 +11,20 @@ import Portfolio from './Portfolio/Portfolio';
 const Main = () => {
   return (
     <>
-      <header className="header">
-        <Link to={'/'}>
-          <img
-            className="header__logo"
-            src={logo}
-            alt="Логотип 'Movies Explorer'"
-          />
+      <header className="header-landing">
+        <Link className="header-landing__logo" to={'/'}>
+          <img src={logo} alt="Логотип 'Movies Explorer'" />
         </Link>
 
-        <ul className="header__links">
+        <ul className="header-landing__links">
           <li>
-            <Link className="header__register" to="/signup">
+            <Link className="header-landing__register link" to="/signup">
               Регистрация
             </Link>
           </li>
           <li>
-            <Link className="header__login" to="/signin">
-              <button className="header__login-btn">Войти</button>
+            <Link className="header-landing__login" to="/signin">
+              <button className="header-landing__login-btn link">Войти</button>
             </Link>
           </li>
         </ul>

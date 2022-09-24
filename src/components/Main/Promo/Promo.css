@@ -20,3 +20,15 @@
   line-height: 1.26;
   letter-spacing: -0.04em;
 }
+
+@media screen and (min-width: 768px) {
+  .promo {
+    background-size: 350px;
+  }
+
+  .promo__title {
+    max-width: 650px;
+    font-size: 50px;
+    line-height: 1.16;
+  }
+}

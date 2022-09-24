@@ -13,35 +13,41 @@ const Header = () => {
 
   return (
     <>
-      <div className="header">
-        <Link to={'/'}>
-          <img
-            className="header__logo"
-            src={logo}
-            alt="Логотип 'Movies Explorer'"
-          />
+      <header className="header">
+        <Link className="header__logo" to={'/'}>
+          <img src={logo} alt="Логотип 'Movies Explorer'" />
         </Link>
 
-        <div className="header__wrapper">
-          <div className="header__nav">
-            <Link className="header__nav-link" to="/movies">
-              Фильмы
-            </Link>
-            <Link className="header__nav-link" to="/saved-movies">
-              Сохранённые фильмы
-            </Link>
-          </div>
-          <Link className="header__profile-link" to="/profile">
-            Аккаунт
-          </Link>
-        </div>
-      </div>
+        <nav className="header__nav">
+          <ul className="header__links">
+            <li>
+              <Link
+                className="header__link header__link_order_first"
+                to="/movies"
+              >
+                Фильмы
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="header__link header__link_order_last"
+                to="/saved-movies"
+              >
+                Сохранённые фильмы
+              </Link>
+            </li>
+            <li>
+              <Link className="header__link profile" to="/profile">
+                Аккаунт
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       <div className="header__burger-menu" onClick={toggleHamburger}>
         <BurgerMenu isOpen={burgerMenuOpen} />
       </div>
-
-      
     </>
   );
 };
