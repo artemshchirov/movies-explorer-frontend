@@ -6,19 +6,15 @@
   box-sizing: border-box;
 }
 
-.profile__wrapper {
-  margin: 0 auto;
-  max-width: 1140px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid #000;
-}
-
 .profile__subject {
-  margin: 0;
+  margin: 0 auto;
+  padding-bottom: 28px;
+  max-width: 1140px;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
   letter-spacing: -0.04em;
+  border-bottom: 1px solid #000;
 }
 
 .profile__about {

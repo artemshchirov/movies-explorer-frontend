@@ -1,5 +1,5 @@
 .header-landing {
-  background-color: #073042;
+  background-color: #5c5c5c;
 }
 
 .header-landing__wrapper {
@@ -55,7 +55,7 @@
   line-height: 1.6;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
   .header-landing__wrapper {
     padding: 18px 30px;
   }
@@ -71,7 +71,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1279px) {
   .header-landing__wrapper {
     padding: 18px 70px;
   }

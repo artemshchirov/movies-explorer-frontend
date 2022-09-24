@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #073042;
+  background-color: #5c5c5c;
   background-image: url('../../../images/promo-logo.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -21,7 +21,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
   .promo {
     background-size: 350px;
   }

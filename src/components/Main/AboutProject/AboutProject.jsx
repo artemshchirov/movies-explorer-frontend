@@ -3,9 +3,7 @@ import './AboutProject.css';
 const AboutProject = () => {
   return (
     <section className="about">
-      <div className="about__wrapper">
-        <h2 className="about__subject">О&nbsp;проекте</h2>
-      </div>
+      <h2 className="about__subject">О&nbsp;проекте</h2>
       <div className="about__articles">
         <article className="about__container">
           <h3 className="about__title">
