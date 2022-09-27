@@ -1,9 +1,7 @@
 import './FilterCheckbox.css';
 
-const FilterCheckbox = () => {
-  return (
+const FilterCheckbox = () => (
     <></>
-  );
-};
+);
 
 export default FilterCheckbox;

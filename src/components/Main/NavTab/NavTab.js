@@ -1,8 +1,7 @@
 import './NavTab.css';
 import { Link } from 'react-router-dom';
 
-const NavTab = () => {
-  return (
+const NavTab = () => (
     <section className="navtab">
       <nav>
         <ul className="nav__links">
@@ -24,7 +23,6 @@ const NavTab = () => {
         </ul>
       </nav>
     </section>
-  );
-};
+);
 
 export default NavTab;

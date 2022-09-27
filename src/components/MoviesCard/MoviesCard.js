@@ -1,9 +1,7 @@
 import './MoviesCard.css';
 
-const MoviesCard = () => {
-  return (
+const MoviesCard = () => (
     <></>
-  );
-};
+);
 
 export default MoviesCard;

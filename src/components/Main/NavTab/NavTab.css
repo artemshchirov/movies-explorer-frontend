@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: #f5f5f5;
 }
 
 .nav__links {
@@ -22,7 +22,7 @@
   font-size: 11px;
   line-height: 1.45;
   text-decoration-line: underline;
-  color: #fff;
+  color: #000;
 }
 
 .nav__link_last {

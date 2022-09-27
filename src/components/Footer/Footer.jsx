@@ -1,7 +1,6 @@
 import './Footer.css';
 
-const Footer = () => {
-  return (
+const Footer = () => (
     <div className="footer">
       <div className="footer__container">
         <p className="footer__companies">
@@ -37,7 +36,6 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
-};
+);
 
 export default Footer;

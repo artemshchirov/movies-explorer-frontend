@@ -1,9 +1,7 @@
 import './MoviesCardList.css';
 
-const MoviesCardList = () => {
-  return (
+const MoviesCardList = () => (
     <></>
-  );
-};
+);
 
 export default MoviesCardList;

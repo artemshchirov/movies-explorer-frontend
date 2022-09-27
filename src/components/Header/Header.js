@@ -2,7 +2,7 @@ import './Header.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
 const Header = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);

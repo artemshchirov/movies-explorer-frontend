@@ -1,7 +1,6 @@
 import './Techs.css';
 
-const Techs = () => {
-  return (
+const Techs = () => (
     <section className="techs">
       <h2 className="techs__subject">Технологии</h2>
       <h3 className="techs__title">7&nbsp;технологий</h3>
@@ -20,7 +19,6 @@ const Techs = () => {
         <li className="techs__grid-item">mongoDB</li>
       </ul>
     </section>
-  );
-};
+);
 
 export default Techs;

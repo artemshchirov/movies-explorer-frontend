@@ -1,9 +1,7 @@
 import './Profile.css';
 
-const Profile = () => {
-  return (
+const Profile = () => (
     <></>
-  );
-};
+);
 
 export default Profile;

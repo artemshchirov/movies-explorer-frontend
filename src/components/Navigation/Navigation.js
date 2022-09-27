@@ -1,9 +1,7 @@
 import './Navigation.css';
 
-const Navigation = () => {
-  return (
+const Navigation = () => (
     <></>
-  );
-};
+);
 
 export default Navigation;

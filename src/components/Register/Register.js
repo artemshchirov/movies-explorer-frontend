@@ -1,9 +1,7 @@
 import './Register.css';
 
-const Register = () => {
-  return (
+const Register = () => (
     <></>
-  );
-};
+);
 
 export default Register;

@@ -1,8 +1,7 @@
 import './AboutMe.css';
 import profileImage from '../../../images/profile-img.jpg';
 
-const AboutMe = () => {
-  return (
+const AboutMe = () => (
     <section className="profile">
       <h2 className="profile__subject">Студент</h2>
       <div className="profile__about">
@@ -30,7 +29,6 @@ const AboutMe = () => {
         </div>
       </div>
     </section>
-  );
-};
+);
 
 export default AboutMe;

@@ -1,9 +1,7 @@
 import './SavedMovies.css';
 
-const SavedMovies = () => {
-  return (
+const SavedMovies = () => (
     <></>
-  );
-};
+);
 
 export default SavedMovies;

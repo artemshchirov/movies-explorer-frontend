@@ -7,14 +7,14 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer.jsx';
 
 function App() {
   return (
     <div className="page">
       <div className="page__container">
         <div className="content-wrapper">
-          {/* <Header /> */}
+          <Header />
           <Routes>
             <Route exact path={'/'} element={<Main />} />
             <Route path={'/movies'} element={<Movies />} />
