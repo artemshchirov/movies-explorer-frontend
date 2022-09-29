@@ -9,6 +9,7 @@ const SearchForm = () => {
   return (
     <section className="movies-search">
       <form className="movies-search__form" onSubmit={handleSubmit}>
+        <span className="movies-search__icon"></span>
         <input
           className="movies-search__input"
           type="text"
@@ -18,9 +19,12 @@ const SearchForm = () => {
         <button className="movies-search__btn" type="Submit">
           Найти
         </button>
+        <div className="movies-search__checkbox desktop">
+          <FilterCheckbox />
+        </div>
       </form>
-      <div className="movies-search__checkbox">
-        <FilterCheckbox /> Короткометражки
+      <div className="movies-search__checkbox mobile">
+        <FilterCheckbox />
       </div>
     </section>
   );

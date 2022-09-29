@@ -11,15 +11,22 @@
 .movies-search__form {
   padding: 19px;
   height: 72px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   background-color: #fdfdfd;
-  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
   border-radius: 9px;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
 
+.movies-search__icon {
+  display: none;
+}
+
 .movies-search__input {
+  text-align: left;
   padding: 0;
   min-width: 182px;
   max-width: 751px;
@@ -52,13 +59,65 @@
 
 .movies-search__checkbox {
   padding-top: 45px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+}
+
+.desktop {
+  display: none;
 }
 
 @media screen and (min-width: 767px) {
+  .movies-search {
+    flex-direction: row;
+  }
+
   .movies-search__form {
     padding: 19px 20px 19px 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  .movies-search__icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url('../../../images/find-movie-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px;
+  }
+
+  .movies-search__input {
+    padding-left: 16px;
+  }
+
+  .movies-search__input::placeholder {
+    font-size: 18px;
+    line-height: 1.11;
+  }
+
+  .movies-search__checkbox {
+    padding: 0 0 0 19px;
+    margin-left: 19px;
+    height: 100%;
+    align-items: center;
+    border-left: 1px solid #cbcbcb;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .movies-search__form {
+    padding-right: 30px;
+  }
+
+  .movies-search__checkbox {
+    padding-left: 29px;
   }
 }
