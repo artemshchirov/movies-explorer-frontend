@@ -19,11 +19,9 @@ const SearchForm = () => {
         <button className="movies-search__btn" type="Submit">
           Найти
         </button>
-        <div className="movies-search__checkbox desktop">
-          <FilterCheckbox />
-        </div>
       </form>
-      <div className="movies-search__checkbox mobile">
+      <div className="movies-search__checkbox">
+        <div className="movies-search__divider"></div>
         <FilterCheckbox />
       </div>
     </section>
