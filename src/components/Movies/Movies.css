@@ -6,21 +6,6 @@
   align-items: center;
 }
 
-.movie-cards {
-  margin-top: 44px;
-  padding: 50px 0 30px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr);
-  grid-template-rows: repeat(5, minmax(168px, 1fr));
-  row-gap: 16px;
-  border-top: 1px solid #e8e8e8;
-}
-
-.movie-cards .movie:nth-of-type(n + 6) {
-  display: none;
-}
-
 .movies__load {
   padding: 50px 30px 80px;
 }
@@ -37,7 +22,7 @@
 
 @media screen and (min-width: 767px) {
   .movies {
-    padding: 0 30px;
+    padding: 80px 30px 0;
   }
 
   .movie-cards {
@@ -49,26 +34,19 @@
     column-gap: 30px;
   }
 
-  .movie-cards .movie:nth-of-type(n + 6) {
-    display: grid;
-  }
-
-  .movie-cards .movie:nth-of-type(n + 9) {
-    display: none;
-  }
-
   .movies__load {
     padding: 50px 214px 80px;
   }
 
   .movies__btn {
     min-width: 320px;
+    cursor: pointer;
   }
 }
 
 @media screen and (min-width: 1279px) {
   .movies {
-    padding: 0 70px;
+    padding: 80px 70px 0;
   }
 
   .movie-cards {
@@ -77,14 +55,6 @@
     grid-template-rows: repeat(4, minmax(203px, 1fr));
     row-gap: 30px;
     column-gap: 24px;
-  }
-
-  .movie-cards .movie:nth-of-type(n + 9) {
-    display: grid;
-  }
-
-  .movie-cards .movie:nth-of-type(n + 13) {
-    display: none;
   }
 
   .movies__load {

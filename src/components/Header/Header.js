@@ -21,28 +21,20 @@ const Header = () => {
         <nav className="header__nav">
           <ul className="header__links">
             <li>
-              <Link
-                className="header__link header__link_order_first"
-                to="/movies"
-              >
+              <Link className="header__link header__link_first" to="/movies">
                 Фильмы
               </Link>
             </li>
             <li>
-              <Link
-                className="header__link header__link_order_last"
-                to="/saved-movies"
-              >
+              <Link className="header__link" to="/saved-movies">
                 Сохранённые фильмы
-              </Link>
-            </li>
-            <li>
-              <Link className="header__link account" to="/profile">
-                Аккаунт
               </Link>
             </li>
           </ul>
         </nav>
+        <Link className="header__link account" to="/profile">
+          Аккаунт <span className="header__link-icon"></span>
+        </Link>
       </header>
 
       <div className="header__burger-menu" onClick={toggleHamburger}>

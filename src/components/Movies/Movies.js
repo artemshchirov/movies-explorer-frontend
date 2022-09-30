@@ -1,40 +1,118 @@
 import './Movies.css';
+import { useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm';
 import SearchForm from './SearchForm/SearchForm';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 const Movies = () => {
   const { values, setValues, handleChange } = useForm;
+  const [cardsAmount, setCardsAmount] = useState(0);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
   };
 
-  const cards = [
-    { id: 0, src: './images/movies/movie-img-0.png' },
-    { id: 1, src: './images/movies/movie-img-1.png' },
-    { id: 2, src: './images/movies/movie-img-2.png' },
-    { id: 3, src: './images/movies/movie-img-3.png' },
-    { id: 4, src: './images/movies/movie-img-4.png' },
-    { id: 5, src: './images/movies/movie-img-5.png' },
-    { id: 6, src: './images/movies/movie-img-6.png' },
-    { id: 7, src: './images/movies/movie-img-7.png' },
-    { id: 8, src: './images/movies/movie-img-8.png' },
-    { id: 9, src: './images/movies/movie-img-9.png' },
-    { id: 10, src: './images/movies/movie-img-10.png' },
-    { id: 11, src: './images/movies/movie-img-11.png' },
+  const updateMedia = () => {
+    if (window.innerWidth >= 1279) {
+      setCardsAmount(12);
+    } else if (window.innerWidth >= 767) {
+      setCardsAmount(8);
+    } else {
+      setCardsAmount(5);
+    }
+  };
+
+  useEffect(() => {
+    updateMedia();
+    window.addEventListener('resize', updateMedia);
+    return () => window.removeEventListener('resize', updateMedia);
+  });
+
+  const movies = [
+    {
+      id: 0,
+      link: './images/movies/movie-img-0.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 1,
+      link: './images/movies/movie-img-1.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 2,
+      link: './images/movies/movie-img-2.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 3,
+      link: './images/movies/movie-img-3.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 4,
+      link: './images/movies/movie-img-4.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 5,
+      link: './images/movies/movie-img-5.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 6,
+      link: './images/movies/movie-img-6.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 7,
+      link: './images/movies/movie-img-7.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 8,
+      link: './images/movies/movie-img-8.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 9,
+      link: './images/movies/movie-img-9.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 10,
+      link: './images/movies/movie-img-10.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
+    {
+      id: 11,
+      link: './images/movies/movie-img-11.png',
+      title: '33 слова о дизайне',
+      duration: '1ч 47м',
+    },
   ];
 
   return (
     <section className="movies">
       <SearchForm onSubmit={handleSubmit} />
-      <section className="movie-cards">
-        {cards.map((card) => (
-          <MoviesCard key={card.id} card={card} />
-        ))}
-      </section>
-      <section className='movies__load'>
-        <button className='movies__btn'>Ещё</button>
+      <MoviesCardList
+        cards={movies}
+        cardsAmount={cardsAmount}
+        btnType={'movie__btn_type_save'}
+      />
+      <section className="movies__load">
+        <button className="movies__btn">Ещё</button>
       </section>
     </section>
   );
