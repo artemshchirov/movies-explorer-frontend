@@ -8,13 +8,14 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer.jsx';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
     <div className="page">
       <div className="page__container">
         <div className="content-wrapper">
-          <Header />
+          {/* <Header /> */}
           <Routes>
             <Route exact path={'/'} element={<Main />} />
             <Route path={'/movies'} element={<Movies />} />
@@ -22,9 +23,10 @@ function App() {
             <Route path={'/profile'} element={<Profile />} />
             <Route path={'/signup'} element={<Register />} />
             <Route path={'/signin'} element={<Login />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
