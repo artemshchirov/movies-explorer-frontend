@@ -1,0 +1,72 @@
+.register {
+  padding: 56px 30px 30px;
+}
+
+.register__content {
+  margin: 0 auto;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.register__title {
+  margin: 0;
+  padding-top: 50px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000;
+}
+
+.register__login {
+  padding-top: 14px;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #a0a0a0;
+}
+
+.register__login_btn {
+  padding-left: 7px;
+  color: #2be080;
+}
+
+@media screen and (min-width: 767px) {
+  .register {
+    padding: 232px 186px;
+  }
+
+  .register__content {
+    max-width: 396px;
+  }
+
+  .register__header {
+    align-items: start;
+  }
+
+  .register__title {
+    padding-top: 40px;
+  }
+
+  .register__login {
+    padding-top: 16px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+
+  .register__login_btn {
+    padding-left: 6px;
+  }
+}
