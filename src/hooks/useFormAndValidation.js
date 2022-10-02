@@ -12,7 +12,7 @@ const useForm = (inputValues) => {
       setErrors((oldValues) => ({ ...oldValues, [name]: validationMessage }));
       setIsValid(evt.target.closest('.form').checkValidity());
     },
-    [setValues, setErrors]
+    [setValues, setErrors],
   );
 
   const resetForm = useCallback(
@@ -21,7 +21,7 @@ const useForm = (inputValues) => {
       setErrors(newErrors);
       setIsValid(newIsValid);
     },
-    [setValues, setErrors, setIsValid]
+    [setValues, setErrors, setIsValid],
   );
 
   return {
