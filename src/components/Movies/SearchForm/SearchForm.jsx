@@ -1,5 +1,5 @@
 import './SearchForm.css';
-import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
+import FilterCheckbox from './FilterCheckbox/FilterCheckbox.jsx';
 
 const SearchForm = () => {
   const handleSubmit = (evt) => {

@@ -109,7 +109,12 @@
   background-position: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
+  .burger-btn {
+    top: 26px;
+    right: 38px;
+  }
+
   .burger-menu {
     max-width: 520px;
   }

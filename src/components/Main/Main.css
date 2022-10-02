@@ -1,8 +1,8 @@
-.header-landing {
+/* .header-landing {
   background-color: #5c5c5c;
-}
+} */
 
-.header-landing__wrapper {
+/* .header-landing__wrapper {
   margin: 0 auto;
   padding: 18px 14px;
   max-height: 74px;
@@ -12,34 +12,34 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-}
+} */
 
-.header-landing__logo {
+/* .header-landing__logo {
   text-decoration: none;
   width: 38px;
   height: 38px;
-}
+} */
 
-.header-landing__links {
+/* .header-landing__links {
   padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
-.header-landing__register {
+/* .header-landing__register {
   text-decoration: none;
   margin-right: 14px;
   color: #fff;
-}
+} */
 
-.header-landing__login {
+/* .header-landing__login {
   text-decoration: none;
-}
+} */
 
-.header-landing__login-btn {
+/* .header-landing__login-btn {
   padding: 0;
   width: 54px;
   height: 26px;
@@ -47,28 +47,28 @@
   border-radius: 3px;
   background-color: #2be080;
   cursor: pointer;
-}
+} */
 
-.link {
+/* .link {
   font-weight: 500;
   font-size: 10px;
   line-height: 1.6;
-}
+} */
 
 @media screen and (min-width: 767px) {
-  .header-landing__wrapper {
+  /* .header-landing__wrapper {
     padding: 18px 30px;
-  }
+  } */
 
-  .header-landing__login-btn {
+  /* .header-landing__login-btn {
     width: 76px;
     height: 32px;
-  }
+  } */
 
-  .link {
+  /* .link {
     font-size: 12px;
     line-height: 1.33;
-  }
+  } */
 }
 
 @media screen and (min-width: 1279px) {

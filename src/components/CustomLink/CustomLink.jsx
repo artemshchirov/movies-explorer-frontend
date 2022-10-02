@@ -2,12 +2,14 @@ import './CustomLink.css';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
-function CustomLink({ path, children, className, activeClassName, target }) {
+function CustomLink({
+  path, children, className, activeClassName, target,
+}) {
   if (path.startsWith('http')) {
     return (
       <a
         href={path}
-        className={`custom-link ${className}`}
+        className={`link ${className}`}
         rel="noreferrer"
         target={target}
       >
@@ -19,8 +21,7 @@ function CustomLink({ path, children, className, activeClassName, target }) {
     return (
       <NavLink
         to={path}
-        className={({ isActive }) =>
-          `custom-link ${className} ${isActive ? activeClassName : ''}`
+        className={({ isActive }) => `link ${className} ${isActive ? activeClassName : ''}`
         }
       >
         {children}
@@ -28,7 +29,7 @@ function CustomLink({ path, children, className, activeClassName, target }) {
     );
   }
   return (
-    <Link to={path} className={`custom-link ${className}`}>
+    <Link to={path} className={`link ${className}`}>
       {children}
     </Link>
   );

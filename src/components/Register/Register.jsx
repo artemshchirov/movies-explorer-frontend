@@ -1,10 +1,11 @@
 import './Register.css';
 import logo from '../../images/logo.svg';
 import useForm from '../../hooks/useFormAndValidation';
-import Form from '../Form/Form';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import CustomLink from '../CustomLink/CustomLink';
+import Title from '../Title/Title.jsx';
+import Form from '../Form/Form.jsx';
+import Input from '../Input/Input.jsx';
+import Button from '../Button/Button.jsx';
+import CustomLink from '../CustomLink/CustomLink.jsx';
 
 const initValues = {
   name: 'Artem',
@@ -18,31 +19,26 @@ const Register = () => {
     handleChange,
     errors,
     isValid,
-    resetForm,
-    setValues,
-    setIsValid,
+    // resetForm,
+    // setValues,
+    // setIsValid,
   } = useForm(initValues);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     const { email, password } = values;
-
-    console.log('values: ', values);
-    console.log('email: ', email);
-    console.log('password: ', password);
-
+    // console.log('values: ', values);
+    // console.log('email: ', email);
+    // console.log('password: ', password);
     if (!email || !password) return;
     // resetForm(initValues);
-
     if (isValid) {
       // TODO
-      console.log('errors1: ', errors);
-      console.log('isValid1: ', isValid);
+      // console.log('errors1: ', errors);
+      // console.log('isValid1: ', isValid);
     } else {
-      console.log('errors2: ', errors);
-      console.log('isValid2: ', isValid);
-
+      // console.log('errors2: ', errors);
+      // console.log('isValid2: ', isValid);
       // setIsValid(false);
       // setValidationMessage({
       //   email: 'Please fill out this field.',
@@ -60,7 +56,7 @@ const Register = () => {
             src={logo}
             alt="logo 'Movies Explorer'"
           />
-          <p className="register__title">Добро пожаловать!</p>
+          <Title text="Добро пожаловать!" style="title_type_main" />
         </div>
         <Form onSubmit={handleSubmit}>
           <fieldset className="form__fieldset">
@@ -69,7 +65,9 @@ const Register = () => {
               name="name"
               value={values.name}
               onChange={handleChange}
-              style={`form__input ${errors.name && 'form__input_type_error'}`}
+              style={`form__input ${
+                errors.name ? 'form__input_type_error' : ''
+              }`}
             />
             <span id="name-error" className={'form__input-error'}>
               {errors.name && 'Что-то пошло не так...'}
@@ -82,7 +80,9 @@ const Register = () => {
               name="email"
               value={values.email}
               onChange={handleChange}
-              style={`form__input ${errors.email && 'form__input_type_error'}`}
+              style={`form__input ${
+                errors.email ? 'form__input_type_error' : ''
+              }`}
               type="email"
             />
             <span id="email-error" className={'form__input-error'}>
@@ -96,7 +96,9 @@ const Register = () => {
               name="password"
               value={values.password}
               onChange={handleChange}
-              style={'form__input'}
+              style={`form__input ${
+                errors.password ? 'form__input_type_error' : ''
+              }`}
               type="password"
             />
             <span id="password-error" className={'form__input-error'}>
@@ -111,7 +113,7 @@ const Register = () => {
           />
         </Form>
         <CustomLink path="/signin" className="register__login">
-          Уже зарегестрированы?
+          Уже зарегистрированы?
           <span className="register__login register__login_btn">Войти</span>
         </CustomLink>
       </div>

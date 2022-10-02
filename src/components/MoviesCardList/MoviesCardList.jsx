@@ -1,5 +1,5 @@
 import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 
 const MoviesCardList = ({ cards, cardsAmount, btnType }) => (
   <section className="movie-cards">

@@ -1,5 +1,8 @@
 .form {
-  padding-top: 60px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
 .form__fieldset {
@@ -11,16 +14,15 @@
 }
 
 .form__legend {
-  padding-top: 20px;
+  padding-top: 10px;
   font-size: 10px;
   line-height: 1.2;
   color: #a0a0a0;
 }
 
 .form__input {
-  margin-top: 10px;
+  margin: 10px 0 8px;
   padding: 15px;
-  min-width: 260px;
   min-height: 46px;
   font-weight: 500;
   font-size: 13px;
@@ -35,15 +37,16 @@
 }
 
 .form__input-error {
-  padding-top: 10px;
+  height: 12px;
   font-size: 10px;
   line-height: 1.2;
   color: #ee3465;
 }
 
 .form__btn {
-  margin-top: 157px;
-  min-width: 265px;
+  margin: 157px auto 0;
+  padding: 0;
+  min-width: 260px;
   min-height: 45px;
   font-weight: 500;
   font-size: 12px;
@@ -52,4 +55,22 @@
   border: none;
   border-radius: 3px;
   background-color: #2be080;
+}
+
+@media screen and (min-width: 767px) {
+  .form {
+    padding-top: 30px;
+    width: 100%;
+  }
+
+  .form__fieldset {
+    width: 100%;
+  }
+
+  .form__btn {
+    margin-top: 69px;
+    min-width: 396px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
 }
