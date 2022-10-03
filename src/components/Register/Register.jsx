@@ -50,7 +50,7 @@ const Register = () => {
               name="name"
               value={values.name}
               onChange={handleChange}
-              style={`form__input ${
+              className={`form__input ${
                 errors.name ? 'form__input_type_error' : ''
               }`}
             />
@@ -65,7 +65,7 @@ const Register = () => {
               name="email"
               value={values.email}
               onChange={handleChange}
-              style={`form__input ${
+              className={`form__input ${
                 errors.email ? 'form__input_type_error' : ''
               }`}
               type="email"
@@ -81,7 +81,7 @@ const Register = () => {
               name="password"
               value={values.password}
               onChange={handleChange}
-              style={`form__input ${
+              className={`form__input ${
                 errors.password ? 'form__input_type_error' : ''
               }`}
               type="password"
@@ -93,8 +93,8 @@ const Register = () => {
 
           <Button
             title="Зарегистрироваться"
-            type={'submit'}
-            style={'form__btn'}
+            type="submit"
+            className="form__btn"
             btnActive={isValid}
           />
         </Form>

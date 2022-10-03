@@ -49,7 +49,7 @@ const Login = () => {
               name="email"
               value={values.email}
               onChange={handleChange}
-              style={`form__input ${
+              className={`form__input ${
                 errors.email ? 'form__input_type_error' : ''
               }`}
               type="email"
@@ -65,7 +65,7 @@ const Login = () => {
               name="password"
               value={values.password}
               onChange={handleChange}
-              style={`form__input ${
+              className={`form__input ${
                 errors.password ? 'form__input_type_error' : ''
               }`}
               type="password"
@@ -77,8 +77,8 @@ const Login = () => {
 
           <Button
             title="Войти"
-            type={'submit'}
-            style={'form__btn'}
+            type="submit"
+            className="form__btn"
             btnActive={isValid}
           />
         </Form>

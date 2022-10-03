@@ -36,9 +36,14 @@
 }
 
 .movies-search__input::placeholder {
-  color: #a0a0a0;
   font-size: 14px;
   line-height: 1.43;
+  color: #a0a0a0;
+}
+
+.movies-search__input:focus {
+  border-bottom: 1px solid #2be080;
+  transition: border-bottom 0.5s;
 }
 
 .movies-search__btn {

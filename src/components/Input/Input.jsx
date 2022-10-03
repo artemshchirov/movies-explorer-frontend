@@ -6,17 +6,21 @@ const Input = ({
   name,
   value,
   onChange,
-  style,
+  className,
   type = 'text',
-}) => (
-  <input
-    className={`input ${style}`}
-    placeholder={placeholder}
-    name={name}
-    value={value}
-    onChange={onChange}
-    type={type}
-  />
-);
+}) => {
+  let finalClassName = 'input';
+  if (className) finalClassName += ` ${className}`;
 
+  return (
+    <input
+      className={finalClassName}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      type={type}
+    />
+  );
+};
 export default memo(Input);

@@ -32,15 +32,17 @@ const SavedMovies = () => {
 
   return (
     <>
-      <MoviesHeader />
-      <section className="movies">
-        <SearchForm onSubmit={handleSubmit} />
-        <MoviesCardList
-          cards={movies}
-          cardsAmount={movies.length}
-          btnType={'movie__btn_type_delete'}
-        />
-      </section>
+      <div className="content-wrapper">
+        <MoviesHeader />
+        <section className="movies">
+          <SearchForm onSubmit={handleSubmit} />
+          <MoviesCardList
+            cards={movies}
+            cardsAmount={movies.length}
+            btnType={'movie__btn_type_delete'}
+          />
+        </section>
+      </div>
       <Footer />
     </>
   );

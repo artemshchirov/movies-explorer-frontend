@@ -2,18 +2,23 @@ import './Button.css';
 
 const Button = ({
   title,
-  style,
-  type = 'submit',
+  className,
+  type = 'button',
   onClick = (f) => f,
-  btnActive,
-}) => (
-  <button
-    className={`button ${style} ${btnActive ? '' : 'button_disabled'}`}
-    type={type}
-    onClick={onClick}
-    disabled={btnActive}
-  >
-    {title}
-  </button>
-);
+  btnActive = true,
+}) => {
+  let finalClassName = 'button';
+  if (className) { finalClassName += ` ${className} ${btnActive ? '' : 'button_disabled'}`; }
+
+  return (
+    <button
+      className={finalClassName}
+      type={type}
+      onClick={onClick}
+      disabled={btnActive}
+    >
+      {title}
+    </button>
+  );
+};
 export default Button;

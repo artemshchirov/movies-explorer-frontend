@@ -5,6 +5,10 @@
   justify-content: flex-start;
 }
 
+.form:focus {
+  outline: 1px solid lime;
+}
+
 .form__fieldset {
   margin: 0;
   padding: 0;

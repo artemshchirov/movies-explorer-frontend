@@ -5,6 +5,7 @@ import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import Footer from '../Footer/Footer.jsx';
+import Button from '../Button/Button.jsx';
 
 const movies = [
   {
@@ -107,18 +108,20 @@ const Movies = () => {
 
   return (
     <>
-      <MoviesHeader />
-      <section className="movies">
-        <SearchForm onSubmit={handleSubmit} />
-        <MoviesCardList
-          cards={movies}
-          cardsAmount={cardsAmount}
-          btnType={'movie__btn_type_save'}
-        />
-        <section className="movies__load">
-          <button className="movies__btn">Ещё</button>
+      <div className="content-wrapper">
+        <MoviesHeader />
+        <section className="movies">
+          <SearchForm onSubmit={handleSubmit} />
+          <MoviesCardList
+            cards={movies}
+            cardsAmount={cardsAmount}
+            btnType={'movie__btn_type_save'}
+          />
+          <section className="movies__load">
+            <Button className="movies__btn" title="Ещё" />
+          </section>
         </section>
-      </section>
+      </div>
       <Footer />
     </>
   );

@@ -1,4 +1,5 @@
 import './MoviesCard.css';
+import Button from '../Button/Button.jsx';
 
 const MoviesCard = ({
   link, title, duration, btnType,
@@ -9,9 +10,9 @@ const MoviesCard = ({
         <p className="movie__title">{title}</p>
         <p className="movie__subtitle">{duration}</p>
       </div>
-      <button className={`movie__btn ${btnType}`}></button>
+      <Button className={`movie__btn ${btnType}`} />
     </div>
-    <img className="movie__image" src={link} alt="#" />
+    <img className="movie__image" src={link} alt="movie" />
   </article>
 );
 

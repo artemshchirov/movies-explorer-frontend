@@ -10,15 +10,17 @@ import Footer from '../Footer/Footer.jsx';
 
 const Main = () => (
   <>
-    <MainHeader />
-    <main className="content page__content">
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-    </main>
+    <div className="content-wrapper">
+      <MainHeader />
+      <main>
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+    </div>
     <Footer />
   </>
 );

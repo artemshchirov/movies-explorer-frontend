@@ -1,5 +1,6 @@
 import './SearchForm.css';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox.jsx';
+import Button from '../../Button/Button.jsx';
 
 const SearchForm = () => {
   const handleSubmit = (evt) => {
@@ -8,7 +9,7 @@ const SearchForm = () => {
 
   return (
     <section className="movies-search">
-      <form className="movies-search__form" onSubmit={handleSubmit}>
+      <form className="movies-search__form" onSubmit={handleSubmit} required>
         <span className="movies-search__icon"></span>
         <input
           className="movies-search__input"
@@ -16,9 +17,7 @@ const SearchForm = () => {
           placeholder="Фильм"
           name="movies-search"
         />
-        <button className="movies-search__btn" type="Submit">
-          Найти
-        </button>
+        <Button className="movies-search__btn" title="Найти" type="submit" />
       </form>
       <div className="movies-search__checkbox">
         <div className="movies-search__divider"></div>

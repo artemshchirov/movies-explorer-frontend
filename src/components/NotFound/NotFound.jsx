@@ -1,6 +1,6 @@
 import './NotFound.css';
 import { useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
+import Button from '../Button/Button.jsx';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const NotFound = () => {
 
       <Button
         title="Назад"
-        style="not-found__btn"
+        className="not-found__btn"
         onClick={() => navigate(-1)}
       />
     </section>

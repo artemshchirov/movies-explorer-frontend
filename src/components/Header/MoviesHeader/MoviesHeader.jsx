@@ -18,7 +18,7 @@ const MoviesHeader = () => {
       <Logo />
       <MoviesNav />
       <CustomLink className="link_movies link_type_profile" path="/profile">
-        Профиль <span className='link_icon'></span>
+        Профиль <span className="link_icon"></span>
       </CustomLink>
       <div className="header__burger-menu" onClick={toggleHamburger}>
         <BurgerMenu isOpen={burgerMenuOpen} />

@@ -17,7 +17,9 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
-  border: none;
+  color: #000;
+  border-radius: 6px;
+  background: #F9F9F9;
 }
 
 @media screen and (min-width: 767px) {
@@ -40,7 +42,6 @@
 
   .movies__btn {
     min-width: 320px;
-    cursor: pointer;
   }
 }
 
