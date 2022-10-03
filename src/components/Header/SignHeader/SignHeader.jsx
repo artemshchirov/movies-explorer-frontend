@@ -1,5 +1,5 @@
 import './SignHeader.css';
-import Header from '../Header/Header.jsx';
+import Header from '../Header.jsx';
 import Logo from '../../Logo/Logo.jsx';
 import Title from '../../Title/Title.jsx';
 

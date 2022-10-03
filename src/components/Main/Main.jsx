@@ -1,5 +1,5 @@
 import './Main.css';
-import MainHeader from '../header/MainHeader/MainHeader.jsx';
+import MainHeader from '../Header/MainHeader/MainHeader.jsx';
 import Promo from './Promo/Promo.jsx';
 import NavTab from './NavTab/NavTab.jsx';
 import AboutProject from './AboutProject/AboutProject.jsx';

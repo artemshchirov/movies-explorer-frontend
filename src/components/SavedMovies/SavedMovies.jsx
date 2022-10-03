@@ -1,5 +1,5 @@
 import './SavedMovies.css';
-import MoviesHeader from '../header/MoviesHeader/MoviesHeader.jsx';
+import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
 import SearchForm from '../Movies/SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import Footer from '../Footer/Footer.jsx';

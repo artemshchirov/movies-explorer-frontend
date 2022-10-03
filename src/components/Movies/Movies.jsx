@@ -1,7 +1,7 @@
 import './Movies.css';
 import { useEffect, useState } from 'react';
 // import useForm from '../../hooks/useForm';
-import MoviesHeader from '../header/MoviesHeader/MoviesHeader.jsx';
+import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import Footer from '../Footer/Footer.jsx';

@@ -12,4 +12,6 @@
 
 ## Running the Project
 
-`npm run start` — to launch the server.
+`npm run build` — build project.
+
+`npm run start` — to launch the project.

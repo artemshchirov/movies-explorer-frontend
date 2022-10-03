@@ -1,7 +1,7 @@
 import './MoviesHeader.css';
 import { useState } from 'react';
 import BurgerMenu from '../../BurgerMenu/BurgerMenu.jsx';
-import Header from '../Header/Header.jsx';
+import Header from '../Header.jsx';
 import Logo from '../../Logo/Logo.jsx';
 import CustomLink from '../../CustomLink/CustomLink.jsx';
 import MoviesNav from '../../MoviesNav/MoviesNav.jsx';
