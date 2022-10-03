@@ -1,7 +1,7 @@
 import './Register.css';
-import logo from '../../images/logo.svg';
 import useForm from '../../hooks/useFormAndValidation';
-import Title from '../Title/Title.jsx';
+import Section from '../Section/Section.jsx';
+import Sign from '../Sign/Sign.jsx';
 import Form from '../Form/Form.jsx';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
@@ -27,18 +27,11 @@ const Register = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { email, password } = values;
-    // console.log('values: ', values);
-    // console.log('email: ', email);
-    // console.log('password: ', password);
     if (!email || !password) return;
     // resetForm(initValues);
     if (isValid) {
       // TODO
-      // console.log('errors1: ', errors);
-      // console.log('isValid1: ', isValid);
     } else {
-      // console.log('errors2: ', errors);
-      // console.log('isValid2: ', isValid);
       // setIsValid(false);
       // setValidationMessage({
       //   email: 'Please fill out this field.',
@@ -48,16 +41,8 @@ const Register = () => {
   };
 
   return (
-    <section className="register">
-      <div className="register__content">
-        <div className="register__header">
-          <img
-            className="register__logo"
-            src={logo}
-            alt="logo 'Movies Explorer'"
-          />
-          <Title text="Добро пожаловать!" style="title_type_main" />
-        </div>
+    <Section className="sign">
+      <Sign title="Добро пожаловать!">
         <Form onSubmit={handleSubmit}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">Имя</legend>
@@ -112,12 +97,12 @@ const Register = () => {
             style={'form__btn'}
           />
         </Form>
-        <CustomLink path="/signin" className="register__login">
+        <CustomLink path="/signin" className="link_login">
           Уже зарегистрированы?
-          <span className="register__login register__login_btn">Войти</span>
+          <span className="link_login link_login_type_colored">Войти</span>
         </CustomLink>
-      </div>
-    </section>
+      </Sign>
+    </Section>
   );
 };
 

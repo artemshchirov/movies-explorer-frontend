@@ -1,9 +1,9 @@
 import './Login.css';
-import logo from '../../images/logo.svg';
 import useForm from '../../hooks/useFormAndValidation';
-import Title from '../Title/Title.jsx';
+import Section from '../Section/Section.jsx';
+import Sign from '../Sign/Sign.jsx';
 import Form from '../Form/Form.jsx';
-import Input from '../Input/Input';
+import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import CustomLink from '../CustomLink/CustomLink.jsx';
 
@@ -18,31 +18,19 @@ const Login = () => {
     handleChange,
     errors,
     isValid,
-    resetForm,
-    setValues,
-    setIsValid,
+    // resetForm,
+    // setValues,
+    // setIsValid,
   } = useForm(initValues);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     const { email, password } = values;
-
-    console.log('values: ', values);
-    console.log('email: ', email);
-    console.log('password: ', password);
-
     if (!email || !password) return;
     // resetForm(initValues);
-
     if (isValid) {
       // TODO
-      console.log('errors1: ', errors);
-      console.log('isValid1: ', isValid);
     } else {
-      console.log('errors2: ', errors);
-      console.log('isValid2: ', isValid);
-
       // setIsValid(false);
       // setValidationMessage({
       //   email: 'Please fill out this field.',
@@ -52,16 +40,8 @@ const Login = () => {
   };
 
   return (
-    <section className="login">
-      <div className="login__content">
-        <div className="login__header">
-          <img
-            className="login__logo"
-            src={logo}
-            alt="logo 'Movies Explorer'"
-          />
-          <Title text="Рады видеть!" style="title_type_main" />
-        </div>
+    <Section className="sign">
+      <Sign title="Рады видеть!">
         <Form onSubmit={handleSubmit}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">E-mail</legend>
@@ -97,14 +77,12 @@ const Login = () => {
 
           <Button title="Войти" type={'submit'} style={'form__btn'} />
         </Form>
-        <CustomLink path="/signup" className="login__register">
+        <CustomLink path="/signup" className="link_sign">
           Ещё не зарегистрированы?
-          <span className="login__register login__register_btn">
-            Регистрация
-          </span>
+          <span className="link_sign link_sign_type_colored">Регистрация</span>
         </CustomLink>
-      </div>
-    </section>
+      </Sign>
+    </Section>
   );
 };
 
