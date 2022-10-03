@@ -95,11 +95,12 @@ const Register = () => {
             title="Зарегистрироваться"
             type={'submit'}
             style={'form__btn'}
+            btnActive={isValid}
           />
         </Form>
-        <CustomLink path="/signin" className="link_login">
+        <CustomLink path="/signin" className="link_sign">
           Уже зарегистрированы?
-          <span className="link_login link_login_type_colored">Войти</span>
+          <span className="link_sign link_sign_type_colored">Войти</span>
         </CustomLink>
       </Sign>
     </Section>

@@ -1,6 +1,6 @@
 import './Movies.css';
 import { useEffect, useState } from 'react';
-import useForm from '../../hooks/useForm';
+// import useForm from '../../hooks/useForm';
 import MoviesHeader from '../header/MoviesHeader/MoviesHeader.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
@@ -82,7 +82,7 @@ const movies = [
 ];
 
 const Movies = () => {
-  const { values, setValues, handleChange } = useForm;
+  // const { values, setValues, handleChange } = useForm;
   const [cardsAmount, setCardsAmount] = useState(0);
 
   const handleSubmit = (evt) => {

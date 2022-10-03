@@ -2,7 +2,6 @@ import './Profile.css';
 import MoviesHeader from '../header/MoviesHeader/MoviesHeader.jsx';
 import Title from '../Title/Title.jsx';
 import Button from '../Button/Button.jsx';
-import Footer from '../Footer/Footer.jsx';
 
 const Profile = () => (
   <>

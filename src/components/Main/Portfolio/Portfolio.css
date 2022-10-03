@@ -34,7 +34,6 @@
 .portfolio__link {
   text-decoration: none;
   display: flex;
-  align-items: start;
   justify-content: space-between;
   font-size: 18px;
   line-height: 1.55;

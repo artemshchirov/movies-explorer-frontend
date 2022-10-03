@@ -8,6 +8,6 @@
 
 @media screen and (min-width: 767px) {
   .header_sign {
-    align-items: start;
+    align-items: flex-start;
   }
 }

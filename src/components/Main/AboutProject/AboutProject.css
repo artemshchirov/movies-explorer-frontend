@@ -116,7 +116,6 @@
     padding: 70px 0 93px 0;
     flex-direction: row;
     justify-content: space-around;
-    align-items: start;
   }
 
   .about__container:first-of-type {

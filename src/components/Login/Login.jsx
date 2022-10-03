@@ -75,7 +75,12 @@ const Login = () => {
             </span>
           </fieldset>
 
-          <Button title="Войти" type={'submit'} style={'form__btn'} />
+          <Button
+            title="Войти"
+            type={'submit'}
+            style={'form__btn'}
+            btnActive={isValid}
+          />
         </Form>
         <CustomLink path="/signup" className="link_sign">
           Ещё не зарегистрированы?
