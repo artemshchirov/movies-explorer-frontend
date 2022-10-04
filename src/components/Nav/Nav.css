@@ -1,0 +1,26 @@
+.nav__link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__link-item {
+  /* text-decoration: none; */
+}
+
+.nav_movies {
+  display: none;
+}
+
+@media screen and (min-width: 1279px) {
+  .nav_movies {
+    /* min-width: max-content; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

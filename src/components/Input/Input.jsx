@@ -1,0 +1,26 @@
+import './Input.css';
+import { memo } from 'react';
+
+const Input = ({
+  placeholder = '',
+  name,
+  value,
+  onChange,
+  className,
+  type = 'text',
+}) => {
+  let finalClassName = 'input';
+  if (className) finalClassName += ` ${className}`;
+
+  return (
+    <input
+      className={finalClassName}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      type={type}
+    />
+  );
+};
+export default memo(Input);
