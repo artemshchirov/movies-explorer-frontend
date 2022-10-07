@@ -151,13 +151,13 @@ function App() {
           <Route
             path={PAGES.MOVIES}
             element={
-              // <ProtectedRoute path={PAGES.MOVIES} isLoggedIn={isLoggedIn}>
+              <ProtectedRoute path={PAGES.MOVIES} isLoggedIn={isLoggedIn}>
                 <Movies
                   isLoading={isPreloader}
                   setIsLoading={setIsPreloader}
                   searchQueryMoviesLocal={searchQueryMoviesLocal}
                 />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
           <Route

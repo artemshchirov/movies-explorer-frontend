@@ -1,5 +1,5 @@
 export const configMainApi = {
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://movies.expolrer.nomoredomains.sbs',
   headers: {
     'Content-Type': 'application/json',
   },

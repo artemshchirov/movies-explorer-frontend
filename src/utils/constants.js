@@ -45,10 +45,11 @@ const ALERT_MESSAGES = {
   },
 
   ERROR: {
-    UPDATE_PROFILE: 'Не удалось обновить данные профиля!',
-    DELETE_FILM: 'Не удалось удалить фильм!',
-    ADD_FILM: 'Не удалось добавить фильм!',
-    GET_USER: 'Произошла ошибка!',
+    UPDATE_PROFILE: 'Error while updating profile!!',
+    DELETE_FILM: 'Error while deleting new movie!!',
+    ADD_FILM: 'Error while adding movie!',
+    GET_USER: 'Error while get user data!',
+    AUTH: 'Incorrect email or password!',
   },
 };
 
