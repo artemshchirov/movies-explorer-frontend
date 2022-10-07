@@ -3,7 +3,7 @@ import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
 import Title from '../Title/Title.jsx';
 import Button from '../Button/Button.jsx';
 
-const Profile = () => (
+const Profile = ({ handleLogout }) => (
   <>
     <MoviesHeader />
     <section className="account">
@@ -25,6 +25,7 @@ const Profile = () => (
           <Button
             className="account__btn account__btn_last"
             title="Выйти из аккаунта"
+            onClick={handleLogout}
           />
         </div>
       </div>

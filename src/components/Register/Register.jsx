@@ -6,44 +6,34 @@ import Form from '../Form/Form.jsx';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import CustomLink from '../CustomLink/CustomLink.jsx';
+import ErrorText from '../../components/ErrorText/ErrorText';
+import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const initValues = {
-  name: 'Artem',
-  email: 'test@gmail.com',
-  password: '12345',
-};
+const initValues = { name: 'Artem', email: 'test@gmail.com', password: '11' };
 
-const Register = () => {
-  const {
-    values,
-    handleChange,
-    errors,
-    isValid,
-    // resetForm,
-    // setValues,
-    // setIsValid,
-  } = useForm(initValues);
+const Register = ({ handleRegister }) => {
+  const { values, errors, isValid, handleChange, resetForm } = useForm(
+    initValues,
+    VALIDATION_CONFIGS.USER_DATA
+  );
 
-  const handleSubmit = (evt) => {
+  function handleSubmitForm(evt) {
     evt.preventDefault();
     const { email, password } = values;
     if (!email || !password) return;
-    // resetForm(initValues);
     if (isValid) {
-      // TODO
+      console.log('isValid register, values: ', values);
+      handleRegister(values);
+      resetForm(initValues);
     } else {
-      // setIsValid(false);
-      // setValidationMessage({
-      //   email: 'Please fill out this field.',
-      //   password: 'Please fill out this field.',
-      // });
+      console.log('isValid false (else): ');
     }
-  };
+  }
 
   return (
     <Section className="sign">
       <Sign title="Добро пожаловать!">
-        <Form className="form form_type_sign" onSubmit={handleSubmit}>
+        <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">Имя</legend>
             <Input
@@ -70,9 +60,7 @@ const Register = () => {
               }`}
               type="email"
             />
-            <span id="email-error" className={'form__input-error'}>
-              {errors.email && 'Что-то пошло не так...'}
-            </span>
+            {errors.email && <ErrorText type="auth">{errors.email}</ErrorText>}
           </fieldset>
 
           <fieldset className="form__fieldset">
@@ -86,16 +74,16 @@ const Register = () => {
               }`}
               type="password"
             />
-            <span id="password-error" className={'form__input-error'}>
-              {errors.password && 'Что-то пошло не так...'}
-            </span>
+            {errors.password && (
+              <ErrorText type="auth">{errors.password}</ErrorText>
+            )}
           </fieldset>
 
           <Button
             className="form__btn"
             title="Зарегистрироваться"
             btnType="submit"
-            btnActive={isValid}
+            btnActive={!isValid}
           />
         </Form>
         <CustomLink path="/signin" className="link_sign">

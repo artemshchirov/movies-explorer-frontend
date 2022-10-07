@@ -1,50 +1,34 @@
 import './Login.css';
-import useForm from '../../hooks/useFormAndValidation';
 import Section from '../Section/Section.jsx';
 import Sign from '../Sign/Sign.jsx';
 import Form from '../Form/Form.jsx';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import CustomLink from '../CustomLink/CustomLink.jsx';
+import ErrorText from '../ErrorText/ErrorText.jsx';
+
+import useForm from '../../hooks/useFormAndValidation';
+import { VALIDATION_CONFIGS } from '../../utils/constants';
 
 const initValues = {
   email: 'test@gmail.com',
-  password: '12345',
+  password: '11',
 };
 
-const Login = () => {
-  const {
-    values,
-    handleChange,
-    errors,
-    isValid,
-    // resetForm,
-    // setValues,
-    // setIsValid,
-  } = useForm(initValues);
-
-  const handleSubmit = (evt) => {
+const Login = ({ handleLogin }) => {
+  const { values, errors, isValid, handleChange } = useForm(
+    initValues,
+    VALIDATION_CONFIGS.LOGIN
+  );
+  function handleSubmitForm(evt) {
     evt.preventDefault();
-    console.log('submit: ');
-
-    const { email, password } = values;
-    if (!email || !password) return;
-    // resetForm(initValues);
-    if (isValid) {
-      // TODO
-    } else {
-      // setIsValid(false);
-      // setValidationMessage({
-      //   email: 'Please fill out this field.',
-      //   password: 'Please fill out this field.',
-      // });
-    }
-  };
+    handleLogin(values);
+  }
 
   return (
     <Section className="sign">
       <Sign title="Рады видеть!">
-        <Form className="form form_type_sign" onSubmit={handleSubmit}>
+        <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">E-mail</legend>
             <Input
@@ -56,9 +40,7 @@ const Login = () => {
               }`}
               type="email"
             />
-            <span id="email-error" className={'form__input-error'}>
-              {errors.email && 'Что-то пошло не так...'}
-            </span>
+            {errors.email && <ErrorText type="auth">{errors.email}</ErrorText>}
           </fieldset>
 
           <fieldset className="form__fieldset">
@@ -72,16 +54,16 @@ const Login = () => {
               }`}
               type="password"
             />
-            <span id="password-error" className={'form__input-error'}>
-              {errors.password && 'Что-то пошло не так...'}
-            </span>
+            {errors.password && (
+              <ErrorText type="auth">{errors.password}</ErrorText>
+            )}
           </fieldset>
 
           <Button
             className="form__btn"
             title="Войти"
             btnType="submit"
-            btnActive={isValid}
+            btnActive={!isValid}
           />
         </Form>
         <CustomLink path="/signup" className="link_sign">
