@@ -1,12 +1,11 @@
 .form {
+}
+
+.form_type_sign {
   padding-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.form:focus {
-  outline: 1px solid lime;
 }
 
 .form__fieldset {
@@ -62,7 +61,7 @@
 }
 
 @media screen and (min-width: 767px) {
-  .form {
+  .form_type_sign {
     padding-top: 30px;
     width: 100%;
   }

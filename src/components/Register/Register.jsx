@@ -43,12 +43,12 @@ const Register = () => {
   return (
     <Section className="sign">
       <Sign title="Добро пожаловать!">
-        <Form onSubmit={handleSubmit}>
+        <Form className="form form_type_sign" onSubmit={handleSubmit}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">Имя</legend>
             <Input
               name="name"
-              value={values.name}
+              value={values.name || ''}
               onChange={handleChange}
               className={`form__input ${
                 errors.name ? 'form__input_type_error' : ''
@@ -79,7 +79,7 @@ const Register = () => {
             <legend className="form__legend">Пароль</legend>
             <Input
               name="password"
-              value={values.password}
+              value={values.password || ''}
               onChange={handleChange}
               className={`form__input ${
                 errors.password ? 'form__input_type_error' : ''
@@ -92,9 +92,9 @@ const Register = () => {
           </fieldset>
 
           <Button
-            title="Зарегистрироваться"
-            type="submit"
             className="form__btn"
+            title="Зарегистрироваться"
+            btnType="submit"
             btnActive={isValid}
           />
         </Form>

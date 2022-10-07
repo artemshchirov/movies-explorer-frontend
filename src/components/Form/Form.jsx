@@ -1,7 +1,7 @@
 import './Form.css';
 
-const Form = ({ children, onSubmit }) => (
-  <form className="form" onSubmit={onSubmit} noValidate>
+const Form = ({ className, children, onSubmit }) => (
+  <form className={className} onSubmit={onSubmit} noValidate required>
     {children}
   </form>
 );

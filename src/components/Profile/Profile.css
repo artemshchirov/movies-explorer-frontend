@@ -47,6 +47,7 @@
 .account__btn {
   font-size: 12px;
   line-height: 1.25;
+  background-color: transparent;
 }
 
 .account__btn_last {

@@ -1,37 +1,44 @@
 import { useState, useCallback } from 'react';
 
-const useForm = (inputValues) => {
-  const [values, setValues] = useState(inputValues);
+const useForm = (defaultValues = {}, config) => {
+  const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(true);
 
   const handleChange = useCallback(
     (evt) => {
-      const { value, name, validationMessage } = evt.target;
+      const target = evt.target;
+      const isCheckbox = target.type === 'checkbox';
+      const name = target.name;
+      const value = isCheckbox ? target.checked : target.value;
+      const isNotValidValue = !config?.REGEX[name]?.test(value);
+
       setValues((oldValues) => ({ ...oldValues, [name]: value }));
-      setErrors((oldValues) => ({ ...oldValues, [name]: validationMessage }));
-      setIsValid(evt.target.closest('.form').checkValidity());
+      isNotValidValue && config?.INPUTS.includes(name) && value.length
+        ? setErrors({ ...errors, [name]: config.MESSAGES[name] })
+        : setErrors({ ...errors, [name]: target.validationMessage });
+      setIsValid(target.closest('form').checkValidity());
     },
-    [setValues, setErrors],
+    [setValues, setErrors]
   );
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
+    (newValues = {}, newErrors = {}, newIsValid = true) => {
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
     },
-    [setValues, setErrors, setIsValid],
+    [setValues, setErrors, setIsValid]
   );
 
   return {
     values,
-    handleChange,
     errors,
     isValid,
-    resetForm,
+    handleChange,
     setValues,
     setIsValid,
+    resetForm,
   };
 };
 

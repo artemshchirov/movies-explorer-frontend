@@ -1,13 +1,5 @@
 import './FilterCheckbox.css';
-import { useState } from 'react';
-
-const FilterCheckbox = () => {
-  const [isChecked, setIsChecked] = useState(true);
-
-  const handleOnChange = () => {
-    setIsChecked(!isChecked);
-  };
-
+const FilterCheckbox = ({ onChange }) => {
   return (
     <div className="filter-checkbox">
       <input
@@ -15,8 +7,7 @@ const FilterCheckbox = () => {
         type="checkbox"
         id="filter-checkbox-id"
         name="filter-checkbox"
-        checked={isChecked}
-        onChange={handleOnChange}
+        onChange={onChange}
       />
       <label
         className="filter-checkbox__label"

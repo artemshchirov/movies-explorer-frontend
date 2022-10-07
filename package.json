@@ -22,12 +22,6 @@
     "lint:fix": "npm run lint -- --fix",
     "deploy": "npm run build && scp -r ./build/* artemshchirov@51.250.96.109:/home/artemshchirov/frontend"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -40,13 +34,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-only-warn": "^1.0.3",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0"
-  }
+  "devDependencies": {}
 }

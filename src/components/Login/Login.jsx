@@ -25,6 +25,8 @@ const Login = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log('submit: ');
+
     const { email, password } = values;
     if (!email || !password) return;
     // resetForm(initValues);
@@ -42,12 +44,12 @@ const Login = () => {
   return (
     <Section className="sign">
       <Sign title="Рады видеть!">
-        <Form onSubmit={handleSubmit}>
+        <Form className="form form_type_sign" onSubmit={handleSubmit}>
           <fieldset className="form__fieldset">
             <legend className="form__legend">E-mail</legend>
             <Input
               name="email"
-              value={values.email}
+              value={values.email || ''}
               onChange={handleChange}
               className={`form__input ${
                 errors.email ? 'form__input_type_error' : ''
@@ -63,7 +65,7 @@ const Login = () => {
             <legend className="form__legend">Пароль</legend>
             <Input
               name="password"
-              value={values.password}
+              value={values.password || ''}
               onChange={handleChange}
               className={`form__input ${
                 errors.password ? 'form__input_type_error' : ''
@@ -76,9 +78,9 @@ const Login = () => {
           </fieldset>
 
           <Button
-            title="Войти"
-            type="submit"
             className="form__btn"
+            title="Войти"
+            btnType="submit"
             btnActive={isValid}
           />
         </Form>

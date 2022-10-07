@@ -1,96 +1,46 @@
 import './Movies.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 // import useForm from '../../hooks/useForm';
 import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
+import Preloader from './Preloader/Preloader.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Button from '../Button/Button.jsx';
+import getContent from '../../utils/MoviesApi';
 
-const movies = [
-  {
-    id: 0,
-    link: './images/movies/movie-img-0.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 1,
-    link: './images/movies/movie-img-1.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 2,
-    link: './images/movies/movie-img-2.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 3,
-    link: './images/movies/movie-img-3.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 4,
-    link: './images/movies/movie-img-4.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 5,
-    link: './images/movies/movie-img-5.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 6,
-    link: './images/movies/movie-img-6.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 7,
-    link: './images/movies/movie-img-7.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 8,
-    link: './images/movies/movie-img-8.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 9,
-    link: './images/movies/movie-img-9.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 10,
-    link: './images/movies/movie-img-10.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-  {
-    id: 11,
-    link: './images/movies/movie-img-11.png',
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-  },
-];
+const Movies = ({ isLoading, setIsLoading, searchQueryMoviesLocal }) => {
+  const [movieList, setMovieList] = useState([]);
+  const [filteredMovieList, setFilteredMovieList] = useState([]);
 
-const Movies = () => {
-  // const { values, setValues, handleChange } = useForm;
+  console.log('searchQueryMoviesLocal2: ', searchQueryMoviesLocal);
+
+  useEffect(() => {
+    if (movieList) return;
+    setIsLoading(false);
+    async function fetchMovies() {
+      try {
+        const movies = await getContent();
+
+        localStorage.setItem('movies', movies);
+        setMovieList(movies);
+        console.log('movieList: ', movieList);
+      } catch {
+        console.error(`Ошибка получения контента пользователя: ${err}`);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchMovies();
+  }, []);
+
   const [cardsAmount, setCardsAmount] = useState(0);
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
+  const handleFindMovies = (query) => {};
 
   const updateMedia = () => {
+    console.log('cardsAmount: ', cardsAmount);
+
     if (window.innerWidth >= 1279) {
       setCardsAmount(12);
     } else if (window.innerWidth >= 767) {
@@ -104,22 +54,38 @@ const Movies = () => {
     updateMedia();
     window.addEventListener('resize', updateMedia);
     return () => window.removeEventListener('resize', updateMedia);
-  });
+  }, []);
 
   return (
     <>
       <div className="content-wrapper">
         <MoviesHeader />
         <section className="movies">
-          <SearchForm onSubmit={handleSubmit} />
-          <MoviesCardList
-            cards={movies}
-            cardsAmount={cardsAmount}
-            btnType={'movie__btn_type_save'}
+          <SearchForm
+            handleFindMovies={handleFindMovies}
+            searchQueryLocal={searchQueryMoviesLocal}
           />
-          <section className="movies__load">
-            <Button className="movies__btn" title="Ещё" />
-          </section>
+
+          {isLoading ? (
+            <Preloader />
+          ) : movieList.length === 0 ? (
+            <p style={{ color: 'cyan' }}>
+              Во&nbsp;время запроса произошла ошибка. Возможно, проблема с
+              соединением или сервер недоступен. Подождите немного
+              и&nbsp;попробуйте ещё раз
+            </p>
+          ) : (
+            <>
+              <MoviesCardList
+                cards={movieList}
+                cardsAmount={cardsAmount}
+                btnType={'movie__btn_type_save'}
+              />
+              <section className="movies__load">
+                <Button className="movies__btn" title="Ещё" />
+              </section>
+            </>
+          )}
         </section>
       </div>
       <Footer />
