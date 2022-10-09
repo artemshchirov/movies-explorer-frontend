@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from '../../hocs/ProtectedRoute.jsx';
 import Main from '../Main/Main.jsx';
@@ -11,22 +12,22 @@ import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Alert from '../Alert/Alert.jsx';
+import Preloader from '../Movies/Preloader/Preloader.jsx';
 
 import MainApi from '../../utils/MainApi';
 import MoviesApi from '../../utils/MoviesApi';
-import { configMainApi, configMoviesApi } from '../../utils/configApi';
-import { PAGES, ALERT_MESSAGES } from '../../utils/constants';
 import LocalStorage from '../../utils/LocalStorage';
+import { PAGES, ALERT_MESSAGES } from '../../utils/constants';
+import { configMainApi, configMoviesApi } from '../../utils/configApi';
 
 function App() {
+  const [authorized, setAuthorized] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFetchError, setIsFetchError] = useState(false);
 
   const [token, setToken] = useState('');
 
-  const [isPreloader, setIsPreloader] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loaderButton, setLoaderButton] = useState(false);
 
   const [messageAlert, setMessageAlert] = useState(null);
@@ -49,15 +50,11 @@ function App() {
   );
 
   useEffect(() => {
-    setIsFetchError(false);
-  }, [location]);
-
-  useEffect(() => {
     handleLoginToken();
   }, []);
 
-  function requestAllFilms() {
-    return moviesApi.getFilms();
+  function requestAllMovies() {
+    return moviesApi.getMovies();
   }
 
   function handleRegister({ name, email, password }) {
@@ -77,16 +74,31 @@ function App() {
       });
   }
 
+  function getUserInfo(token) {
+    mainApi
+      .getUserInfo(token)
+      .then((user) => {
+        if (!authorized) setAuthorized(true);
+        setCurrentUser(user);
+      })
+      .catch(() => {
+        showAlert(ALERT_MESSAGES.ERROR.GET_USER);
+        throw new Error();
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
   function handleLogin(user) {
     setLoaderButton(true);
     setIsFetchError(false);
-
     mainApi
       .signin(user)
       .then((res) => {
         const jwt = res.token;
         setToken(jwt);
-        setIsLoggedIn(true);
+        setAuthorized(true);
         jwtLocal.save(jwt);
         getUserInfo(jwt);
         navigate(PAGES.MOVIES);
@@ -106,7 +118,7 @@ function App() {
       setToken(jwt);
       getUserInfo(jwt);
     } else {
-      setIsPreloader(false);
+      setLoading(false);
     }
   }
 
@@ -118,7 +130,7 @@ function App() {
   }
 
   function handleLogout() {
-    setIsLoggedIn(false);
+    setAuthorized(false);
     setToken('');
     setCurrentUser({});
     clearLocal();
@@ -136,50 +148,57 @@ function App() {
   return (
     <div className="page">
       <div className="page__container">
-        <Routes>
-          <Route
-            path={PAGES.SIGNUP}
-            element={<Register handleRegister={handleRegister} />}
-          />
-          <Route
-            path={PAGES.SIGNIN}
-            element={<Login handleLogin={handleLogin} />}
-          />
+        <CurrentUserContext.Provider value={authorized}>
+          <Routes>
+            <Route
+              path={PAGES.SIGNUP}
+              element={<Register handleRegister={handleRegister} />}
+            />
+            <Route
+              path={PAGES.SIGNIN}
+              element={<Login handleLogin={handleLogin} />}
+            />
 
-          <Route path={'/'} element={<Main />} />
+            <Route path={'/'} element={<Main />} />
 
-          <Route
-            path={PAGES.MOVIES}
-            element={
-              <ProtectedRoute path={PAGES.MOVIES} isLoggedIn={isLoggedIn}>
-                <Movies
-                  isLoading={isPreloader}
-                  setIsLoading={setIsPreloader}
-                  searchQueryMoviesLocal={searchQueryMoviesLocal}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PAGES.SAVED_MOVIES}
-            element={
-              <ProtectedRoute path={PAGES.SAVED_MOVIES} isLoggedIn={isLoggedIn}>
-                <SavedMovies />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={PAGES.PROFILE}
-            element={
-              <ProtectedRoute path={PAGES.PROFILE} isLoggedIn={isLoggedIn}>
-                <Profile handleLogout={handleLogout} />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<NotFound isLoggedIn={isLoggedIn} />} />
-        </Routes>
+            <Route
+              path={PAGES.MOVIES}
+              element={
+                <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
+                  <Movies
+                    isLoading={loading}
+                    setIsLoading={setLoading}
+                    searchQueryMoviesLocal={searchQueryMoviesLocal}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={PAGES.SAVED_MOVIES}
+              element={
+                <ProtectedRoute
+                  path={PAGES.SAVED_MOVIES}
+                  authorized={authorized}
+                >
+                  <SavedMovies
+                    searchQueryMoviesLocal={searchQueryMoviesLocal}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={PAGES.PROFILE}
+              element={
+                <ProtectedRoute path={PAGES.PROFILE} authorized={authorized}>
+                  <Profile handleLogout={handleLogout} />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound authorized={authorized} />} />
+          </Routes>
 
-        <Alert messageAlert={messageAlert} isActiveAlert={isActiveAlert} />
+          <Alert messageAlert={messageAlert} isActiveAlert={isActiveAlert} />
+        </CurrentUserContext.Provider>
       </div>
     </div>
   );

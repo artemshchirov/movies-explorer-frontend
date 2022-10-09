@@ -25,17 +25,18 @@ const movies = [
   },
 ];
 
-const SavedMovies = () => {
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
+const SavedMovies = ({ searchQueryMoviesLocal }) => {
+  const handleFindMovies = (query) => {};
 
   return (
     <>
       <div className="content-wrapper">
         <MoviesHeader />
         <section className="movies">
-          <SearchForm onSubmit={handleSubmit} />
+          <SearchForm
+            handleFindMovies={handleFindMovies}
+            searchQueryLocal={searchQueryMoviesLocal}
+          />
           <MoviesCardList
             cards={movies}
             cardsAmount={movies.length}

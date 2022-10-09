@@ -1,15 +1,17 @@
+import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import Preloader from '../components/Movies/Preloader/Preloader.jsx';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import { PAGES } from '../utils/constants';
+import Preloader from '../components/Movies/Preloader/Preloader.jsx';
 
-function ProtectedRoute({ isLoggedIn, isPreloader, children }) {
-  console.log('isLoggedIn: ', isLoggedIn);
-  
+function ProtectedRoute({ loading, children }) {
+  const authorized = useContext(CurrentUserContext);
+
   return (
     <>
-      {isPreloader ? (
+      {loading ? (
         <Preloader />
-      ) : isLoggedIn ? (
+      ) : authorized ? (
         children
       ) : (
         <Navigate to={PAGES.MAIN} />

@@ -13,8 +13,6 @@ const Movies = ({ isLoading, setIsLoading, searchQueryMoviesLocal }) => {
   const [movieList, setMovieList] = useState([]);
   const [filteredMovieList, setFilteredMovieList] = useState([]);
 
-  console.log('searchQueryMoviesLocal2: ', searchQueryMoviesLocal);
-
   useEffect(() => {
     if (movieList) return;
     setIsLoading(false);
@@ -24,7 +22,6 @@ const Movies = ({ isLoading, setIsLoading, searchQueryMoviesLocal }) => {
 
         localStorage.setItem('movies', movies);
         setMovieList(movies);
-        console.log('movieList: ', movieList);
       } catch {
         console.error(`Ошибка получения контента пользователя: ${err}`);
       } finally {
@@ -39,8 +36,6 @@ const Movies = ({ isLoading, setIsLoading, searchQueryMoviesLocal }) => {
   const handleFindMovies = (query) => {};
 
   const updateMedia = () => {
-    console.log('cardsAmount: ', cardsAmount);
-
     if (window.innerWidth >= 1279) {
       setCardsAmount(12);
     } else if (window.innerWidth >= 767) {

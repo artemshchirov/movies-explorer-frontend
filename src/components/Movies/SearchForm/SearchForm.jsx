@@ -15,7 +15,6 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal }) => {
   useEffect(() => {
     searchQueryLocal.delete();
     const searchQuery = searchQueryLocal.load();
-    console.log('searchQuery: ', searchQuery);
 
     setValues(searchQuery);
   }, []);
@@ -38,7 +37,6 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal }) => {
       ...values,
       short: evt.target.checked,
     };
-    console.log('values: ', values);
 
     handleChange(evt);
     handleFindMovies(newValues);
