@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
 function CustomLink({
-  path, children, className, activeClassName, target,
+  path,
+  children,
+  className,
+  activeClassName,
+  target = '_blank',
 }) {
   if (path.startsWith('http')) {
     return (
       <a
         href={path}
         className={`link ${className}`}
-        rel="noreferrer"
         target={target}
+        rel="noreferrer"
       >
         {children}
       </a>
@@ -21,7 +25,8 @@ function CustomLink({
     return (
       <NavLink
         to={path}
-        className={({ isActive }) => `link ${className} ${isActive ? activeClassName : ''}`
+        className={({ isActive }) =>
+          `link ${className} ${isActive ? activeClassName : ''}`
         }
       >
         {children}
@@ -37,7 +42,7 @@ function CustomLink({
 
 CustomLink.propTypes = {
   path: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
   target: PropTypes.string,
   activeClassName: PropTypes.string,

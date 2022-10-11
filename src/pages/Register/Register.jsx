@@ -1,11 +1,11 @@
 import './Register.css';
 import useForm from '../../hooks/useFormAndValidation';
-import Section from '../Section/Section.jsx';
-import Sign from '../Sign/Sign.jsx';
-import Form from '../Form/Form.jsx';
-import Input from '../Input/Input.jsx';
-import Button from '../Button/Button.jsx';
-import CustomLink from '../CustomLink/CustomLink.jsx';
+import Section from '../../components/Section/Section.jsx';
+import Sign from '../../components/Sign/Sign.jsx';
+import Form from '../../components/Form/Form.jsx';
+import Input from '../../components/Input/Input.jsx';
+import Button from '../../components/Button/Button.jsx';
+import CustomLink from '../../components/CustomLink/CustomLink.jsx';
 import ErrorText from '../../components/ErrorText/ErrorText';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 

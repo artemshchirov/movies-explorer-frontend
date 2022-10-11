@@ -1,7 +1,7 @@
 import './Profile.css';
-import MoviesHeader from '../Header/MoviesHeader/MoviesHeader.jsx';
-import Title from '../Title/Title.jsx';
-import Button from '../Button/Button.jsx';
+import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader.jsx';
+import Title from '../../components/Title/Title.jsx';
+import Button from '../../components/Button/Button.jsx';
 
 const Profile = ({ handleLogout }) => (
   <>
