@@ -4,15 +4,15 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import ProtectedRoute from '../../hocs/ProtectedRoute.jsx';
-import Main from '../Main/Main.jsx';
-import Movies from '../Movies/Movies.jsx';
-import SavedMovies from '../SavedMovies/SavedMovies.jsx';
-import Profile from '../Profile/Profile.jsx';
-import Register from '../Register/Register.jsx';
-import Login from '../Login/Login.jsx';
-import NotFound from '../NotFound/NotFound.jsx';
+import Main from '../../pages/Main/Main.jsx';
+import Movies from '../../pages/Movies/Movies.jsx';
+import SavedMovies from '../../pages/SavedMovies/SavedMovies.jsx';
+import Profile from '../../pages/Profile/Profile.jsx';
+import Register from '../../pages/Register/Register.jsx';
+import Login from '../../pages/Login/Login.jsx';
+import NotFound from '../../pages/NotFound/NotFound.jsx';
 import Alert from '../Alert/Alert.jsx';
-import Preloader from '../Movies/Preloader/Preloader.jsx';
+import Preloader from '../Preloader/Preloader.jsx';
 
 import MainApi from '../../utils/MainApi';
 import MoviesApi from '../../utils/MoviesApi';
@@ -55,6 +55,10 @@ function App() {
 
   function requestAllMovies() {
     return moviesApi.getMovies();
+  }
+
+  function requestLikeMovies() {
+    return mainApi.fetchLikeMovies(token)
   }
 
   function handleRegister({ name, email, password }) {
@@ -128,7 +132,7 @@ function App() {
     searchQueryMoviesLocal.delete();
     searchQuerySavedMoviesLocal.delete();
   }
-
+  // clearLocal()
   function handleLogout() {
     setAuthorized(false);
     setToken('');
@@ -144,6 +148,20 @@ function App() {
       setIsActiveAlert(false);
     }, 3000);
   }
+
+  function handleLikeMovieClick(movieId, movie) {
+    return movieId
+      ? mainApi.deleteLikeMovie(movieId, token).catch(() => {
+          showAlert(ALERT_MESSAGES.ERROR.DELETE_FILM);
+          throw new Error();
+        })
+      : mainApi.addLikeMovie(movie, token).catch(() => {
+          showAlert(ALERT_MESSAGES.ERROR.ADD_FILM);
+          throw new Error();
+        });
+  }
+
+  if (loading) return <Preloader />;
 
   return (
     <div className="page">
@@ -166,9 +184,12 @@ function App() {
               element={
                 <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
                   <Movies
-                    isLoading={loading}
-                    setIsLoading={setLoading}
+                    loading={loading}
+                    setLoading={setLoading}
+                    moviesLocal={moviesLocal}
                     searchQueryMoviesLocal={searchQueryMoviesLocal}
+                    requestAllMovies={requestAllMovies}
+                    handleLikeMovieClick={handleLikeMovieClick}
                   />
                 </ProtectedRoute>
               }
@@ -182,6 +203,8 @@ function App() {
                 >
                   <SavedMovies
                     searchQueryMoviesLocal={searchQueryMoviesLocal}
+                    handleLikeMovieClick={handleLikeMovieClick}
+                    requestLikeMovies={requestLikeMovies}
                   />
                 </ProtectedRoute>
               }
@@ -194,6 +217,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route path="*" element={<NotFound authorized={authorized} />} />
           </Routes>
 
