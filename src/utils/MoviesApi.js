@@ -7,7 +7,7 @@ export default class MoviesApi {
   _handleResponse = (response) =>
     response.ok
       ? response.json()
-      : Promise.reject(Error(`Ошибка, код: ${response.status}`));
+      : Promise.reject(Error(`Error, code: ${response.status}`));
 
   getMovies() {
     return fetch(this._baseUrl, {

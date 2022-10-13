@@ -40,9 +40,9 @@ function App() {
   const moviesApi = new MoviesApi(configMoviesApi);
   const jwtLocal = new LocalStorage('jwt');
   const moviesLocal = new LocalStorage('movies');
-  const searchQueryMoviesLocal = new LocalStorage('search-query-movies', {
+  const searchQueryLocal = new LocalStorage('search-query-movies', {
     movies: '',
-    short: true,
+    short: false,
   });
   const searchQuerySavedMoviesLocal = new LocalStorage(
     'search-query-saved-movies',
@@ -58,7 +58,7 @@ function App() {
   }
 
   function requestLikeMovies() {
-    return mainApi.fetchLikeMovies(token)
+    return mainApi.fetchLikeMovies(token);
   }
 
   function handleRegister({ name, email, password }) {
@@ -129,10 +129,10 @@ function App() {
   function clearLocal() {
     jwtLocal.delete();
     moviesLocal.delete();
-    searchQueryMoviesLocal.delete();
+    searchQueryLocal.delete();
     searchQuerySavedMoviesLocal.delete();
   }
-  // clearLocal()
+
   function handleLogout() {
     setAuthorized(false);
     setToken('');
@@ -161,68 +161,84 @@ function App() {
         });
   }
 
-  if (loading) return <Preloader />;
-
   return (
     <div className="page">
       <div className="page__container">
-        <CurrentUserContext.Provider value={authorized}>
-          <Routes>
-            <Route
-              path={PAGES.SIGNUP}
-              element={<Register handleRegister={handleRegister} />}
-            />
-            <Route
-              path={PAGES.SIGNIN}
-              element={<Login handleLogin={handleLogin} />}
-            />
+        {loading ? (
+          <Preloader />
+        ) : (
+          <>
+            <CurrentUserContext.Provider value={authorized}>
+              <Routes>
+                <Route
+                  path={PAGES.SIGNUP}
+                  element={<Register handleRegister={handleRegister} />}
+                />
+                <Route
+                  path={PAGES.SIGNIN}
+                  element={<Login handleLogin={handleLogin} />}
+                />
 
-            <Route path={'/'} element={<Main />} />
+                <Route path={'/'} element={<Main />} />
 
-            <Route
-              path={PAGES.MOVIES}
-              element={
-                <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
-                  <Movies
-                    loading={loading}
-                    setLoading={setLoading}
-                    moviesLocal={moviesLocal}
-                    searchQueryMoviesLocal={searchQueryMoviesLocal}
-                    requestAllMovies={requestAllMovies}
-                    handleLikeMovieClick={handleLikeMovieClick}
-                  />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={PAGES.SAVED_MOVIES}
-              element={
-                <ProtectedRoute
+                <Route
+                  path={PAGES.MOVIES}
+                  element={
+                    <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
+                      <Movies
+                        loading={loading}
+                        setLoading={setLoading}
+                        moviesLocal={moviesLocal}
+                        searchQueryLocal={searchQueryLocal}
+                        requestAllMovies={requestAllMovies}
+                        handleLikeMovieClick={handleLikeMovieClick}
+                        requestLikeMovies={requestLikeMovies}
+                        showAlert={showAlert}
+                      />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
                   path={PAGES.SAVED_MOVIES}
-                  authorized={authorized}
-                >
-                  <SavedMovies
-                    searchQueryMoviesLocal={searchQueryMoviesLocal}
-                    handleLikeMovieClick={handleLikeMovieClick}
-                    requestLikeMovies={requestLikeMovies}
-                  />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={PAGES.PROFILE}
-              element={
-                <ProtectedRoute path={PAGES.PROFILE} authorized={authorized}>
-                  <Profile handleLogout={handleLogout} />
-                </ProtectedRoute>
-              }
-            />
+                  element={
+                    <ProtectedRoute
+                      path={PAGES.SAVED_MOVIES}
+                      authorized={authorized}
+                    >
+                      <SavedMovies
+                        searchQueryLocal={searchQueryLocal}
+                        handleLikeMovieClick={handleLikeMovieClick}
+                        requestLikeMovies={requestLikeMovies}
+                        showAlert={showAlert}
+                      />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path={PAGES.PROFILE}
+                  element={
+                    <ProtectedRoute
+                      path={PAGES.PROFILE}
+                      authorized={authorized}
+                    >
+                      <Profile handleLogout={handleLogout} />
+                    </ProtectedRoute>
+                  }
+                />
 
-            <Route path="*" element={<NotFound authorized={authorized} />} />
-          </Routes>
+                <Route
+                  path="*"
+                  element={<NotFound authorized={authorized} />}
+                />
+              </Routes>
 
-          <Alert messageAlert={messageAlert} isActiveAlert={isActiveAlert} />
-        </CurrentUserContext.Provider>
+              <Alert
+                messageAlert={messageAlert}
+                isActiveAlert={isActiveAlert}
+              />
+            </CurrentUserContext.Provider>
+          </>
+        )}
       </div>
     </div>
   );

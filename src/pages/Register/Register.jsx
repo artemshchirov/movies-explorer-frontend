@@ -22,11 +22,10 @@ const Register = ({ handleRegister }) => {
     const { email, password } = values;
     if (!email || !password) return;
     if (isValid) {
-      console.log('isValid register, values: ', values);
       handleRegister(values);
       resetForm(initValues);
     } else {
-      console.log('isValid false (else): ');
+      //TODO
     }
   }
 
