@@ -41,12 +41,13 @@ const MESSAGES = {
 
 const ALERT_MESSAGES = {
   SUCCESSFULLY: {
-    UPDATE_PROFILE: 'Данные профиля успешно обновлены!',
+    UPDATE_PROFILE: 'Successful user info update!',
   },
 
   ERROR: {
-    UPDATE_PROFILE: 'Error while updating profile!!',
-    DELETE_FILM: 'Error while deleting new movie!!',
+    UPDATE_PROFILE: 'Error while updating profile!',
+    SEARCH_QUERY: 'Нужно ввести ключевое слово!',
+    DELETE_FILM: 'Error while deleting movie!',
     ADD_FILM: 'Error while adding movie!',
     GET_USER: 'Error while get user data!',
     AUTH: 'Incorrect email or password!',
@@ -62,6 +63,26 @@ const PAGES = {
   MAIN: '/',
 };
 
+const CARD_COUNT = {
+  SMALL_DEVICE: {
+    ADD: 2,
+    START: 5,
+  },
+  MIDDLE_DEVICE: {
+    ADD: 2,
+    START: 8,
+  },
+  BIG_DEVICE: {
+    ADD: 3,
+    START: 12,
+  },
+};
+
+const CARD_BREAKPOINT = {
+  TWO: 1000,
+  ONE: 700,
+};
+
 const BASE_URL = 'https://api.nomoreparties.co';
 
 const SHORT_DURATION = 40;
@@ -70,6 +91,8 @@ export {
   MESSAGES,
   PAGES,
   BASE_URL,
+  CARD_COUNT,
+  CARD_BREAKPOINT,
   SHORT_DURATION,
   ALERT_MESSAGES,
   VALIDATION_PARAMS,

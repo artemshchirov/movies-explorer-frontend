@@ -5,13 +5,17 @@ import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
 
+import { filterMovies } from '../../utils/filterMovies';
+import { MESSAGES, SHORT_DURATION } from '../../utils/constants';
+
 const SavedMovies = ({
   requestLikeMovies,
-  searchQueryMoviesLocal,
+  searchQueryLocal,
   handleLikeMovieClick,
+  showAlert,
 }) => {
   const [likedMovies, setLikedMovies] = useState([]);
-  const [movieList, setMovieList] = useState([]);
+  const [displayedMovies, setDisplayedMovies] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,10 +29,10 @@ const SavedMovies = ({
     requestLikeMovies()
       .then((movies) => {
         setAllMovies(movies);
-        hideErrorMessage();
+        setErrorMessage('');
       })
       .catch(() => {
-        showErrorMessage(MESSAGES.ERROR);
+        setErrorMessage(MESSAGES.ERROR);
       })
       .finally(() => {
         setLoading(false);
@@ -37,17 +41,9 @@ const SavedMovies = ({
 
   function handleFindMovies(values) {
     const movies = filterMovies(likedMovies, SHORT_DURATION, values);
-    setMovieList(movies);
+    setDisplayedMovies(movies);
 
-    movies?.length ? hideErrorMessage() : showErrorMessage(MESSAGES.NOT_FOUND);
-  }
-
-  function showErrorMessage(message) {
-    setErrorMessage(message);
-  }
-
-  function hideErrorMessage() {
-    setErrorMessage(null);
+    movies?.length ? setErrorMessage('') : setErrorMessage(MESSAGES.NOT_FOUND);
   }
 
   function handleDeleteMovie(movieId) {
@@ -57,10 +53,8 @@ const SavedMovies = ({
   }
 
   function setAllMovies(movies) {
-    console.log('movies: ', movies);
-
     setLikedMovies(movies);
-    setMovieList(movies);
+    setDisplayedMovies(movies);
   }
 
   return (
@@ -70,13 +64,15 @@ const SavedMovies = ({
         <section className="movies">
           <SearchForm
             handleFindMovies={handleFindMovies}
-            searchQueryLocal={searchQueryMoviesLocal}
+            searchQueryLocal={searchQueryLocal}
+            showAlert={showAlert}
           />
           <MoviesCardList
             loading={loading}
-            cards={movieList}
+            cards={displayedMovies}
             btnType={'movie__btn_type_delete'}
             handleLikeMovieClick={handleDeleteMovie}
+            message={errorMessage}
           />
         </section>
       </div>
