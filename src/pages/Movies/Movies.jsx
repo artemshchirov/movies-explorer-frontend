@@ -33,7 +33,7 @@ const Movies = ({
 
   const [errorMessage, setErrorMessage] = useState('');
   const [queryValues, setQueryValues] = useState({});
-
+  
   const { countAddMovies, startCountMovies, setParamsCountMovies } =
     useCardCount(CARD_COUNT, CARD_BREAKPOINT);
 

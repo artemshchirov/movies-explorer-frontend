@@ -1,12 +1,12 @@
 import './SearchForm.css';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import useForm from '../../../hooks/useFormAndValidation';
 import Form from '../../../components/Form/Form.jsx';
 import Input from '../../../components/Input/Input.jsx';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox.jsx';
 import Button from '../../../components/Button/Button.jsx';
-
-import { ALERT_MESSAGES } from '../../../utils/constants';
+import { ALERT_MESSAGES, PAGES } from '../../../utils/constants';
 
 const SearchForm = ({ handleFindMovies, searchQueryLocal, showAlert }) => {
   const { movie, short } = searchQueryLocal.load();
@@ -17,8 +17,15 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal, showAlert }) => {
   const { values, setValues, isValid, setIsValid, handleChange } =
     useForm(startValue);
 
+  const isSavedMovies = useLocation().pathname === PAGES.SAVED_MOVIES;
+
   useEffect(() => {
-    if (!isValid && !values.movie) showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+    if (isSavedMovies && !values.movie) {
+      setIsValid(true);
+      handleFindMovies({ movie: ' ', short });
+    } else if (!isValid && !values.movie) {
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+    }
   }, [values]);
 
   useEffect(() => {
@@ -42,11 +49,15 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal, showAlert }) => {
   }
 
   function handleChangeCheckbox(evt) {
-    const newValues = { ...values, short: evt.target.checked };
-    searchQueryLocal.save(newValues);
-    handleChange(evt);
-    setValues(newValues);
-    handleFindMovies(newValues);
+    if (values.movie || isSavedMovies) {
+      const newValues = { ...values, short: evt.target.checked };
+      searchQueryLocal.save(newValues);
+      handleChange(evt);
+      setValues(newValues);
+      handleFindMovies(newValues);
+    } else {
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+    }
   }
 
   return (

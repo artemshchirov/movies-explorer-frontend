@@ -46,7 +46,7 @@ function App() {
   });
   const searchQuerySavedMoviesLocal = new LocalStorage(
     'search-query-saved-movies',
-    { movies: '', short: true }
+    { movies: '', short: false }
   );
 
   useEffect(() => {
@@ -206,7 +206,7 @@ function App() {
                       authorized={authorized}
                     >
                       <SavedMovies
-                        searchQueryLocal={searchQueryLocal}
+                        searchQuerySavedMoviesLocal={searchQuerySavedMoviesLocal}
                         handleLikeMovieClick={handleLikeMovieClick}
                         requestLikeMovies={requestLikeMovies}
                         showAlert={showAlert}

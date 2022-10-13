@@ -10,7 +10,7 @@ import { MESSAGES, SHORT_DURATION } from '../../utils/constants';
 
 const SavedMovies = ({
   requestLikeMovies,
-  searchQueryLocal,
+  searchQuerySavedMoviesLocal,
   handleLikeMovieClick,
   showAlert,
 }) => {
@@ -42,7 +42,6 @@ const SavedMovies = ({
   function handleFindMovies(values) {
     const movies = filterMovies(likedMovies, SHORT_DURATION, values);
     setDisplayedMovies(movies);
-
     movies?.length ? setErrorMessage('') : setErrorMessage(MESSAGES.NOT_FOUND);
   }
 
@@ -64,7 +63,7 @@ const SavedMovies = ({
         <section className="movies">
           <SearchForm
             handleFindMovies={handleFindMovies}
-            searchQueryLocal={searchQueryLocal}
+            searchQueryLocal={searchQuerySavedMoviesLocal}
             showAlert={showAlert}
           />
           <MoviesCardList
