@@ -1,47 +1,53 @@
 import './SearchForm.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import useForm from '../../../hooks/useFormAndValidation';
 import Form from '../../../components/Form/Form.jsx';
 import Input from '../../../components/Input/Input.jsx';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox.jsx';
 import Button from '../../../components/Button/Button.jsx';
-import ErrorText from '../../../components/ErrorText/ErrorText.jsx';
 
-const SearchForm = ({ handleFindMovies, searchQueryLocal }) => {
-  const startValue = { movie: '', short: true };
-  const { values, setValues, isValid, setIsValid, handleChange, resetForm } =
+import { ALERT_MESSAGES } from '../../../utils/constants';
+
+const SearchForm = ({ handleFindMovies, searchQueryLocal, showAlert }) => {
+  const { movie, short } = searchQueryLocal.load();
+  const startValue = {
+    movie,
+    short,
+  };
+  const { values, setValues, isValid, setIsValid, handleChange } =
     useForm(startValue);
 
   useEffect(() => {
-    searchQueryLocal.delete();
+    if (!isValid && !values.movie) showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+  }, [values]);
+
+  useEffect(() => {
     const searchQuery = searchQueryLocal.load();
 
     setValues(searchQuery);
+    if (searchQuery) setIsValid(true);
+    else setIsValid(false);
   }, []);
 
-  const handleSubmitForm = (evt) => {
+  function handleSubmitForm(evt) {
     evt.preventDefault();
-    const { movie } = values;
+    searchQueryLocal.save(values);
 
-    if (!movie) {
+    if (!values.movie) {
       setIsValid(false);
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
     } else {
-      resetForm();
-      handleFindMovies(movie);
-      searchQueryLocal.save(values);
+      handleFindMovies(values);
     }
-  };
+  }
 
-  const handleChangeCheckbox = (evt) => {
-    const newValues = {
-      ...values,
-      short: evt.target.checked,
-    };
-
-    handleChange(evt);
-    handleFindMovies(newValues);
+  function handleChangeCheckbox(evt) {
+    const newValues = { ...values, short: evt.target.checked };
     searchQueryLocal.save(newValues);
-  };
+    handleChange(evt);
+    setValues(newValues);
+    handleFindMovies(newValues);
+  }
 
   return (
     <section className="movies-search">
@@ -67,12 +73,11 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal }) => {
       </Form>
       <div className="movies-search__checkbox">
         <div className="movies-search__divider"></div>
-        <FilterCheckbox onChange={handleChangeCheckbox} />
+        <FilterCheckbox
+          checked={values.short}
+          onChange={handleChangeCheckbox}
+        />
       </div>
-
-      {/* {!isValid && (
-        <ErrorText type="search">Нужно ввести ключевое слово</ErrorText>
-      )} */}
     </section>
   );
 };

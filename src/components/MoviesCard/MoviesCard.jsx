@@ -28,7 +28,7 @@ const MoviesCard = ({ btnType, movie, handleLikeMovieClick }) => {
         year: movie.year,
         description: movie.description,
         image: BASE_URL + movie.image.url,
-        trailer: movie.trailer,
+        trailer: movie.trailerLink,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN || '-',
         thumbnail: BASE_URL + movie.image.formats.thumbnail.url,
@@ -50,7 +50,7 @@ const MoviesCard = ({ btnType, movie, handleLikeMovieClick }) => {
         </div>
         <Button
           className={`movie__btn ${btnType} ${
-            !isSavedMovies && !movieId ? 'movie__save-btn_active' : ''
+            !movieId ? 'movie__save-btn_active' : ''
           }`}
           onClick={clickLikeButton}
         />

@@ -9,6 +9,12 @@
   border-top: 1px solid #e8e8e8;
 }
 
+.movie-cards__alert {
+  padding-top: 50px;
+  color: #000;
+  text-align: center;
+}
+
 @media screen and (min-width: 767px) {
   .movie-cards {
     margin-top: 109px;
