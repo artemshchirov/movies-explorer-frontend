@@ -2,7 +2,7 @@ import './AboutMe.css';
 import profileImage from '../../../images/profile-img.jpg';
 
 const AboutMe = () => (
-  <section className="profile">
+  <section className="profile" id="profile">
     <h2 className="profile__subject">Студент</h2>
     <div className="profile__about">
       <img className="profile__image" src={profileImage} alt="student" />

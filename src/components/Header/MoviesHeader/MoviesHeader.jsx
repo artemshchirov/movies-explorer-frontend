@@ -15,7 +15,9 @@ const MoviesHeader = () => {
 
   return (
     <Header>
-      <Logo />
+      <CustomLink path="/">
+        <Logo />
+      </CustomLink>
       <MoviesNav />
       <CustomLink className="link_movies link_type_profile" path="/profile">
         Профиль <span className="link_icon"></span>

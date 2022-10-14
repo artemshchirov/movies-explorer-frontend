@@ -1,24 +1,24 @@
 import './NavTab.css';
-import { Link } from 'react-router-dom';
+import CustomLink from '../../../components/CustomLink/CustomLink';
 
 const NavTab = () => (
   <section className="navtab">
     <nav>
       <ul className="nav__links">
         <li>
-          <Link className="nav__link" to="#about">
+          <CustomLink className="nav__link" path="#about">
             О проекте
-          </Link>
+          </CustomLink>
         </li>
         <li>
-          <Link className="nav__link" to="#techs">
+          <CustomLink className="nav__link" path="#techs">
             Технологии
-          </Link>
+          </CustomLink>
         </li>
         <li>
-          <Link className="nav__link nav__link_last" to="#student">
+          <CustomLink className="nav__link nav__link_last" path="#student">
             Студент
-          </Link>
+          </CustomLink>
         </li>
       </ul>
     </nav>

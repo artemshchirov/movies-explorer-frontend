@@ -179,7 +179,7 @@ function App() {
                   element={<Login handleLogin={handleLogin} />}
                 />
 
-                <Route path={'/'} element={<Main />} />
+                <Route path={'/'} element={<Main authorized={authorized} />} />
 
                 <Route
                   path={PAGES.MOVIES}

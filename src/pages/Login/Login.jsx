@@ -11,8 +11,8 @@ import useForm from '../../hooks/useFormAndValidation';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
 const initValues = {
-  email: 'test@gmail.com',
-  password: '11',
+  email: '',
+  password: '',
 };
 
 const Login = ({ handleLogin }) => {

@@ -9,7 +9,7 @@ import CustomLink from '../../components/CustomLink/CustomLink.jsx';
 import ErrorText from '../../components/ErrorText/ErrorText';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const initValues = { name: 'Artem', email: 'test@gmail.com', password: '11' };
+const initValues = { name: '', email: '', password: '' };
 
 const Register = ({ handleRegister }) => {
   const { values, errors, isValid, handleChange, resetForm } = useForm(

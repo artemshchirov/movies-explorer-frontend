@@ -27,8 +27,8 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
     const isChangeName = values.name !== currentUser.name;
     const isChangeEmail = values.email !== currentUser.email;
 
-    isValidName ? setIsValidUserName(true) : setIsValidUserName(false);
-    isValidEmail ? setIsValidUserEmail(true) : setIsValidUserEmail(false);
+    setIsValidUserName(isValidName);
+    setIsValidUserEmail(isValidEmail);
 
     isValidName && isValidEmail && (isChangeName || isChangeEmail)
       ? setIsValid(true)

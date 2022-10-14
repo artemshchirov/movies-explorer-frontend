@@ -9,24 +9,36 @@ function CustomLink({
   activeClassName,
   target = '_blank',
 }) {
+  let finalClassName = 'link';
+  if (className) {
+    finalClassName += ` ${className}`;
+  }
+
   if (path.startsWith('http')) {
     return (
       <a
         href={path}
-        className={`link ${className}`}
+        className={finalClassName}
         target={target}
         rel="noreferrer"
       >
         {children}
       </a>
     );
+  } else if (path.startsWith('#')) {
+    return (
+      <a className={finalClassName} href={path}>
+        {children}
+      </a>
+    );
   }
+  
   if (activeClassName) {
     return (
       <NavLink
         to={path}
         className={({ isActive }) =>
-          `link ${className} ${isActive ? activeClassName : ''}`
+          `${finalClassName} ${isActive ? activeClassName : ''}`
         }
       >
         {children}
@@ -34,7 +46,7 @@ function CustomLink({
     );
   }
   return (
-    <Link to={path} className={`link ${className}`}>
+    <Link to={path} className={finalClassName}>
       {children}
     </Link>
   );
