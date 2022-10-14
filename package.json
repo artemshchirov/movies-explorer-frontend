@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc --ext .js,.jsx .",
     "lint:fix": "npm run lint -- --fix",
-    "deploy": "npm run build && scp -r ./build/* artemshchirov@51.250.96.109:/home/artemshchirov/frontend"
+    "deploy": "npm run build && scp -r ./build/* artemshchirov@84.252.136.67:/home/artemshchirov/frontend/build-movies-explorer"
   },
   "browserslist": {
     "production": [
