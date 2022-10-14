@@ -9,24 +9,16 @@ import CustomLink from '../../components/CustomLink/CustomLink.jsx';
 import ErrorText from '../../components/ErrorText/ErrorText';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const initValues = { name: '', email: '', password: '' };
-
 const Register = ({ handleRegister }) => {
-  const { values, errors, isValid, handleChange, resetForm } = useForm(
+  const initValues = { name: '', email: '', password: '' };
+  const { values, errors, isValid, handleChange } = useForm(
     initValues,
     VALIDATION_CONFIGS.USER_DATA
   );
 
   function handleSubmitForm(evt) {
     evt.preventDefault();
-    const { email, password } = values;
-    if (!email || !password) return;
-    if (isValid) {
-      handleRegister(values);
-      resetForm(initValues);
-    } else {
-      //TODO
-    }
+    handleRegister(values);
   }
 
   return (
@@ -82,7 +74,7 @@ const Register = ({ handleRegister }) => {
             className="form__btn"
             title="Зарегистрироваться"
             btnType="submit"
-            btnActive={!isValid}
+            btnDisabled={!isValid || errors.email || !values.password}
           />
         </Form>
         <CustomLink path="/signin" className="link_sign">

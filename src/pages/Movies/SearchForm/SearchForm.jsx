@@ -79,7 +79,7 @@ const SearchForm = ({ handleFindMovies, searchQueryLocal, showAlert }) => {
           className="movies-search__btn"
           title="Найти"
           btnType="submit"
-          btnActive={!isValid}
+          btnDisabled={!isValid}
         />
       </Form>
       <div className="movies-search__checkbox">

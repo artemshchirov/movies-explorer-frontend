@@ -5,11 +5,11 @@ const Button = ({
   className,
   btnType = 'button',
   onClick = (f) => f,
-  btnActive,
+  btnDisabled,
 }) => {
   let finalClassName = 'button';
   if (className) {
-    finalClassName += ` ${className} ${!btnActive ? '' : 'button_disabled'}`;
+    finalClassName += ` ${className} ${btnDisabled ? 'button_disabled' : ''}`;
   }
 
   return (
@@ -17,7 +17,7 @@ const Button = ({
       className={finalClassName}
       type={btnType}
       onClick={onClick}
-      disabled={btnActive}
+      disabled={btnDisabled}
     >
       {title}
     </button>

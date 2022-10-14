@@ -16,7 +16,7 @@ const NavTab = () => (
           </CustomLink>
         </li>
         <li>
-          <CustomLink className="nav__link nav__link_last" path="#student">
+          <CustomLink className="nav__link nav__link_last" path="#profile">
             Студент
           </CustomLink>
         </li>

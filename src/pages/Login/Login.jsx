@@ -1,4 +1,5 @@
 import './Login.css';
+import { useEffect } from 'react';
 import Section from '../../components/Section/Section.jsx';
 import Sign from '../../components/Sign/Sign.jsx';
 import Form from '../../components/Form/Form.jsx';
@@ -10,12 +11,8 @@ import ErrorText from '../../components/ErrorText/ErrorText.jsx';
 import useForm from '../../hooks/useFormAndValidation';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const initValues = {
-  email: '',
-  password: '',
-};
-
 const Login = ({ handleLogin }) => {
+  const initValues = { email: '', password: '' };
   const { values, errors, isValid, handleChange } = useForm(
     initValues,
     VALIDATION_CONFIGS.LOGIN
@@ -63,7 +60,7 @@ const Login = ({ handleLogin }) => {
             className="form__btn"
             title="Войти"
             btnType="submit"
-            btnActive={!isValid}
+            btnDisabled={!isValid || errors.email || !values.password}
           />
         </Form>
         <CustomLink path="/signup" className="link_sign">

@@ -17,7 +17,7 @@ const useForm = (defaultValues = {}, config) => {
       isNotValidValue && config?.INPUTS.includes(name) && value.length
         ? setErrors({ ...errors, [name]: config.MESSAGES[name] })
         : setErrors({ ...errors, [name]: target.validationMessage });
-
+        
       if (target.closest('form'))
         setIsValid(target.closest('.form').checkValidity());
       else setIsValid(document.querySelector('.form').checkValidity());

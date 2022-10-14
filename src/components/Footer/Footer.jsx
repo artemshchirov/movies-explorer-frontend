@@ -1,4 +1,5 @@
 import './Footer.css';
+import CustomLink from '../CustomLink/CustomLink';
 
 const Footer = () => (
   <footer className="footer">
@@ -8,31 +9,25 @@ const Footer = () => (
       </p>
     </div>
     <div className="footer__wrapper">
-      <a
+      <CustomLink
         className="footer__copyright"
-        href="https://github.com/artemshchirov"
-        target="_blank"
-        rel="noreferrer"
+        path="https://github.com/artemshchirov"
       >
         &copy; Ɐrtem Shchirov 2022
-      </a>
+      </CustomLink>
       <div className="footer__nav">
-        <a
+        <CustomLink
           className="footer__nav-link"
-          href="https://www.example.com/"
-          target="_blank"
-          rel="noreferrer"
+          path="https://practicum.com/en-isr/"
         >
           Яндекс.Практикум
-        </a>
-        <a
+        </CustomLink>
+        <CustomLink
           className="footer__nav-link"
-          href="https://www.example.com/"
-          target="_blank"
-          rel="noreferrer"
+          path="https://github.com/artemshchirov/movies-explorer-frontend"
         >
           Github
-        </a>
+        </CustomLink>
       </div>
     </div>
   </footer>

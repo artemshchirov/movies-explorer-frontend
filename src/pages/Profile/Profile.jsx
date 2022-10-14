@@ -88,7 +88,7 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
               className="account__btn"
               title="Редактировать"
               btnType="submit"
-              btnActive={!isValid}
+              btnDisabled={!isValid}
               onClick={clickUpdateUserButton}
             />
             <Button
