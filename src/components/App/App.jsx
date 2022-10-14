@@ -23,8 +23,6 @@ import { configMainApi, configMoviesApi } from '../../utils/configApi';
 function App() {
   const [authorized, setAuthorized] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isFetchError, setIsFetchError] = useState(false);
-
   const [token, setToken] = useState('');
 
   const [loading, setLoading] = useState(true);
@@ -60,20 +58,15 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
-    setLoaderButton(true);
-    setIsFetchError(false);
     mainApi
       .signup({ name, email, password })
       .then(() => {
         handleLogin({ email, password });
       })
       .catch(() => {
-        setIsFetchError(true);
         showAlert(ALERT_MESSAGES.ERROR.AUTH);
       })
-      .finally(() => {
-        setLoaderButton(false);
-      });
+      .finally(() => {});
   }
 
   function getUserInfo(token) {
@@ -93,8 +86,6 @@ function App() {
   }
 
   function handleLogin(user) {
-    setLoaderButton(true);
-    setIsFetchError(false);
     mainApi
       .signin(user)
       .then((res) => {
@@ -106,12 +97,9 @@ function App() {
         navigate(PAGES.MOVIES);
       })
       .catch(() => {
-        setIsFetchError(true);
         showAlert(ALERT_MESSAGES.ERROR.AUTH);
       })
-      .finally(() => {
-        setLoaderButton(false);
-      });
+      .finally(() => {});
   }
 
   function handleLoginToken() {
@@ -161,13 +149,9 @@ function App() {
 
   // Update user info
   function handleUpdateUser(user) {
-    console.log('update user: ');
-
     return mainApi
       .updateUserInfo(user, token)
       .then((newData) => {
-        console.log('newData: ', newData);
-        
         setCurrentUser(newData);
         showAlert(ALERT_MESSAGES.SUCCESSFULLY.UPDATE_PROFILE);
       })

@@ -45,7 +45,7 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
       <section className="account">
         <div className="account__container">
           <Title
-            className="title_type_main account__title"
+            className="title_type_profile"
             text={`Привет, ${values.name}!`}
           />
 

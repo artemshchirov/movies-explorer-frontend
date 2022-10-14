@@ -1,5 +1,4 @@
 import './MoviesCardList.css';
-import { useState, useEffect } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import Preloader from '../../components/Preloader/Preloader.jsx';
 

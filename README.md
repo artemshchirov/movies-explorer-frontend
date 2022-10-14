@@ -2,6 +2,8 @@
 
 🎬🔎 Project Movies Explorer find movies for you to watch
 
+`https://github.com/artemshchirov/movies-explorer-frontend/pull/2` - Pull request.
+
 `https://disk.yandex.ru/d/WGeDGjIRHZS-mQ` - Figma template.
 
 ## Directories
