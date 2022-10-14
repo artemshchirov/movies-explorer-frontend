@@ -25,14 +25,15 @@ function CustomLink({
         {children}
       </a>
     );
-  } else if (path.startsWith('#')) {
+  }
+  if (path.startsWith('#')) {
     return (
       <a className={finalClassName} href={path}>
         {children}
       </a>
     );
   }
-  
+
   if (activeClassName) {
     return (
       <NavLink
@@ -54,7 +55,7 @@ function CustomLink({
 
 CustomLink.propTypes = {
   path: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   target: PropTypes.string,
   activeClassName: PropTypes.string,

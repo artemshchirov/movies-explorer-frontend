@@ -1,21 +1,22 @@
 import './Profile.css';
 import { useEffect, useState } from 'react';
-import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader.jsx';
-import Form from '../../components/Form/Form.jsx';
-import Title from '../../components/Title/Title.jsx';
-import Button from '../../components/Button/Button.jsx';
+import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
+import Form from '../../components/Form/Form';
+import Title from '../../components/Title/Title';
+import Button from '../../components/Button/Button';
 import ErrorText from '../../components/ErrorText/ErrorText';
 
-import useForm from '../../hooks/useFormAndValidation';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { VALIDATION_PARAMS } from '../../utils/constants';
 
-const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
+function Profile({ currentUser, handleUpdateUser, handleLogout }) {
   const startValues = {
     name: currentUser.name,
     email: currentUser.email,
   };
 
-  const { values, isValid, handleChange, setIsValid } = useForm(startValues);
+  const { values, isValid, handleChange, setIsValid } =
+    useFormAndValidation(startValues);
 
   const [isValidUserName, setIsValidUserName] = useState(true);
   const [isValidUserEmail, setIsValidUserEmail] = useState(true);
@@ -30,14 +31,14 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
     setIsValidUserName(isValidName);
     setIsValidUserEmail(isValidEmail);
 
-    isValidName && isValidEmail && (isChangeName || isChangeEmail)
-      ? setIsValid(true)
-      : setIsValid(false);
+    if (isValidName && isValidEmail && (isChangeName || isChangeEmail))
+      setIsValid(true);
+    else setIsValid(false);
   }, [values]);
 
-  function clickUpdateUserButton() {
+  const clickUpdateUserButton = () => {
     handleUpdateUser(values).then(() => setIsValid(false));
-  }
+  };
 
   return (
     <>
@@ -65,7 +66,7 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
             {!isValidUserName && (
               <ErrorText>{VALIDATION_PARAMS.MESSAGES.NAME}</ErrorText>
             )}
-            <div className="account__divider"></div>
+            <div className="account__divider" />
             <label className="account__label">
               <p className="account__data account__data_description">E-mail</p>
               <input
@@ -101,6 +102,6 @@ const Profile = ({ currentUser, handleUpdateUser, handleLogout }) => {
       </section>
     </>
   );
-};
+}
 
 export default Profile;

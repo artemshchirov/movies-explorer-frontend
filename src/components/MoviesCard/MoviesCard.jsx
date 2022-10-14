@@ -2,22 +2,22 @@ import './MoviesCard.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { BASE_URL, PAGES } from '../../utils/constants';
-import Button from '../Button/Button.jsx';
+import Button from '../Button/Button';
 import CustomLink from '../CustomLink/CustomLink';
 import formatDuration from '../../utils/formatDuration';
 
-const MoviesCard = ({ btnType, movie, handleLikeMovieClick }) => {
+function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
   const [movieId, setMovieId] = useState('');
   const isSavedMovies = useLocation().pathname === PAGES.SAVED_MOVIES;
   const imageUrl =
     movie.thumbnail || `${BASE_URL}/${movie.image.formats.thumbnail.url}`;
 
   useEffect(() => {
-    const movieId = movie._id;
-    if (movieId) setMovieId(movieId);
+    const currentMovieId = movie._id;
+    if (movieId) setMovieId(currentMovieId);
   }, []);
 
-  function clickLikeButton() {
+  const clickLikeButton = () => {
     if (isSavedMovies) {
       handleLikeMovieClick(movieId);
     } else {
@@ -35,11 +35,11 @@ const MoviesCard = ({ btnType, movie, handleLikeMovieClick }) => {
         movieId: movie.id.toString(),
       };
 
-      handleLikeMovieClick(movieId, movieData).then((movie) => {
-        setMovieId(movieId ? '' : movie._id);
+      handleLikeMovieClick(movieId, movieData).then((likedMovie) => {
+        setMovieId(movieId ? '' : likedMovie._id);
       });
     }
-  }
+  };
 
   return (
     <article className="movie">
@@ -60,6 +60,6 @@ const MoviesCard = ({ btnType, movie, handleLikeMovieClick }) => {
       </CustomLink>
     </article>
   );
-};
+}
 
 export default MoviesCard;

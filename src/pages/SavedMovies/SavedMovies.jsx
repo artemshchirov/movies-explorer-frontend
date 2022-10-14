@@ -1,19 +1,19 @@
 import './SavedMovies.css';
 import { useState, useEffect } from 'react';
-import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader.jsx';
+import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import SearchForm from '../Movies/SearchForm/SearchForm';
-import MoviesCardList from '../../components/MoviesCardList/MoviesCardList.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
+import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
+import Footer from '../../components/Footer/Footer';
 
-import { filterMovies } from '../../utils/filterMovies';
+import filterMovies from '../../utils/filterMovies';
 import { MESSAGES, SHORT_DURATION } from '../../utils/constants';
 
-const SavedMovies = ({
+function SavedMovies({
   requestLikeMovies,
   searchQuerySavedMoviesLocal,
   handleLikeMovieClick,
   showAlert,
-}) => {
+}) {
   const [likedMovies, setLikedMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
 
@@ -24,7 +24,12 @@ const SavedMovies = ({
     getLikeMovies();
   }, []);
 
-  function getLikeMovies() {
+  const setAllMovies = (movies) => {
+    setLikedMovies(movies);
+    setDisplayedMovies(movies);
+  };
+
+  const getLikeMovies = () => {
     setLoading(true);
     requestLikeMovies()
       .then((movies) => {
@@ -37,24 +42,20 @@ const SavedMovies = ({
       .finally(() => {
         setLoading(false);
       });
-  }
+  };
 
-  function handleFindMovies(values) {
+  const handleFindMovies = (values) => {
     const movies = filterMovies(likedMovies, SHORT_DURATION, values);
     setDisplayedMovies(movies);
-    movies?.length ? setErrorMessage('') : setErrorMessage(MESSAGES.NOT_FOUND);
-  }
+    if (movies?.length) setErrorMessage('');
+    else setErrorMessage(MESSAGES.NOT_FOUND);
+  };
 
-  function handleDeleteMovie(movieId) {
+  const handleDeleteMovie = (movieId) => {
     handleLikeMovieClick(movieId).then(() =>
       setAllMovies(likedMovies.filter((movie) => movie._id !== movieId))
     );
-  }
-
-  function setAllMovies(movies) {
-    setLikedMovies(movies);
-    setDisplayedMovies(movies);
-  }
+  };
 
   return (
     <>
@@ -69,7 +70,7 @@ const SavedMovies = ({
           <MoviesCardList
             loading={loading}
             cards={displayedMovies}
-            btnType={'movie__btn_type_delete'}
+            btnType="movie__btn_type_delete"
             handleLikeMovieClick={handleDeleteMovie}
             message={errorMessage}
           />
@@ -78,5 +79,5 @@ const SavedMovies = ({
       <Footer />
     </>
   );
-};
+}
 export default SavedMovies;

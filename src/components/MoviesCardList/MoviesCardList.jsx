@@ -1,14 +1,14 @@
 import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import Preloader from '../../components/Preloader/Preloader.jsx';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({
+function MoviesCardList({
   loading,
   btnType,
   cards,
   handleLikeMovieClick,
   message = 'test',
-}) => {
+}) {
   return (
     <>
       {message ? (
@@ -29,6 +29,6 @@ const MoviesCardList = ({
       )}
     </>
   );
-};
+}
 
 export default MoviesCardList;

@@ -1,29 +1,31 @@
 import './Main.css';
-import MainHeader from '../../components/Header/MainHeader/MainHeader.jsx';
-import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader.jsx';
-import Promo from './Promo/Promo.jsx';
-import NavTab from './NavTab/NavTab.jsx';
-import AboutProject from './AboutProject/AboutProject.jsx';
-import Techs from './Techs/Techs.jsx';
-import AboutMe from './AboutMe/AboutMe.jsx';
-import Portfolio from './Portfolio/Portfolio.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
+import MainHeader from '../../components/Header/MainHeader/MainHeader';
+import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
+import Promo from './Promo/Promo';
+import NavTab from './NavTab/NavTab';
+import AboutProject from './AboutProject/AboutProject';
+import Techs from './Techs/Techs';
+import AboutMe from './AboutMe/AboutMe';
+import Portfolio from './Portfolio/Portfolio';
+import Footer from '../../components/Footer/Footer';
 
-const Main = ({ authorized }) => (
-  <>
-    <div className="content-wrapper">
-      {authorized ? <MoviesHeader /> : <MainHeader />}
-      <main>
-        <Promo />
-        <NavTab />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
-      </main>
-    </div>
-    <Footer />
-  </>
-);
+function Main({ authorized }) {
+  return (
+    <>
+      <div className="content-wrapper">
+        {authorized ? <MoviesHeader /> : <MainHeader />}
+        <main>
+          <Promo />
+          <NavTab />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Portfolio />
+        </main>
+      </div>
+      <Footer />
+    </>
+  );
+}
 
 export default Main;

@@ -1,26 +1,26 @@
 import './Login.css';
-import { useEffect } from 'react';
-import Section from '../../components/Section/Section.jsx';
-import Sign from '../../components/Sign/Sign.jsx';
-import Form from '../../components/Form/Form.jsx';
-import Input from '../../components/Input/Input.jsx';
-import Button from '../../components/Button/Button.jsx';
-import CustomLink from '../../components/CustomLink/CustomLink.jsx';
-import ErrorText from '../../components/ErrorText/ErrorText.jsx';
+import Section from '../../components/Section/Section';
+import Sign from '../../components/Sign/Sign';
+import Form from '../../components/Form/Form';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import CustomLink from '../../components/CustomLink/CustomLink';
+import ErrorText from '../../components/ErrorText/ErrorText';
 
-import useForm from '../../hooks/useFormAndValidation';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const Login = ({ handleLogin }) => {
+function Login({ handleLogin }) {
   const initValues = { email: '', password: '' };
-  const { values, errors, isValid, handleChange } = useForm(
+  const { values, errors, isValid, handleChange } = useFormAndValidation(
     initValues,
     VALIDATION_CONFIGS.LOGIN
   );
-  function handleSubmitForm(evt) {
+
+  const handleSubmitForm = (evt) => {
     evt.preventDefault();
     handleLogin(values);
-  }
+  };
 
   return (
     <Section className="sign">
@@ -70,6 +70,6 @@ const Login = ({ handleLogin }) => {
       </Sign>
     </Section>
   );
-};
+}
 
 export default Login;

@@ -1,18 +1,18 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-import ProtectedRoute from '../../hocs/ProtectedRoute.jsx';
-import Main from '../../pages/Main/Main.jsx';
-import Movies from '../../pages/Movies/Movies.jsx';
-import SavedMovies from '../../pages/SavedMovies/SavedMovies.jsx';
-import Profile from '../../pages/Profile/Profile.jsx';
-import Register from '../../pages/Register/Register.jsx';
-import Login from '../../pages/Login/Login.jsx';
-import NotFound from '../../pages/NotFound/NotFound.jsx';
-import Alert from '../Alert/Alert.jsx';
-import Preloader from '../Preloader/Preloader.jsx';
+import ProtectedRoute from '../../hocs/ProtectedRoute';
+import Main from '../../pages/Main/Main';
+import Movies from '../../pages/Movies/Movies';
+import SavedMovies from '../../pages/SavedMovies/SavedMovies';
+import Profile from '../../pages/Profile/Profile';
+import Register from '../../pages/Register/Register';
+import Login from '../../pages/Login/Login';
+import NotFound from '../../pages/NotFound/NotFound';
+import Alert from '../Alert/Alert';
+import Preloader from '../Preloader/Preloader';
 
 import MainApi from '../../utils/MainApi';
 import MoviesApi from '../../utils/MoviesApi';
@@ -49,29 +49,21 @@ function App() {
     handleLoginToken();
   }, []);
 
-  function requestAllMovies() {
-    return moviesApi.getMovies();
-  }
+  const requestAllMovies = () => moviesApi.getMovies();
 
-  function requestLikeMovies() {
-    return mainApi.fetchLikeMovies(token);
-  }
+  const requestLikeMovies = () => mainApi.fetchLikeMovies(token);
 
-  function handleRegister({ name, email, password }) {
+  const showAlert = (message) => {
+    setMessageAlert(message);
+    setIsActiveAlert(true);
+    setTimeout(() => {
+      setIsActiveAlert(false);
+    }, 3000);
+  };
+
+  const getUserInfo = (jwt) => {
     mainApi
-      .signup({ name, email, password })
-      .then(() => {
-        handleLogin({ email, password });
-      })
-      .catch(() => {
-        showAlert(ALERT_MESSAGES.ERROR.AUTH);
-      })
-      .finally(() => {});
-  }
-
-  function getUserInfo(token) {
-    mainApi
-      .getUserInfo(token)
+      .getUserInfo(jwt)
       .then((user) => {
         if (!authorized) setAuthorized(true);
         setCurrentUser(user);
@@ -83,9 +75,9 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-  }
+  };
 
-  function handleLogin(user) {
+  const handleLogin = (user) => {
     mainApi
       .signin(user)
       .then((res) => {
@@ -100,9 +92,21 @@ function App() {
         showAlert(ALERT_MESSAGES.ERROR.AUTH);
       })
       .finally(() => {});
-  }
+  };
 
-  function handleLoginToken() {
+  const handleRegister = ({ name, email, password }) => {
+    mainApi
+      .signup({ name, email, password })
+      .then(() => {
+        handleLogin({ email, password });
+      })
+      .catch(() => {
+        showAlert(ALERT_MESSAGES.ERROR.AUTH);
+      })
+      .finally(() => {});
+  };
+
+  const handleLoginToken = () => {
     const jwt = jwtLocal.load();
     if (jwt) {
       setToken(jwt);
@@ -110,33 +114,25 @@ function App() {
     } else {
       setLoading(false);
     }
-  }
+  };
 
-  function clearLocal() {
+  const clearLocal = () => {
     jwtLocal.delete();
     moviesLocal.delete();
     searchQueryLocal.delete();
     searchQuerySavedMoviesLocal.delete();
-  }
+  };
 
-  function handleLogout() {
+  const handleLogout = () => {
     setAuthorized(false);
     setToken('');
     setCurrentUser({});
     clearLocal();
     navigate(PAGES.MAIN);
-  }
+  };
 
-  function showAlert(message) {
-    setMessageAlert(message);
-    setIsActiveAlert(true);
-    setTimeout(() => {
-      setIsActiveAlert(false);
-    }, 3000);
-  }
-
-  function handleLikeMovieClick(movieId, movie) {
-    return movieId
+  const handleLikeMovieClick = (movieId, movie) =>
+    movieId
       ? mainApi.deleteLikeMovie(movieId, token).catch(() => {
           showAlert(ALERT_MESSAGES.ERROR.DELETE_FILM);
           throw new Error();
@@ -145,11 +141,10 @@ function App() {
           showAlert(ALERT_MESSAGES.ERROR.ADD_FILM);
           throw new Error();
         });
-  }
 
   // Update user info
-  function handleUpdateUser(user) {
-    return mainApi
+  const handleUpdateUser = (user) =>
+    mainApi
       .updateUserInfo(user, token)
       .then((newData) => {
         setCurrentUser(newData);
@@ -159,7 +154,6 @@ function App() {
         showAlert(ALERT_MESSAGES.ERROR.UPDATE_PROFILE);
         throw new Error();
       });
-  }
 
   return (
     <div className="page">
@@ -167,83 +161,70 @@ function App() {
         {loading ? (
           <Preloader />
         ) : (
-          <>
-            <CurrentUserContext.Provider value={authorized}>
-              <Routes>
-                <Route
-                  path={PAGES.SIGNUP}
-                  element={<Register handleRegister={handleRegister} />}
-                />
-                <Route
-                  path={PAGES.SIGNIN}
-                  element={<Login handleLogin={handleLogin} />}
-                />
-
-                <Route path={'/'} element={<Main authorized={authorized} />} />
-
-                <Route
-                  path={PAGES.MOVIES}
-                  element={
-                    <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
-                      <Movies
-                        loading={loading}
-                        setLoading={setLoading}
-                        moviesLocal={moviesLocal}
-                        searchQueryLocal={searchQueryLocal}
-                        requestAllMovies={requestAllMovies}
-                        handleLikeMovieClick={handleLikeMovieClick}
-                        requestLikeMovies={requestLikeMovies}
-                        showAlert={showAlert}
-                      />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path={PAGES.SAVED_MOVIES}
-                  element={
-                    <ProtectedRoute
-                      path={PAGES.SAVED_MOVIES}
-                      authorized={authorized}
-                    >
-                      <SavedMovies
-                        searchQuerySavedMoviesLocal={
-                          searchQuerySavedMoviesLocal
-                        }
-                        handleLikeMovieClick={handleLikeMovieClick}
-                        requestLikeMovies={requestLikeMovies}
-                        showAlert={showAlert}
-                      />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path={PAGES.PROFILE}
-                  element={
-                    <ProtectedRoute
-                      path={PAGES.PROFILE}
-                      authorized={authorized}
-                    >
-                      <Profile
-                        currentUser={currentUser}
-                        handleLogout={handleLogout}
-                        handleUpdateUser={handleUpdateUser}
-                      />
-                    </ProtectedRoute>
-                  }
-                />
-
-                <Route
-                  path="*"
-                  element={<NotFound authorized={authorized} />}
-                />
-              </Routes>
-
-              <Alert
-                messageAlert={messageAlert}
-                isActiveAlert={isActiveAlert}
+          <CurrentUserContext.Provider value={authorized}>
+            <Routes>
+              <Route
+                path={PAGES.SIGNUP}
+                element={<Register handleRegister={handleRegister} />}
               />
-            </CurrentUserContext.Provider>
-          </>
+              <Route
+                path={PAGES.SIGNIN}
+                element={<Login handleLogin={handleLogin} />}
+              />
+
+              <Route path="/" element={<Main authorized={authorized} />} />
+
+              <Route
+                path={PAGES.MOVIES}
+                element={
+                  <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
+                    <Movies
+                      loading={loading}
+                      setLoading={setLoading}
+                      moviesLocal={moviesLocal}
+                      searchQueryLocal={searchQueryLocal}
+                      requestAllMovies={requestAllMovies}
+                      handleLikeMovieClick={handleLikeMovieClick}
+                      requestLikeMovies={requestLikeMovies}
+                      showAlert={showAlert}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={PAGES.SAVED_MOVIES}
+                element={
+                  <ProtectedRoute
+                    path={PAGES.SAVED_MOVIES}
+                    authorized={authorized}
+                  >
+                    <SavedMovies
+                      searchQuerySavedMoviesLocal={searchQuerySavedMoviesLocal}
+                      handleLikeMovieClick={handleLikeMovieClick}
+                      requestLikeMovies={requestLikeMovies}
+                      showAlert={showAlert}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={PAGES.PROFILE}
+                element={
+                  <ProtectedRoute path={PAGES.PROFILE} authorized={authorized}>
+                    <Profile
+                      currentUser={currentUser}
+                      handleLogout={handleLogout}
+                      handleUpdateUser={handleUpdateUser}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route path="*" element={<NotFound authorized={authorized} />} />
+            </Routes>
+
+            <Alert messageAlert={messageAlert} isActiveAlert={isActiveAlert} />
+          </CurrentUserContext.Provider>
         )}
       </div>
     </div>

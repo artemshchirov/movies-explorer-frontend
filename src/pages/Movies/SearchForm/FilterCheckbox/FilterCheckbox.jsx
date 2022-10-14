@@ -1,5 +1,6 @@
 import './FilterCheckbox.css';
-const FilterCheckbox = ({ checked, onChange }) => {
+
+function FilterCheckbox({ checked, onChange }) {
   return (
     <div className="filter-checkbox">
       <input
@@ -10,10 +11,7 @@ const FilterCheckbox = ({ checked, onChange }) => {
         checked={checked}
         onChange={onChange}
       />
-      <label
-        className="filter-checkbox__label"
-        htmlFor="filter-checkbox-id"
-      ></label>
+      <label className="filter-checkbox__label" htmlFor="filter-checkbox-id" />
       <label
         className="filter-checkbox__description"
         htmlFor="filter-checkbox-id"
@@ -22,6 +20,6 @@ const FilterCheckbox = ({ checked, onChange }) => {
       </label>
     </div>
   );
-};
+}
 
 export default FilterCheckbox;

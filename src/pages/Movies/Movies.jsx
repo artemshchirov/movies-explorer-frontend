@@ -1,12 +1,12 @@
 import './Movies.css';
-import { useEffect, useState, useMemo } from 'react';
-import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader.jsx';
-import SearchForm from './SearchForm/SearchForm.jsx';
-import MoviesCardList from '../../components/MoviesCardList/MoviesCardList.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
-import Button from '../../components/Button/Button.jsx';
+import { useEffect, useState } from 'react';
+import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
+import SearchForm from './SearchForm/SearchForm';
+import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
+import Footer from '../../components/Footer/Footer';
+import Button from '../../components/Button/Button';
 
-import { filterMovies } from '../../utils/filterMovies';
+import filterMovies from '../../utils/filterMovies';
 import { formatLikedMovies, setLike } from '../../utils/likes';
 import {
   MESSAGES,
@@ -14,18 +14,18 @@ import {
   CARD_BREAKPOINT,
   SHORT_DURATION,
 } from '../../utils/constants';
-import { useCardCount } from '../../hooks/useCardCount';
+import useCardCount from '../../hooks/useCardCount';
 
-const Movies = ({
+function Movies({
   loading,
-  setLoading,
+  // setLoading,
   moviesLocal,
   searchQueryLocal,
   requestAllMovies,
   requestLikeMovies,
   handleLikeMovieClick,
   showAlert,
-}) => {
+}) {
   const [movieList, setMovieList] = useState([]);
   const [filteredMovieList, setFilteredMovieList] = useState([]);
   const [likedMovies, setLikedMovies] = useState([]);
@@ -33,7 +33,7 @@ const Movies = ({
 
   const [errorMessage, setErrorMessage] = useState('');
   const [queryValues, setQueryValues] = useState({});
-  
+
   const { countAddMovies, startCountMovies, setParamsCountMovies } =
     useCardCount(CARD_COUNT, CARD_BREAKPOINT);
 
@@ -59,9 +59,8 @@ const Movies = ({
       moviesLocal.save(movies);
       setFilteredMovieList(movies);
 
-      movies?.length
-        ? setErrorMessage('')
-        : setErrorMessage(MESSAGES.NOT_FOUND);
+      if (movies?.length) setErrorMessage('');
+      else setErrorMessage(MESSAGES.NOT_FOUND);
     }
   }, [movieList, queryValues]);
 
@@ -73,7 +72,7 @@ const Movies = ({
     }
   }, [filteredMovieList, startCountMovies]);
 
-  function getLikeMovies() {
+  const getLikeMovies = () => {
     // setLoading(true);
     requestLikeMovies()
       .then((movies) => {
@@ -86,9 +85,9 @@ const Movies = ({
       .finally(() => {
         // setLoading(false);
       });
-  }
+  };
 
-  function getAllMovies() {
+  const getAllMovies = () => {
     // setLoading(true);
     requestAllMovies()
       .then((movies) => {
@@ -101,14 +100,14 @@ const Movies = ({
       .finally(() => {
         // setLoading(false);
       });
-  }
+  };
 
-  function handleFindMovies(values) {
+  const handleFindMovies = (values) => {
     if (!movieList?.length) getAllMovies();
     setQueryValues(values);
-  }
+  };
 
-  function showMoreMovies() {
+  const showMoreMovies = () => {
     const startIndex = displayedMovies.length;
     const endIndex = startIndex + countAddMovies;
 
@@ -116,7 +115,7 @@ const Movies = ({
       ...displayedMovies,
       ...filteredMovieList.slice(startIndex, endIndex),
     ]);
-  }
+  };
 
   return (
     <>
@@ -131,7 +130,7 @@ const Movies = ({
           <MoviesCardList
             loading={loading}
             cards={displayedMovies}
-            btnType={'movie__btn_type_save'}
+            btnType="movie__btn_type_save"
             handleLikeMovieClick={handleLikeMovieClick}
             message={errorMessage}
           />
@@ -141,7 +140,7 @@ const Movies = ({
               filteredMovieList?.length !== displayedMovies?.length && (
                 <Button
                   className="movies__btn"
-                  btnType={'movie__btn_type_save'}
+                  btnType="movie__btn_type_save"
                   title="Ещё"
                   onClick={showMoreMovies}
                 />
@@ -152,5 +151,5 @@ const Movies = ({
       <Footer />
     </>
   );
-};
+}
 export default Movies;

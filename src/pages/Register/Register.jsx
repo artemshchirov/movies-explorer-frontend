@@ -1,25 +1,25 @@
 import './Register.css';
-import useForm from '../../hooks/useFormAndValidation';
-import Section from '../../components/Section/Section.jsx';
-import Sign from '../../components/Sign/Sign.jsx';
-import Form from '../../components/Form/Form.jsx';
-import Input from '../../components/Input/Input.jsx';
-import Button from '../../components/Button/Button.jsx';
-import CustomLink from '../../components/CustomLink/CustomLink.jsx';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import Section from '../../components/Section/Section';
+import Sign from '../../components/Sign/Sign';
+import Form from '../../components/Form/Form';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import CustomLink from '../../components/CustomLink/CustomLink';
 import ErrorText from '../../components/ErrorText/ErrorText';
 import { VALIDATION_CONFIGS } from '../../utils/constants';
 
-const Register = ({ handleRegister }) => {
+function Register({ handleRegister }) {
   const initValues = { name: '', email: '', password: '' };
-  const { values, errors, isValid, handleChange } = useForm(
+  const { values, errors, isValid, handleChange } = useFormAndValidation(
     initValues,
     VALIDATION_CONFIGS.USER_DATA
   );
 
-  function handleSubmitForm(evt) {
+  const handleSubmitForm = (evt) => {
     evt.preventDefault();
     handleRegister(values);
-  }
+  };
 
   return (
     <Section className="sign">
@@ -35,7 +35,7 @@ const Register = ({ handleRegister }) => {
                 errors.name ? 'form__input_type_error' : ''
               }`}
             />
-            <span id="name-error" className={'form__input-error'}>
+            <span id="name-error" className="form__input-error">
               {errors.name && 'Что-то пошло не так...'}
             </span>
           </fieldset>
@@ -84,6 +84,6 @@ const Register = ({ handleRegister }) => {
       </Sign>
     </Section>
   );
-};
+}
 
 export default Register;

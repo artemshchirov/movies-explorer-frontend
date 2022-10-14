@@ -1,15 +1,16 @@
 import './BurgerMenu.css';
 import { Link } from 'react-router-dom';
 
-const BurgerMenu = ({ isOpen }) => (
+function BurgerMenu({ isOpen }) {
+  return (
     <>
       <ul className="burger-btn">
-        <div className="burger-btn__row burger-btn__row_order_first"></div>
-        <div className="burger-btn__row burger-btn__row_order_second"></div>
-        <div className="burger-btn__row burger-btn__row_order_third"></div>
+        <div className="burger-btn__row burger-btn__row_order_first" />
+        <div className="burger-btn__row burger-btn__row_order_second" />
+        <div className="burger-btn__row burger-btn__row_order_third" />
       </ul>
 
-      <style jsx={'true'}>
+      <style jsx="true">
         {`
           .burger-btn__row_order_first {
             transform: ${isOpen ? 'rotate(45deg)' : 'rotate(0)'};
@@ -45,12 +46,13 @@ const BurgerMenu = ({ isOpen }) => (
           </li>
         </ul>
         <Link className="burger-menu__account-btn" to="/profile">
-          Аккаунт <span className="burger-menu__account-icon"></span>
+          Аккаунт <span className="burger-menu__account-icon" />
         </Link>
       </div>
 
-      <div className={`overlay ${isOpen ? 'visible' : ''}`}></div>
+      <div className={`overlay ${isOpen ? 'visible' : ''}`} />
     </>
-);
+  );
+}
 
 export default BurgerMenu;

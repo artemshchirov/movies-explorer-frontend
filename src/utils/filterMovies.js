@@ -1,9 +1,9 @@
-export const filterMovies = (
+const filterMovies = (
   movies,
   shortDuration,
   { movie: searchQuery, short: isShort }
-) => {
-  return movies.filter((movie) => {
+) =>
+  movies.filter((movie) => {
     const isShortMovie = movie.duration <= shortDuration;
     const movieName = movie.nameRU.toLowerCase();
     let search;
@@ -15,4 +15,5 @@ export const filterMovies = (
       ? movieName.includes(search) && isShortMovie
       : movieName.includes(search);
   });
-};
+
+export default filterMovies;

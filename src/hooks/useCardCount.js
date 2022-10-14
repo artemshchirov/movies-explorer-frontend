@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function useCardCount(CARD_COUNT, CARD_BREAKPOINT) {
+function useCardCount(CARD_COUNT, CARD_BREAKPOINT) {
   const [countAddMovies, setCountAddMovies] = useState(0);
   const [startCountMovies, setStartCountMovies] = useState(0);
 
@@ -15,15 +15,17 @@ export function useCardCount(CARD_COUNT, CARD_BREAKPOINT) {
 
     if (middleDevice) {
       setCountAddMovies(CARD_COUNT.MIDDLE_DEVICE.ADD);
-      isUpdate && setStartCountMovies(CARD_COUNT.MIDDLE_DEVICE.START);
+      if (isUpdate) setStartCountMovies(CARD_COUNT.MIDDLE_DEVICE.START);
     } else if (smallDevice) {
       setCountAddMovies(CARD_COUNT.SMALL_DEVICE.ADD);
-      isUpdate && setStartCountMovies(CARD_COUNT.SMALL_DEVICE.START);
+      if (isUpdate) setStartCountMovies(CARD_COUNT.SMALL_DEVICE.START);
     } else {
       setCountAddMovies(CARD_COUNT.BIG_DEVICE.ADD);
-      isUpdate && setStartCountMovies(CARD_COUNT.BIG_DEVICE.START);
+      if (isUpdate) setStartCountMovies(CARD_COUNT.BIG_DEVICE.START);
     }
   }
 
   return { countAddMovies, startCountMovies, setParamsCountMovies };
 }
+
+export default useCardCount;
