@@ -1,6 +1,6 @@
 import './ErrorText.css';
 
-function ErrorText({ children, type }) {
+function ErrorText({ children }) {
   return (
     <span className={'error-text'} id="movie-error">
       {children}

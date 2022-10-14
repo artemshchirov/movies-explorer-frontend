@@ -5,23 +5,29 @@
 .account__container {
   display: flex;
   flex-direction: column;
+  flex-direction: center;
   align-items: center;
 }
 
-.account__line-container {
+.account__form {
   padding-top: 80px;
   max-width: 410px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.account__line {
+.account__label {
   min-width: 260px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .account__data {
   margin: 0;
+  min-width: max-content;
   font-size: 11px;
   line-height: 1.18;
   color: #000;
@@ -29,6 +35,17 @@
 
 .account__data_description {
   font-weight: 500;
+}
+
+.account__input {
+  width: 100%;
+  border: none;
+  text-align: right;
+  background-color: transparent;
+  color: inherit;
+  font-size: 11px;
+  color: #000;
+  outline: none;
 }
 
 .account__divider {
@@ -60,7 +77,7 @@
     padding: 236px 179px 269px;
   }
 
-  .account__line-container {
+  .account__form {
     padding-top: 96px;
   }
 
@@ -79,7 +96,7 @@
     padding: 74px 435px 70px;
   }
 
-  .account__line-container {
+  .account__form {
     padding-top: 123px;
   }
 

@@ -12,6 +12,6 @@
 
 @media screen and (min-width: 767px) {
   .title_type_main {
-    padding-top: 40px;
+    padding-top: 0;
   }
 }

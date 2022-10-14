@@ -28,13 +28,11 @@ function App() {
   const [token, setToken] = useState('');
 
   const [loading, setLoading] = useState(true);
-  const [loaderButton, setLoaderButton] = useState(false);
 
   const [messageAlert, setMessageAlert] = useState(null);
   const [isActiveAlert, setIsActiveAlert] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const mainApi = new MainApi(configMainApi);
   const moviesApi = new MoviesApi(configMoviesApi);
@@ -161,6 +159,24 @@ function App() {
         });
   }
 
+  // Update user info
+  function handleUpdateUser(user) {
+    console.log('update user: ');
+
+    return mainApi
+      .updateUserInfo(user, token)
+      .then((newData) => {
+        console.log('newData: ', newData);
+        
+        setCurrentUser(newData);
+        showAlert(ALERT_MESSAGES.SUCCESSFULLY.UPDATE_PROFILE);
+      })
+      .catch(() => {
+        showAlert(ALERT_MESSAGES.ERROR.UPDATE_PROFILE);
+        throw new Error();
+      });
+  }
+
   return (
     <div className="page">
       <div className="page__container">
@@ -206,7 +222,9 @@ function App() {
                       authorized={authorized}
                     >
                       <SavedMovies
-                        searchQuerySavedMoviesLocal={searchQuerySavedMoviesLocal}
+                        searchQuerySavedMoviesLocal={
+                          searchQuerySavedMoviesLocal
+                        }
                         handleLikeMovieClick={handleLikeMovieClick}
                         requestLikeMovies={requestLikeMovies}
                         showAlert={showAlert}
@@ -221,7 +239,11 @@ function App() {
                       path={PAGES.PROFILE}
                       authorized={authorized}
                     >
-                      <Profile handleLogout={handleLogout} />
+                      <Profile
+                        currentUser={currentUser}
+                        handleLogout={handleLogout}
+                        handleUpdateUser={handleUpdateUser}
+                      />
                     </ProtectedRoute>
                   }
                 />
