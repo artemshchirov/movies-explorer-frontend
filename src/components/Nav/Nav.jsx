@@ -1,6 +1,6 @@
 import './Nav.css';
 
-const Nav = ({ children, className }) => {
+function Nav({ children, className }) {
   let finalClassName = 'nav';
   if (className) finalClassName += ` ${className}`;
 
@@ -9,6 +9,6 @@ const Nav = ({ children, className }) => {
       <ul className="nav__link-list">{children}</ul>
     </nav>
   );
-};
+}
 
 export default Nav;

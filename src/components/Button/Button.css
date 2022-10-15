@@ -1,5 +1,4 @@
 .button {
-  margin: 0;
   border: none;
   cursor: pointer;
 }
@@ -7,6 +6,7 @@
 .button_disabled {
   opacity: 0.2;
   pointer-events: none;
+  transition: opacity 0.2s;
 }
 
 .button:hover {

@@ -1,9 +1,11 @@
 import './Form.css';
 
-const Form = ({ children, onSubmit }) => (
-  <form className="form" onSubmit={onSubmit} noValidate>
-    {children}
-  </form>
-);
+function Form({ className, children, onSubmit }) {
+  return (
+    <form className={className} onSubmit={onSubmit} noValidate required>
+      {children}
+    </form>
+  );
+}
 
 export default Form;

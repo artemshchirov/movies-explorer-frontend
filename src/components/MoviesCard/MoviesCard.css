@@ -40,9 +40,9 @@
   border: none;
   border-radius: 36px;
   background-color: #f9f9f9;
-  cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
 .movie__btn_type_save {

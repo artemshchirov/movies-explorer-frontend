@@ -1,17 +1,15 @@
 .title {
   margin: 0;
   color: #000;
-}
-
-.title_type_main {
-  padding-top: 50px;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.2;
 }
 
-@media screen and (min-width: 767px) {
-  .title_type_main {
-    padding-top: 40px;
-  }
+.title_type_main {
+  padding-top: 50px;
+}
+
+.title_type_profile {
+  padding-top: 0;
 }

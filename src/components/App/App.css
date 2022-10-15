@@ -15,12 +15,14 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 .page__container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   min-height: 100vh;
 }
 

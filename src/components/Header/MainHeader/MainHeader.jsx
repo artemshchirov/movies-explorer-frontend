@@ -1,13 +1,15 @@
 import './MainHeader.css';
-import Header from '../Header.jsx';
-import Logo from '../../Logo/Logo.jsx';
-import SignNav from '../../SignNav/SignNav.jsx';
+import Header from '../Header';
+import Logo from '../../Logo/Logo';
+import SignNav from '../../SignNav/SignNav';
 
-const MainHeader = () => (
-  <Header className="header_main">
-    <Logo />
-    <SignNav />
-  </Header>
-);
+function MainHeader() {
+  return (
+    <Header className="header_main">
+      <Logo />
+      <SignNav />
+    </Header>
+  );
+}
 
 export default MainHeader;

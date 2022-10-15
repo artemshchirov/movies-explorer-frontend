@@ -1,12 +1,34 @@
 import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard.jsx';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({ cards, cardsAmount, btnType }) => (
-  <section className="movie-cards">
-    {cards.slice(0, cardsAmount).map((card) => (
-      <MoviesCard key={card.id} {...card} btnType={btnType} />
-    ))}
-  </section>
-);
+function MoviesCardList({
+  loading,
+  btnType,
+  cards,
+  handleLikeMovieClick,
+  message = 'test',
+}) {
+  return (
+    <>
+      {message ? (
+        <p className="movie-cards__alert">{message}</p>
+      ) : loading ? (
+        <Preloader />
+      ) : (
+        <section className="movie-cards">
+          {cards?.map((movie) => (
+            <MoviesCard
+              key={movie.id || movie.movieId}
+              movie={movie}
+              btnType={btnType}
+              handleLikeMovieClick={handleLikeMovieClick}
+            />
+          ))}
+        </section>
+      )}
+    </>
+  );
+}
 
 export default MoviesCardList;

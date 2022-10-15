@@ -1,8 +1,13 @@
 import './Logo.css';
 import logo from '../../images/logo.svg';
+import CustomLink from '../CustomLink/CustomLink';
 
-const Logo = () => (
-  <img className="logo" src={logo} alt="logo 'Movies Explorer" />
-);
+function Logo() {
+  return (
+    <CustomLink path="/">
+      <img className="logo" src={logo} alt="logo 'Movies Explorer" />
+    </CustomLink>
+  );
+}
 
 export default Logo;

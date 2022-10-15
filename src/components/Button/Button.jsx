@@ -1,24 +1,26 @@
 import './Button.css';
 
-const Button = ({
+function Button({
   title,
   className,
-  type = 'button',
+  btnType = 'button',
   onClick = (f) => f,
-  btnActive = true,
-}) => {
+  btnDisabled,
+}) {
   let finalClassName = 'button';
-  if (className) { finalClassName += ` ${className} ${btnActive ? '' : 'button_disabled'}`; }
+  if (className) {
+    finalClassName += ` ${className} ${btnDisabled ? 'button_disabled' : ''}`;
+  }
 
   return (
     <button
       className={finalClassName}
-      type={type}
+      type={btnType}
       onClick={onClick}
-      disabled={btnActive}
+      disabled={btnDisabled}
     >
       {title}
     </button>
   );
-};
+}
 export default Button;
