@@ -7,7 +7,7 @@ function MoviesCardList({
   btnType,
   cards,
   handleLikeMovieClick,
-  message = 'test',
+  message,
 }) {
   return (
     <>
@@ -19,7 +19,7 @@ function MoviesCardList({
         <section className="movie-cards">
           {cards?.map((movie) => (
             <MoviesCard
-              key={movie.id || movie.movieId}
+              key={movie._id || movie.movieId}
               movie={movie}
               btnType={btnType}
               handleLikeMovieClick={handleLikeMovieClick}

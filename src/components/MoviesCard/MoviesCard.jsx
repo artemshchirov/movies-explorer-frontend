@@ -14,7 +14,7 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
 
   useEffect(() => {
     const currentMovieId = movie._id;
-    if (movieId) setMovieId(currentMovieId);
+    if (currentMovieId) setMovieId(currentMovieId);
   }, []);
 
   const clickLikeButton = () => {
@@ -50,7 +50,7 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
         </div>
         <Button
           className={`movie__btn ${btnType} ${
-            !movieId ? 'movie__save-btn_active' : ''
+            movieId && !isSavedMovies ? 'movie__save-btn_active' : ''
           }`}
           onClick={clickLikeButton}
         />
