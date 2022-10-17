@@ -64,6 +64,7 @@ CustomLink.propTypes = {
 CustomLink.defaultProps = {
   target: '_blank',
   activeClassName: '',
+  className: '',
 };
 
 export default CustomLink;

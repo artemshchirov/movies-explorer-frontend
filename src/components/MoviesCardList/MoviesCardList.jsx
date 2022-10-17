@@ -19,7 +19,7 @@ function MoviesCardList({
         <section className="movie-cards">
           {cards?.map((movie) => (
             <MoviesCard
-              key={movie._id || movie.movieId}
+              key={movie.id || movie.movieId}
               movie={movie}
               btnType={btnType}
               handleLikeMovieClick={handleLikeMovieClick}

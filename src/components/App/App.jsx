@@ -134,10 +134,12 @@ function App() {
   const handleLikeMovieClick = (movieId, movie) =>
     movieId
       ? mainApi.deleteLikeMovie(movieId, token).catch(() => {
+          'deleteLikeMovie movieId: ', movieId;
           showAlert(ALERT_MESSAGES.ERROR.DELETE_FILM);
           throw new Error();
         })
       : mainApi.addLikeMovie(movie, token).catch(() => {
+          'addLikeMovie movie: ', movie;
           showAlert(ALERT_MESSAGES.ERROR.ADD_FILM);
           throw new Error();
         });

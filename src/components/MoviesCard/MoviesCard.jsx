@@ -13,9 +13,8 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
     movie.thumbnail || `${BASE_URL}/${movie.image.formats.thumbnail.url}`;
 
   useEffect(() => {
-    const currentMovieId = movie._id;
-    if (currentMovieId) setMovieId(currentMovieId);
-  }, []);
+    if (movie._id) setMovieId(movie._id);
+  }, [movie._id]);
 
   const clickLikeButton = () => {
     if (isSavedMovies) {
@@ -32,7 +31,7 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
         nameRU: movie.nameRU,
         nameEN: movie.nameEN || '-',
         thumbnail: BASE_URL + movie.image.formats.thumbnail.url,
-        movieId: movie.id.toString(),
+        movieId: movie.id,
       };
 
       handleLikeMovieClick(movieId, movieData).then((likedMovie) => {

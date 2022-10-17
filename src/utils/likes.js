@@ -11,8 +11,7 @@ function setLike(movies, likedMovies) {
     let _id = null;
 
     likedMovies.forEach((likedMovie) => {
-      isLike = movie.id.toString() === likedMovie.movieId;
-
+      isLike = movie.id === likedMovie.movieId;
       if (isLike) _id = likedMovie._id;
     });
 

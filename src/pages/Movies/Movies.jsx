@@ -18,7 +18,6 @@ import useCardCount from '../../hooks/useCardCount';
 
 function Movies({
   loading,
-  // setLoading,
   moviesLocal,
   searchQueryLocal,
   requestAllMovies,
@@ -73,7 +72,6 @@ function Movies({
   }, [filteredMovieList, startCountMovies]);
 
   const getLikeMovies = () => {
-    // setLoading(true);
     requestLikeMovies()
       .then((movies) => {
         setLikedMovies(formatLikedMovies(movies));
@@ -81,14 +79,10 @@ function Movies({
       })
       .catch(() => {
         setErrorMessage(MESSAGES.ERROR);
-      })
-      .finally(() => {
-        // setLoading(false);
       });
   };
 
   const getAllMovies = () => {
-    // setLoading(true);
     requestAllMovies()
       .then((movies) => {
         setMovieList(movies);
@@ -96,9 +90,6 @@ function Movies({
       })
       .catch(() => {
         setErrorMessage(MESSAGES.ERROR);
-      })
-      .finally(() => {
-        // setLoading(false);
       });
   };
 
