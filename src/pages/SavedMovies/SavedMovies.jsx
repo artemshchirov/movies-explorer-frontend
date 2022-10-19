@@ -1,6 +1,5 @@
 import './SavedMovies.css';
 import { useState, useEffect } from 'react';
-
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
@@ -15,11 +14,12 @@ function SavedMovies({
   handleLikeMovieClick,
   showAlert,
 }) {
+  const [loading, setLoading] = useState(false);
+
   const [likedMovies, setLikedMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getLikeMovies();

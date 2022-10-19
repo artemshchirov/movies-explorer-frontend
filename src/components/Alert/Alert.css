@@ -1,15 +1,16 @@
 .alert {
+  margin: 0 auto;
+  padding: 15px 25px;
+  max-width: max-content;
   position: fixed;
-  top: 41.5px;
-  right: 50%;
-  margin-right: -133.8px;
+  top: 42px;
+  right: 0;
+  left: 0;
   background-color: #3ddc84bf;
   border-radius: 20px;
-  padding: 15px 25px;
   transition: all 0.5s ease-in;
   visibility: hidden;
   opacity: 0;
-  max-width: 350px;
 }
 
 .alert_active {

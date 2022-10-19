@@ -4,7 +4,7 @@
 }
 
 .button_disabled {
-  opacity: 0.2;
+  opacity: 0.3;
   pointer-events: none;
   transition: opacity 0.2s;
 }

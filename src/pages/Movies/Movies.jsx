@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
-import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
+import Footer from '../../components/Footer/Footer';
+import Preloader from '../../components/Preloader/Preloader';
 
 import useCardCount from '../../hooks/useCardCount';
 import filterMovies from '../../utils/filterMovies';
@@ -18,7 +19,6 @@ import {
 } from '../../utils/constants';
 
 function Movies({
-  loading,
   moviesLocal,
   searchQueryLocal,
   requestAllMovies,
@@ -26,6 +26,8 @@ function Movies({
   handleLikeMovieClick,
   showAlert,
 }) {
+  const [loading, setLoading] = useState(false);
+
   const [movieList, setMovieList] = useState([]);
   const [filteredMovieList, setFilteredMovieList] = useState([]);
   const [likedMovies, setLikedMovies] = useState([]);
@@ -73,6 +75,7 @@ function Movies({
   }, [filteredMovieList, startCountMovies]);
 
   const getLikeMovies = () => {
+    setLoading(true);
     requestLikeMovies()
       .then((movies) => {
         setLikedMovies(formatLikedMovies(movies));
@@ -80,10 +83,14 @@ function Movies({
       })
       .catch(() => {
         setErrorMessage(MESSAGES.ERROR);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   const getAllMovies = () => {
+    setLoading(true);
     requestAllMovies()
       .then((movies) => {
         setMovieList(movies);
@@ -91,6 +98,9 @@ function Movies({
       })
       .catch(() => {
         setErrorMessage(MESSAGES.ERROR);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -119,17 +129,15 @@ function Movies({
             searchQueryLocal={searchQueryLocal}
             showAlert={showAlert}
           />
-          {loading ? (
-            <Preloader />
-          ) : (
-            <MoviesCardList
-              loading={loading}
-              cards={displayedMovies}
-              btnType="movie__btn_type_save"
-              handleLikeMovieClick={handleLikeMovieClick}
-              message={errorMessage}
-            />
-          )}
+
+          <MoviesCardList
+            loading={loading}
+            cards={displayedMovies}
+            btnType="movie__btn_type_save"
+            handleLikeMovieClick={handleLikeMovieClick}
+            message={errorMessage}
+          />
+
           <section className="movies__load">
             {filteredMovieList &&
               filteredMovieList?.length > 3 &&

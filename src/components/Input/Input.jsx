@@ -2,12 +2,13 @@ import './Input.css';
 import { memo } from 'react';
 
 function Input({
+  className,
   placeholder = '',
   name,
   value,
   onChange,
-  className,
   type = 'text',
+  disabled = false,
   required = true,
 }) {
   let finalClassName = 'input';
@@ -22,6 +23,7 @@ function Input({
       onChange={onChange}
       type={type}
       required={required}
+      disabled={disabled}
     />
   );
 }

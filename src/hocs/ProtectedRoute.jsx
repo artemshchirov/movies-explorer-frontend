@@ -1,11 +1,13 @@
-import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import CurrentUserContext from '../contexts/CurrentUserContext';
-import { PAGES } from '../utils/constants';
+import { useContext } from 'react';
+import UserContext from '../contexts/UserContext';
+
 import Preloader from '../components/Preloader/Preloader';
 
-function ProtectedRoute({ loading, children }) {
-  const authorized = useContext(CurrentUserContext);
+import { PAGES } from '../utils/constants';
+
+function ProtectedRoute({ children }) {
+  const { authorized, loading } = useContext(UserContext);
 
   if (loading) return <Preloader />;
 

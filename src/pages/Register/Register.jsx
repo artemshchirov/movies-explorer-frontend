@@ -1,4 +1,5 @@
-import './Register.css';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 import Section from '../../components/Section/Section';
 import Sign from '../../components/Sign/Sign';
@@ -11,7 +12,11 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { VALIDATION_CONFIGS, VALIDATION_PARAMS } from '../../utils/constants';
 
+import './Register.css';
+
 function Register({ handleRegister }) {
+  const { loading } = useContext(UserContext);
+
   const initValues = { name: '', email: '', password: '' };
   const { values, errors, isValid, handleChange } = useFormAndValidation(
     initValues,
@@ -28,7 +33,9 @@ function Register({ handleRegister }) {
       <Sign title="Добро пожаловать!">
         <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
-            <label className="form__title">Имя</label>
+            <label htmlFor="name" className="form__title">
+              Имя
+            </label>
             <Input
               name="name"
               value={values.name || ''}
@@ -36,6 +43,7 @@ function Register({ handleRegister }) {
               className={`form__input ${
                 errors.name ? 'form__input_type_error' : ''
               }`}
+              disabled={loading}
             />
             <span id="name-error" className="form__input-error">
               {errors.name && (
@@ -49,11 +57,12 @@ function Register({ handleRegister }) {
             <Input
               name="email"
               value={values.email}
+              type="email"
               onChange={handleChange}
               className={`form__input ${
                 errors.email ? 'form__input_type_error' : ''
               }`}
-              type="email"
+              disabled={loading}
             />
             {errors.email && (
               <ErrorText type="auth">
@@ -65,22 +74,27 @@ function Register({ handleRegister }) {
             <Input
               name="password"
               value={values.password || ''}
+              type="password"
               onChange={handleChange}
               className={`form__input ${
                 errors.password ? 'form__input_type_error' : ''
               }`}
-              type="password"
+              disabled={loading}
             />
             {errors.password && (
-              <ErrorText type="auth">{errors.password}</ErrorText>
+              <ErrorText type="auth">
+                {VALIDATION_PARAMS.MESSAGES.PASSWORD}
+              </ErrorText>
             )}
           </fieldset>
 
           <Button
             className="form__btn"
-            title="Зарегистрироваться"
+            title={loading ? 'Регистрация...' : 'Зарегистрироваться'}
             btnType="submit"
-            btnDisabled={!isValid || errors.email || !values.password}
+            btnDisabled={
+              !isValid || errors.email || !values.password || loading
+            }
           />
         </Form>
         <CustomLink path="/signin" className="link_sign">

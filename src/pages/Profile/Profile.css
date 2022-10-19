@@ -35,6 +35,7 @@
 }
 
 .account__input {
+  padding: 0;
   width: 100%;
   border: none;
   text-align: right;
@@ -42,7 +43,16 @@
   color: inherit;
   font-size: 11px;
   color: #000;
-  outline: none;
+}
+
+.account__input-container::after {
+  content: '';
+  width: 20px;
+  height: 12px;
+  background-image: url('../../images/edit-btn.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
 .account__divider {
@@ -61,6 +71,7 @@
 .account__btn {
   font-size: 12px;
   line-height: 1.25;
+  color: #000;
   background-color: transparent;
 }
 

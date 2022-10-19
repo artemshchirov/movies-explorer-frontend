@@ -46,6 +46,7 @@
 }
 
 .movie__btn_type_save {
+  background-color: whitesmoke;
   background-image: url('../../images/save-movie-btn-icon.svg');
 }
 

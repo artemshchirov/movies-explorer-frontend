@@ -1,5 +1,5 @@
-import './Profile.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import Title from '../../components/Title/Title';
@@ -11,7 +11,11 @@ import ErrorText from '../../components/ErrorText/ErrorText';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { VALIDATION_PARAMS } from '../../utils/constants';
 
-function Profile({ currentUser, handleUpdateUser, handleLogout }) {
+import './Profile.css';
+
+function Profile({ handleUpdateUser, handleLogout }) {
+  const { currentUser, loading } = useContext(UserContext);
+
   const startValues = {
     name: currentUser.name,
     email: currentUser.email,
@@ -61,6 +65,7 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
                 name="name"
                 onChange={handleChange}
                 placeholder="Ваше имя"
+                disabled={loading}
               />
             </div>
             {!isValidUserName && (
@@ -71,11 +76,12 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
               <label className="account__label">E-mail</label>
               <Input
                 className="account__input"
+                placeholder="Ваш E-mail"
                 type="email"
                 value={values.email}
                 name="email"
                 onChange={handleChange}
-                placeholder="Ваш E-mail"
+                disabled={loading}
               />
             </div>
             {!isValidUserEmail && (
@@ -86,14 +92,15 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
           <div className="account__btns">
             <Button
               className="account__btn"
-              title="Редактировать"
+              title={loading ? 'Редактирование...' : 'Редактировать'}
               btnType="submit"
               btnDisabled={!isValid}
               onClick={clickUpdateUserButton}
+              disabled={loading}
             />
             <Button
               className="account__btn account__btn_last"
-              title="Выйти из аккаунта"
+              title={loading ? 'Выход из аккаунта...' : 'Выйти из аккаунта'}
               onClick={handleLogout}
             />
           </div>

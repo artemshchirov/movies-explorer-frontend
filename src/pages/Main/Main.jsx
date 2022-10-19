@@ -1,4 +1,5 @@
-import './Main.css';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 import MainHeader from '../../components/Header/MainHeader/MainHeader';
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
@@ -10,7 +11,11 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from '../../components/Footer/Footer';
 
-function Main({ authorized }) {
+import './Main.css';
+
+function Main() {
+  const { authorized } = useContext(UserContext);
+
   return (
     <>
       <div className="content-wrapper">

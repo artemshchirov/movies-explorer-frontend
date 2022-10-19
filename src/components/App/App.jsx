@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import UserContext from '../../contexts/UserContext';
 
 import Main from '../../pages/Main/Main';
 import Alert from '../Alert/Alert';
@@ -23,7 +23,8 @@ import { PAGES, ALERT_MESSAGES } from '../../utils/constants';
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [authorized, setAuthorized] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [preloader, setPreloader] = useState(true);
   const [token, setToken] = useState('');
 
   const [messageAlert, setMessageAlert] = useState(null);
@@ -54,11 +55,13 @@ function App() {
       setToken(jwt);
       getUserInfo(jwt);
     } else {
+      setPreloader(false);
       setLoading(false);
     }
   };
 
   const handleLogin = (user) => {
+    setLoading(true);
     mainApi
       .signin(user)
       .then((res) => {
@@ -72,10 +75,13 @@ function App() {
       .catch(() => {
         showAlert(ALERT_MESSAGES.ERROR.AUTH);
       })
-      .finally(() => {});
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleRegister = ({ name, email, password }) => {
+    setLoading(true);
     mainApi
       .signup({ name, email, password })
       .then(() => {
@@ -83,8 +89,7 @@ function App() {
       })
       .catch(() => {
         showAlert(ALERT_MESSAGES.ERROR.AUTH);
-      })
-      .finally(() => {});
+      });
   };
 
   const handleLogout = () => {
@@ -107,7 +112,7 @@ function App() {
         throw new Error();
       })
       .finally(() => {
-        setLoading(false);
+        setPreloader(false);
       });
   };
 
@@ -152,28 +157,31 @@ function App() {
   const requestAllMovies = () => moviesApi.getMovies();
   const requestLikeMovies = () => mainApi.fetchLikeMovies(token);
 
-  if (loading) return <Preloader />;
+  if (preloader) return <Preloader />;
 
   return (
     <div className="page">
       <div className="page__container">
-        <CurrentUserContext.Provider value={authorized}>
+        <UserContext.Provider value={{ currentUser, authorized, loading }}>
           <Routes>
-            <Route
-              path={PAGES.SIGNUP}
-              element={<Register handleRegister={handleRegister} />}
-            />
-            <Route
-              path={PAGES.SIGNIN}
-              element={<Login handleLogin={handleLogin} />}
-            />
-            <Route path="/" element={<Main authorized={authorized} />} />
+            {!authorized && (
+              <Route
+                path={PAGES.SIGNUP}
+                element={<Register handleRegister={handleRegister} />}
+              />
+            )}
+            {!authorized && (
+              <Route
+                path={PAGES.SIGNIN}
+                element={<Login handleLogin={handleLogin} />}
+              />
+            )}
+            <Route path="/" element={<Main />} />
             <Route
               path={PAGES.MOVIES}
               element={
-                <ProtectedRoute path={PAGES.MOVIES} authorized={authorized}>
+                <ProtectedRoute path={PAGES.MOVIES}>
                   <Movies
-                    loading={loading}
                     moviesLocal={moviesLocal}
                     searchQueryLocal={searchQueryLocal}
                     requestAllMovies={requestAllMovies}
@@ -187,10 +195,7 @@ function App() {
             <Route
               path={PAGES.SAVED_MOVIES}
               element={
-                <ProtectedRoute
-                  path={PAGES.SAVED_MOVIES}
-                  authorized={authorized}
-                >
+                <ProtectedRoute path={PAGES.SAVED_MOVIES}>
                   <SavedMovies
                     searchQuerySavedMoviesLocal={searchQuerySavedMoviesLocal}
                     requestLikeMovies={requestLikeMovies}
@@ -203,19 +208,18 @@ function App() {
             <Route
               path={PAGES.PROFILE}
               element={
-                <ProtectedRoute path={PAGES.PROFILE} authorized={authorized}>
+                <ProtectedRoute path={PAGES.PROFILE}>
                   <Profile
-                    currentUser={currentUser}
                     handleLogout={handleLogout}
                     handleUpdateUser={handleUpdateUser}
                   />
                 </ProtectedRoute>
               }
             />
-            <Route path="*" element={<NotFound authorized={authorized} />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Alert messageAlert={messageAlert} isActiveAlert={isActiveAlert} />
-        </CurrentUserContext.Provider>
+        </UserContext.Provider>
       </div>
     </div>
   );
