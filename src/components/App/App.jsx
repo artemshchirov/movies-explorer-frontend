@@ -52,9 +52,10 @@ function App() {
   const handleLoginToken = () => {
     const jwt = jwtLocal.load();
     if (jwt) {
-      setToken(jwt);
       getUserInfo(jwt);
+      setToken(jwt);
     } else {
+      clearLocal();
       setPreloader(false);
       setLoading(false);
     }
@@ -108,6 +109,7 @@ function App() {
         setCurrentUser(user);
       })
       .catch(() => {
+        clearLocal();
         showAlert(ALERT_MESSAGES.ERROR.GET_USER);
         throw new Error();
       })

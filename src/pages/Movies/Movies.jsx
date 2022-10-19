@@ -6,8 +6,6 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
-import Preloader from '../../components/Preloader/Preloader';
-
 import useCardCount from '../../hooks/useCardCount';
 import filterMovies from '../../utils/filterMovies';
 import { formatLikedMovies, setLike } from '../../utils/likes';
@@ -129,7 +127,6 @@ function Movies({
             searchQueryLocal={searchQueryLocal}
             showAlert={showAlert}
           />
-
           <MoviesCardList
             loading={loading}
             cards={displayedMovies}
@@ -137,7 +134,6 @@ function Movies({
             handleLikeMovieClick={handleLikeMovieClick}
             message={errorMessage}
           />
-
           <section className="movies__load">
             {filteredMovieList &&
               filteredMovieList?.length > 3 &&
