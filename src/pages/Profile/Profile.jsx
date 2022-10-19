@@ -1,8 +1,10 @@
 import './Profile.css';
 import { useEffect, useState } from 'react';
+
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
-import Form from '../../components/Form/Form';
 import Title from '../../components/Title/Title';
+import Form from '../../components/Form/Form';
+import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import ErrorText from '../../components/ErrorText/ErrorText';
 
@@ -45,40 +47,37 @@ function Profile({ currentUser, handleUpdateUser, handleLogout }) {
       <MoviesHeader />
       <section className="account">
         <div className="account__container">
-          <Title
-            className="title_type_profile"
-            text={`Привет, ${values.name}!`}
-          />
+          <Title Tag="p" className="title_type_profile">
+            {`Привет, ${values.name}!`}
+          </Title>
 
           <Form className="form account__form">
-            <label className="account__label">
-              <p className="account__data account__data_description ">Имя</p>
-              <input
+            <div className="account__input-container">
+              <label className="account__label">Имя</label>
+              <Input
                 className="account__input"
                 type="text"
                 value={values.name}
                 name="name"
-                onInput={handleChange}
-                required
+                onChange={handleChange}
                 placeholder="Ваше имя"
               />
-            </label>
+            </div>
             {!isValidUserName && (
               <ErrorText>{VALIDATION_PARAMS.MESSAGES.NAME}</ErrorText>
             )}
             <div className="account__divider" />
-            <label className="account__label">
-              <p className="account__data account__data_description">E-mail</p>
-              <input
+            <div className="account__input-container">
+              <label className="account__label">E-mail</label>
+              <Input
                 className="account__input"
                 type="email"
                 value={values.email}
                 name="email"
-                onInput={handleChange}
-                required
+                onChange={handleChange}
                 placeholder="Ваш E-mail"
               />
-            </label>
+            </div>
             {!isValidUserEmail && (
               <ErrorText>{VALIDATION_PARAMS.MESSAGES.EMAIL}</ErrorText>
             )}

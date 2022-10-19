@@ -1,4 +1,6 @@
 import './NavTab.css';
+
+import LinkContainer from '../../../components/LinkContainer/LinkContainer';
 import CustomLink from '../../../components/CustomLink/CustomLink';
 
 function NavTab() {
@@ -6,21 +8,21 @@ function NavTab() {
     <section className="navtab">
       <nav>
         <ul className="nav__links">
-          <li>
+          <LinkContainer>
             <CustomLink className="nav__link" path="#about">
               О проекте
             </CustomLink>
-          </li>
-          <li>
+          </LinkContainer>
+          <LinkContainer>
             <CustomLink className="nav__link" path="#techs">
               Технологии
             </CustomLink>
-          </li>
-          <li>
+          </LinkContainer>
+          <LinkContainer>
             <CustomLink className="nav__link nav__link_last" path="#profile">
               Студент
             </CustomLink>
-          </li>
+          </LinkContainer>
         </ul>
       </nav>
     </section>

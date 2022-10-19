@@ -17,7 +17,7 @@
   flex-direction: column;
 }
 
-.account__label {
+.account__input-container {
   min-width: 260px;
   width: 100%;
   display: flex;
@@ -25,16 +25,13 @@
   align-items: center;
 }
 
-.account__data {
+.account__label {
   margin: 0;
   min-width: max-content;
   font-size: 11px;
+  font-weight: 500;
   line-height: 1.18;
   color: #000;
-}
-
-.account__data_description {
-  font-weight: 500;
 }
 
 .account__input {

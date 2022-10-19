@@ -6,12 +6,12 @@ import CustomLink from '../CustomLink/CustomLink';
 function SignNav() {
   return (
     <Nav>
-      <LinkContainer>
+      <LinkContainer className="nav__link-item">
         <CustomLink className="link_main link_type_signup" path="/signup">
           Регистрация
         </CustomLink>
       </LinkContainer>
-      <LinkContainer>
+      <LinkContainer className="nav__link-item">
         <CustomLink className="link_main link_type_signin" path="/signin">
           Войти
         </CustomLink>

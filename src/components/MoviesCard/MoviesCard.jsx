@@ -1,10 +1,11 @@
-import './MoviesCard.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { BASE_URL, PAGES } from '../../utils/constants';
 import Button from '../Button/Button';
 import CustomLink from '../CustomLink/CustomLink';
 import formatDuration from '../../utils/formatDuration';
+
+import './MoviesCard.css';
 
 function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
   const [movieId, setMovieId] = useState('');
@@ -54,7 +55,10 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
           onClick={clickLikeButton}
         />
       </div>
-      <CustomLink path={movie.trailerLink || movie.trailer}>
+      <CustomLink
+        className="movie__link"
+        path={movie.trailerLink || movie.trailer}
+      >
         <img className="movie__image" src={imageUrl} alt={movie.nameRU} />
       </CustomLink>
     </article>

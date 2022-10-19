@@ -7,7 +7,9 @@ function SignHeader({ title }) {
   return (
     <Header className="header_sign">
       <Logo />
-      <Title text={title} className="title_type_main" />
+      <Title Tag="p" className="title_type_main">
+        {title}
+      </Title>
     </Header>
   );
 }

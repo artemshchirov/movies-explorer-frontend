@@ -8,7 +8,7 @@ function Input({
   onChange,
   className,
   type = 'text',
-  required,
+  required = true,
 }) {
   let finalClassName = 'input';
   if (className) finalClassName += ` ${className}`;

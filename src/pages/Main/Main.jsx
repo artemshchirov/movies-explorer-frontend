@@ -1,4 +1,5 @@
 import './Main.css';
+
 import MainHeader from '../../components/Header/MainHeader/MainHeader';
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import Promo from './Promo/Promo';

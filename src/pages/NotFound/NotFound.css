@@ -9,6 +9,7 @@
 .not-found__title {
   margin: 0;
   font-size: 80px;
+  font-weight: normal;
   line-height: 1.21;
   color: #000;
 }

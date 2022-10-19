@@ -1,5 +1,6 @@
 import './BurgerMenu.css';
-import { Link } from 'react-router-dom';
+import LinkContainer from '../LinkContainer/LinkContainer';
+import CustomLink from '../CustomLink/CustomLink';
 
 function BurgerMenu({ isOpen }) {
   return (
@@ -29,25 +30,25 @@ function BurgerMenu({ isOpen }) {
 
       <div className={`burger-menu ${isOpen ? 'opened' : ''}`}>
         <ul className="burger-menu__links ">
-          <li className="burger-menu__item">
-            <Link className="burger-menu__link" to="/">
+          <LinkContainer className="burger-menu__item">
+            <CustomLink className="burger-menu__link" path="/">
               Главная
-            </Link>
-          </li>
-          <li className="burger-menu__item">
-            <Link className="burger-menu__link" to="/movies">
+            </CustomLink>
+          </LinkContainer>
+          <LinkContainer className="burger-menu__item">
+            <CustomLink className="burger-menu__link" path="/movies">
               Фильмы
-            </Link>
-          </li>
-          <li className="burger-menu__item">
-            <Link className="burger-menu__link" to="/saved-movies">
+            </CustomLink>
+          </LinkContainer>
+          <LinkContainer className="burger-menu__item">
+            <CustomLink className="burger-menu__link" path="/saved-movies">
               Сохранённые фильмы
-            </Link>
-          </li>
+            </CustomLink>
+          </LinkContainer>
         </ul>
-        <Link className="burger-menu__account-btn" to="/profile">
+        <CustomLink className="burger-menu__account-btn" path="/profile">
           Аккаунт <span className="burger-menu__account-icon" />
-        </Link>
+        </CustomLink>
       </div>
 
       <div className={`overlay ${isOpen ? 'visible' : ''}`} />

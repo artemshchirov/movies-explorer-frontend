@@ -1,11 +1,13 @@
 import './Movies.css';
 import { useEffect, useState } from 'react';
+
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
-import SearchForm from './SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 
+import useCardCount from '../../hooks/useCardCount';
 import filterMovies from '../../utils/filterMovies';
 import { formatLikedMovies, setLike } from '../../utils/likes';
 import {
@@ -14,7 +16,6 @@ import {
   CARD_BREAKPOINT,
   SHORT_DURATION,
 } from '../../utils/constants';
-import useCardCount from '../../hooks/useCardCount';
 
 function Movies({
   loading,
@@ -30,8 +31,8 @@ function Movies({
   const [likedMovies, setLikedMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
 
-  const [errorMessage, setErrorMessage] = useState('');
   const [queryValues, setQueryValues] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { countAddMovies, startCountMovies, setParamsCountMovies } =
     useCardCount(CARD_COUNT, CARD_BREAKPOINT);
@@ -118,13 +119,17 @@ function Movies({
             searchQueryLocal={searchQueryLocal}
             showAlert={showAlert}
           />
-          <MoviesCardList
-            loading={loading}
-            cards={displayedMovies}
-            btnType="movie__btn_type_save"
-            handleLikeMovieClick={handleLikeMovieClick}
-            message={errorMessage}
-          />
+          {loading ? (
+            <Preloader />
+          ) : (
+            <MoviesCardList
+              loading={loading}
+              cards={displayedMovies}
+              btnType="movie__btn_type_save"
+              handleLikeMovieClick={handleLikeMovieClick}
+              message={errorMessage}
+            />
+          )}
           <section className="movies__load">
             {filteredMovieList &&
               filteredMovieList?.length > 3 &&

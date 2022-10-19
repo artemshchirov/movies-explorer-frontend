@@ -1,23 +1,25 @@
 import './AboutProject.css';
 
+import Title from '../../../components/Title/Title';
+
 function AboutProject() {
   return (
     <section className="about" id="about">
-      <h2 className="about__subject">О&nbsp;проекте</h2>
+      <Title className="about__subject">О&nbsp;проекте</Title>
       <div className="about__articles">
         <article className="about__container">
-          <h3 className="about__title">
+          <Title Tag="h3" className="about__title">
             Дипломный проект включал 5&nbsp;этапов
-          </h3>
+          </Title>
           <p className="about__subtitle">
             Составление плана, работу над бэкендом, вёрстку, добавление
             функциональности и&nbsp;финальные доработки.
           </p>
         </article>
         <article className="about__container">
-          <h3 className="about__title">
+          <Title Tag="h3" className="about__title">
             На&nbsp;выполнение диплома ушло 5&nbsp;недель
-          </h3>
+          </Title>
           <p className="about__subtitle">
             У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые
             нужно было соблюдать, чтобы успешно защититься.

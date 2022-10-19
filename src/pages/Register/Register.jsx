@@ -1,5 +1,5 @@
 import './Register.css';
-import useFormAndValidation from '../../hooks/useFormAndValidation';
+
 import Section from '../../components/Section/Section';
 import Sign from '../../components/Sign/Sign';
 import Form from '../../components/Form/Form';
@@ -7,7 +7,9 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import CustomLink from '../../components/CustomLink/CustomLink';
 import ErrorText from '../../components/ErrorText/ErrorText';
-import { VALIDATION_CONFIGS } from '../../utils/constants';
+
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import { VALIDATION_CONFIGS, VALIDATION_PARAMS } from '../../utils/constants';
 
 function Register({ handleRegister }) {
   const initValues = { name: '', email: '', password: '' };
@@ -26,7 +28,7 @@ function Register({ handleRegister }) {
       <Sign title="Добро пожаловать!">
         <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
-            <legend className="form__legend">Имя</legend>
+            <label className="form__title">Имя</label>
             <Input
               name="name"
               value={values.name || ''}
@@ -36,12 +38,14 @@ function Register({ handleRegister }) {
               }`}
             />
             <span id="name-error" className="form__input-error">
-              {errors.name && 'Что-то пошло не так...'}
+              {errors.name && (
+                <ErrorText type="auth">
+                  {VALIDATION_PARAMS.MESSAGES.NAME}
+                </ErrorText>
+              )}
             </span>
-          </fieldset>
 
-          <fieldset className="form__fieldset">
-            <legend className="form__legend">E-mail</legend>
+            <label className="form__title">E-mail</label>
             <Input
               name="email"
               value={values.email}
@@ -51,11 +55,13 @@ function Register({ handleRegister }) {
               }`}
               type="email"
             />
-            {errors.email && <ErrorText type="auth">{errors.email}</ErrorText>}
-          </fieldset>
+            {errors.email && (
+              <ErrorText type="auth">
+                {VALIDATION_PARAMS.MESSAGES.EMAIL}
+              </ErrorText>
+            )}
 
-          <fieldset className="form__fieldset">
-            <legend className="form__legend">Пароль</legend>
+            <label className="form__title">Пароль</label>
             <Input
               name="password"
               value={values.password || ''}

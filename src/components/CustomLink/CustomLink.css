@@ -4,6 +4,6 @@
 }
 
 .link:hover {
-  opacity: 0.85;
-  transition: opacity 0.1s;
+  opacity: 0.7;
+  transition: opacity 0.15s;
 }

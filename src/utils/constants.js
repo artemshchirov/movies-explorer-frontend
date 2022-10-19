@@ -41,18 +41,29 @@ const MESSAGES = {
 
 const ALERT_MESSAGES = {
   SUCCESSFULLY: {
-    UPDATE_PROFILE: 'Successful user info update!',
+    UPDATE_PROFILE: 'Данные пользователя успешно обновлены',
   },
-
   ERROR: {
-    UPDATE_PROFILE: 'Error while updating profile!',
-    SEARCH_QUERY: 'Нужно ввести ключевое слово!',
-    DELETE_FILM: 'Error while deleting movie!',
-    ADD_FILM: 'Error while adding movie!',
-    GET_USER: 'Error while get user data!',
-    AUTH: 'Incorrect email or password!',
+    AUTH: 'Неправильные почта или пароль',
+    GET_USER: 'Произошла ошибка загрузки данных пользователя',
+    ADD_FILM: 'Не удалось добавить фильм',
+    DELETE_FILM: 'Не удалось удалить фильм',
+    SEARCH_QUERY: 'Нужно ввести ключевое слово',
+    UPDATE_PROFILE: 'Не удалось обновить данные профиля',
   },
 };
+
+// SUCCESSFULLY: {
+//   UPDATE_PROFILE: 'Successful user info update!',
+// },
+// ERROR: {
+//   UPDATE_PROFILE: 'Error while updating profile',
+//   SEARCH_QUERY: 'Keyword required',
+//   DELETE_FILM: 'Error while deleting movie',
+//   ADD_FILM: 'Error while adding movie',
+//   GET_USER: 'Error while get user data',
+//   AUTH: 'Incorrect email or password',
+// },
 
 const PAGES = {
   MOVIES: '/movies',

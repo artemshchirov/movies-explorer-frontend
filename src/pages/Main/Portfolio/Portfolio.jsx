@@ -1,40 +1,38 @@
 import './Portfolio.css';
 
+import Title from '../../../components/Title/Title';
+import LinkContainer from '../../../components/LinkContainer/LinkContainer';
+import CustomLink from '../../../components/CustomLink/CustomLink';
+
 function Portfolio() {
   return (
     <section className="portfolio">
-      <h2 className="portfolio__title">Портфолио</h2>
+      <Title className="portfolio__title">Портфолио</Title>
       <ul className="portfolio__links">
-        <li className="portfolio__item">
-          <a
+        <LinkContainer className="portfolio__item">
+          <CustomLink
+            path="https://artemshchirov.github.io/how-to-learn/#en"
             className="portfolio__link"
-            href="https://artemshchirov.github.io/how-to-learn/#en"
-            target="_blank"
-            rel="noreferrer"
           >
             Статичный сайт
-          </a>
-        </li>
-        <li className="portfolio__item">
-          <a
+          </CustomLink>
+        </LinkContainer>
+        <LinkContainer className="portfolio__item">
+          <CustomLink
+            path="https://artemshchirov.github.io/russian-travel/"
             className="portfolio__link"
-            href="https://artemshchirov.github.io/russian-travel/"
-            target="_blank"
-            rel="noreferrer"
           >
             Адаптивный сайт
-          </a>
-        </li>
-        <li className="portfolio__item">
-          <a
+          </CustomLink>
+        </LinkContainer>
+        <LinkContainer className="portfolio__item">
+          <CustomLink
+            path="https://artemshchirov.github.io/around/"
             className="portfolio__link"
-            href="https://artemshchirov.github.io/around/"
-            target="_blank"
-            rel="noreferrer"
           >
             Одностраничное приложение
-          </a>
-        </li>
+          </CustomLink>
+        </LinkContainer>
       </ul>
     </section>
   );

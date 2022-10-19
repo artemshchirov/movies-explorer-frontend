@@ -1,12 +1,14 @@
 import './SearchForm.css';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import useFormAndValidation from '../../../hooks/useFormAndValidation';
-import Form from '../../../components/Form/Form';
-import Input from '../../../components/Input/Input';
+
+import Form from '../../components/Form/Form';
+import Input from '../../components/Input/Input';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
-import Button from '../../../components/Button/Button';
-import { ALERT_MESSAGES, PAGES } from '../../../utils/constants';
+import Button from '../../components/Button/Button';
+
+import useFormAndValidation from '../../hooks/useFormAndValidation';
+import { ALERT_MESSAGES, PAGES } from '../../utils/constants';
 
 function SearchForm({ handleFindMovies, searchQueryLocal, showAlert }) {
   const { movie, short } = searchQueryLocal.load();
@@ -70,7 +72,6 @@ function SearchForm({ handleFindMovies, searchQueryLocal, showAlert }) {
           placeholder="Фильм"
           value={values.movie || ''}
           onChange={handleChange}
-          required
           className={`movies-search__input ${
             !isValid ? 'movies-search__input-error' : ''
           }`}

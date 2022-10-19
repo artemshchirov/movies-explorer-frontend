@@ -1,10 +1,14 @@
 import './Techs.css';
 
+import Title from '../../../components/Title/Title';
+
 function Techs() {
   return (
     <section className="techs" id="techs">
-      <h2 className="techs__subject">Технологии</h2>
-      <h3 className="techs__title">7&nbsp;технологий</h3>
+      <Title className="techs__subject">Технологии</Title>
+      <Title Tag="h3" className="techs__title">
+        7&nbsp;технологий
+      </Title>
       <p className="techs__subtitle">
         На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые
         применили в&nbsp;дипломном проекте.

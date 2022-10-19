@@ -27,7 +27,7 @@ function Login({ handleLogin }) {
       <Sign title="Рады видеть!">
         <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
-            <legend className="form__legend">E-mail</legend>
+            <label className="form__title">E-mail</label>
             <Input
               name="email"
               value={values.email || ''}
@@ -37,11 +37,13 @@ function Login({ handleLogin }) {
               }`}
               type="email"
             />
-            {errors.email && <ErrorText type="auth">{errors.email}</ErrorText>}
-          </fieldset>
+            {errors.email && (
+              <ErrorText type="auth">
+                {VALIDATION_PARAMS.MESSAGES.EMAIL}
+              </ErrorText>
+            )}
 
-          <fieldset className="form__fieldset">
-            <legend className="form__legend">Пароль</legend>
+            <label className="form__title">Пароль</label>
             <Input
               name="password"
               value={values.password || ''}

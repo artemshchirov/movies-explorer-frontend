@@ -1,14 +1,19 @@
 import './AboutMe.css';
 import profileImage from '../../../images/profile-img.jpg';
 
+import Title from '../../../components/Title/Title';
+import CustomLink from '../../../components/CustomLink/CustomLink';
+
 function AboutMe() {
   return (
     <section className="profile" id="profile">
-      <h2 className="profile__subject">Студент</h2>
+      <Title className="profile__subject">Студент</Title>
       <div className="profile__about">
         <img className="profile__image" src={profileImage} alt="student" />
         <div className="profile__container">
-          <h3 className="profile__title">Артём</h3>
+          <Title Tag="h3" className="profile__title">
+            Артём
+          </Title>
           <p className="profile__subtitle">Фронтенд-разработчик, 26 лет</p>
           <p className="profile__description">
             Родился в&nbsp;Украине и&nbsp;живу в&nbsp;Израиле, в&nbsp;городе
@@ -19,14 +24,12 @@ function AboutMe() {
             прошёл курс по&nbsp;веб-разработке, начал заниматься
             фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
           </p>
-          <a
+          <CustomLink
+            path="https://github.com/artemshchirov"
             className="profile__link"
-            href="https://github.com/artemshchirov"
-            target="_blank"
-            rel="noreferrer"
           >
             Github
-          </a>
+          </CustomLink>
         </div>
       </div>
     </section>

@@ -7,7 +7,6 @@ function FilterCheckbox({ checked, onChange }) {
         className="filter-checkbox__input"
         type="checkbox"
         id="filter-checkbox-id"
-        name="filter-checkbox"
         checked={checked}
         onChange={onChange}
       />

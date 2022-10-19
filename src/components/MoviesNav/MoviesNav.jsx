@@ -6,12 +6,12 @@ import CustomLink from '../CustomLink/CustomLink';
 function MoviesNav() {
   return (
     <Nav className="nav_movies">
-      <LinkContainer>
+      <LinkContainer className="nav__link-item">
         <CustomLink className="link_movies link_order_first" path="/movies">
           Фильмы
         </CustomLink>
       </LinkContainer>
-      <LinkContainer>
+      <LinkContainer className="nav__link-item">
         <CustomLink className="link_movies" path="/saved-movies">
           Сохраненные фильмы
         </CustomLink>

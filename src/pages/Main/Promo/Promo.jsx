@@ -1,11 +1,13 @@
+import Title from '../../../components/Title/Title';
+
 import './Promo.css';
 
 function Promo() {
   return (
     <section className="promo">
-      <h1 className="promo__title">
+      <Title Tag="h1" className="promo__title">
         Учебный проект студента факультета Веб-разработки.
-      </h1>
+      </Title>
     </section>
   );
 }

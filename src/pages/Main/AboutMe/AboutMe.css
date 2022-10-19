@@ -55,6 +55,7 @@
 }
 
 .profile__link {
+  max-width: max-content;
   display: inline-block;
   padding-top: 40px;
   text-decoration: none;

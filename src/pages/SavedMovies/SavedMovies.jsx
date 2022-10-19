@@ -1,7 +1,8 @@
 import './SavedMovies.css';
 import { useState, useEffect } from 'react';
+
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
-import SearchForm from '../Movies/SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Footer from '../../components/Footer/Footer';
 

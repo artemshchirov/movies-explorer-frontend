@@ -2,13 +2,7 @@ import './CustomLink.css';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
-function CustomLink({
-  path,
-  children,
-  className,
-  activeClassName,
-  target = '_blank',
-}) {
+function CustomLink({ path, children, className, activeClassName, target }) {
   let finalClassName = 'link';
   if (className) {
     finalClassName += ` ${className}`;
@@ -63,8 +57,8 @@ CustomLink.propTypes = {
 
 CustomLink.defaultProps = {
   target: '_blank',
-  activeClassName: '',
   className: '',
+  activeClassName: '',
 };
 
 export default CustomLink;

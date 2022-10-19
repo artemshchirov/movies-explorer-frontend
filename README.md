@@ -11,17 +11,17 @@ This web page was created with HTML, CSS, and JavaScript, JSX, and the React fra
 
 `https://disk.yandex.ru/d/WGeDGjIRHZS-mQ` - Figma template.
 
-## Directories
-
-`/index.js` — entry point of project.
-
-`/src` — main folder contain components, hooks, utils, models, utils, images, vendor.
-
 ## Running the Project
 
 `npm run build` — build project.
 
 `npm run start` — to launch the project.
+
+## Directories
+
+`/index.js` — entry point of project.
+
+`/src` — main folder contain components, hooks, utils, models, utils, images, vendor.
 
 ### Technologies and Techniques Used
 
