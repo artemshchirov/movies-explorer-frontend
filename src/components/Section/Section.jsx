@@ -1,7 +1,7 @@
 import './Section.css';
 
-const Section = ({ children, className }) => (
-  <section className={className}>{children}</section>
-);
+function Section({ children, className }) {
+  return <section className={className}>{children}</section>;
+}
 
 export default Section;

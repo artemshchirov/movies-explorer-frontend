@@ -1,5 +1,7 @@
 import './LinkContainer.css';
 
-const LinkContainer = ({ children }) => <li className="nav__link-item">{children}</li>;
+function LinkContainer({ className = '', children }) {
+  return <li className={className}>{children}</li>;
+}
 
 export default LinkContainer;

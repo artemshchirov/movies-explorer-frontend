@@ -1,14 +1,16 @@
 import './Input.css';
 import { memo } from 'react';
 
-const Input = ({
+function Input({
+  className,
   placeholder = '',
   name,
   value,
   onChange,
-  className,
   type = 'text',
-}) => {
+  disabled = false,
+  required = true,
+}) {
   let finalClassName = 'input';
   if (className) finalClassName += ` ${className}`;
 
@@ -20,7 +22,9 @@ const Input = ({
       value={value}
       onChange={onChange}
       type={type}
+      required={required}
+      disabled={disabled}
     />
   );
-};
+}
 export default memo(Input);

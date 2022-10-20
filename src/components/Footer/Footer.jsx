@@ -1,41 +1,38 @@
 import './Footer.css';
+import CustomLink from '../CustomLink/CustomLink';
 
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer__container">
-      <p className="footer__companies">
-        Учебный проект Яндекс.Практикум х BeatFilm.
-      </p>
-    </div>
-    <div className="footer__wrapper">
-      <a
-        className="footer__copyright"
-        href="https://github.com/artemshchirov"
-        target="_blank"
-        rel="noreferrer"
-      >
-        &copy; Ɐrtem Shchirov 2022
-      </a>
-      <div className="footer__nav">
-        <a
-          className="footer__nav-link"
-          href="https://www.example.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Яндекс.Практикум
-        </a>
-        <a
-          className="footer__nav-link"
-          href="https://www.example.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Github
-        </a>
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer__container">
+        <p className="footer__companies">
+          Учебный проект Яндекс.Практикум х BeatFilm.
+        </p>
       </div>
-    </div>
-  </footer>
-);
+      <div className="footer__wrapper">
+        <CustomLink
+          className="footer__copyright"
+          path="https://github.com/artemshchirov"
+        >
+          &copy; Ɐrtem Shchirov 2022
+        </CustomLink>
+        <div className="footer__nav">
+          <CustomLink
+            className="footer__nav-link"
+            path="https://practicum.com/en-isr/"
+          >
+            Яндекс.Практикум
+          </CustomLink>
+          <CustomLink
+            className="footer__nav-link"
+            path="https://github.com/artemshchirov/movies-explorer-frontend"
+          >
+            Github
+          </CustomLink>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export default Footer;

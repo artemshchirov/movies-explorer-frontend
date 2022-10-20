@@ -1,21 +1,23 @@
 import './SignNav.css';
-import Nav from '../Nav/Nav.jsx';
-import LinkContainer from '../LinkContainer/LinkContainer.jsx';
-import CustomLink from '../CustomLink/CustomLink.jsx';
+import Nav from '../Nav/Nav';
+import LinkContainer from '../LinkContainer/LinkContainer';
+import CustomLink from '../CustomLink/CustomLink';
 
-const SignNav = () => (
-  <Nav>
-    <LinkContainer>
-      <CustomLink className="link_main link_type_signup" path="/signup">
-        Регистрация
-      </CustomLink>
-    </LinkContainer>
-    <LinkContainer>
-      <CustomLink className="link_main link_type_signin" path="/signin">
-        Войти
-      </CustomLink>
-    </LinkContainer>
-  </Nav>
-);
+function SignNav() {
+  return (
+    <Nav>
+      <LinkContainer className="nav__link-item">
+        <CustomLink className="link_main link_type_signup" path="/signup">
+          Регистрация
+        </CustomLink>
+      </LinkContainer>
+      <LinkContainer className="nav__link-item">
+        <CustomLink className="link_main link_type_signin" path="/signin">
+          Войти
+        </CustomLink>
+      </LinkContainer>
+    </Nav>
+  );
+}
 
 export default SignNav;

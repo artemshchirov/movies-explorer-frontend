@@ -1,9 +1,9 @@
 import './Title.css';
 
-const Title = ({ text, className }) => {
+function Title({ Tag = 'h2', className, children }) {
   let finalClassName = 'title';
   if (className) finalClassName += ` ${className}`;
 
-  return <p className={finalClassName}>{text}</p>;
-};
+  return <Tag className={finalClassName}>{children}</Tag>;
+}
 export default Title;

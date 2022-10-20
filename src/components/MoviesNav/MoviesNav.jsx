@@ -1,21 +1,23 @@
 import './MoviesNav.css';
-import Nav from '../Nav/Nav.jsx';
-import LinkContainer from '../LinkContainer/LinkContainer.jsx';
-import CustomLink from '../CustomLink/CustomLink.jsx';
+import Nav from '../Nav/Nav';
+import LinkContainer from '../LinkContainer/LinkContainer';
+import CustomLink from '../CustomLink/CustomLink';
 
-const MoviesNav = () => (
-  <Nav className="nav_movies">
-    <LinkContainer>
-      <CustomLink className="link_movies link_order_first" path="/movies">
-        Фильмы
-      </CustomLink>
-    </LinkContainer>
-    <LinkContainer>
-      <CustomLink className="link_movies" path="/saved-movies">
-        Сохраненные фильмы
-      </CustomLink>
-    </LinkContainer>
-  </Nav>
-);
+function MoviesNav() {
+  return (
+    <Nav className="nav_movies">
+      <LinkContainer className="nav__link-item">
+        <CustomLink className="link_movies link_order_first" path="/movies">
+          Фильмы
+        </CustomLink>
+      </LinkContainer>
+      <LinkContainer className="nav__link-item">
+        <CustomLink className="link_movies" path="/saved-movies">
+          Сохраненные фильмы
+        </CustomLink>
+      </LinkContainer>
+    </Nav>
+  );
+}
 
 export default MoviesNav;

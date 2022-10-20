@@ -3,13 +3,8 @@
   padding: 0;
   list-style: none;
   display: flex;
-  display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.nav__link-item {
-  /* text-decoration: none; */
 }
 
 .nav_movies {
@@ -18,9 +13,9 @@
 
 @media screen and (min-width: 1279px) {
   .nav_movies {
-    /* min-width: max-content; */
+    padding-right: 29px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
   }
 }
