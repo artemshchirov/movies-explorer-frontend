@@ -13,7 +13,7 @@ import { VALIDATION_PARAMS } from '../../utils/constants';
 
 import './Profile.css';
 
-function Profile({ handleUpdateUser, handleLogout }) {
+function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
   const { currentUser, loading } = useContext(UserContext);
 
   const startValues = {
@@ -48,7 +48,7 @@ function Profile({ handleUpdateUser, handleLogout }) {
 
   return (
     <>
-      <MoviesHeader />
+      <MoviesHeader languageLocal={languageLocal} />
       <section className="account">
         <div className="account__container">
           <Title Tag="p" className="title_type_profile">

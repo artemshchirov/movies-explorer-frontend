@@ -5,8 +5,9 @@ import Header from '../Header';
 import Logo from '../../Logo/Logo';
 import CustomLink from '../../CustomLink/CustomLink';
 import MoviesNav from '../../MoviesNav/MoviesNav';
+import SelectLang from '../../SelectLang/SelectLang';
 
-function MoviesHeader() {
+function MoviesHeader({ languageLocal }) {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
   const toggleHamburger = () => {
@@ -16,6 +17,7 @@ function MoviesHeader() {
   return (
     <Header>
       <Logo />
+      <SelectLang languageLocal={languageLocal} />
       <MoviesNav />
       <CustomLink className="link_movies link_type_profile" path="/profile">
         Профиль <span className="link_icon" />

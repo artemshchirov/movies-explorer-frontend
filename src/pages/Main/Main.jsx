@@ -13,13 +13,17 @@ import Footer from '../../components/Footer/Footer';
 
 import './Main.css';
 
-function Main() {
+function Main({ languageLocal }) {
   const { authorized } = useContext(UserContext);
 
   return (
     <>
       <div className="content-wrapper">
-        {authorized ? <MoviesHeader /> : <MainHeader />}
+        {authorized ? (
+          <MoviesHeader languageLocal={languageLocal} />
+        ) : (
+          <MainHeader languageLocal={languageLocal} />
+        )}
         <main>
           <Promo />
           <NavTab />

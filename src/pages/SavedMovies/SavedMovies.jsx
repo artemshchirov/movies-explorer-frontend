@@ -9,6 +9,7 @@ import filterMovies from '../../utils/filterMovies';
 import { MESSAGES, SHORT_DURATION } from '../../utils/constants';
 
 function SavedMovies({
+  languageLocal,
   requestLikeMovies,
   searchQuerySavedMoviesLocal,
   handleLikeMovieClick,
@@ -61,7 +62,7 @@ function SavedMovies({
   return (
     <>
       <div className="content-wrapper">
-        <MoviesHeader />
+        <MoviesHeader languageLocal={languageLocal} />
         <section className="movies">
           <SearchForm
             handleFindMovies={handleFindMovies}

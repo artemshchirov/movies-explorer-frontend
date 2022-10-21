@@ -29,7 +29,7 @@ function SearchForm({
   useEffect(() => {
     if (isSavedMovies && !values.movie) {
       setIsValid(true);
-      handleFindMovies({ movie: ' ', short });
+      handleFindMovies({ movie: '', short });
     } else if (!isValid && !values.movie) {
       showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
     }

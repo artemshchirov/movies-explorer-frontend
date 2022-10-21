@@ -18,6 +18,7 @@ import {
 
 function Movies({
   moviesLocal,
+  languageLocal,
   searchQueryLocal,
   requestAllMovies,
   requestLikeMovies,
@@ -120,7 +121,7 @@ function Movies({
   return (
     <>
       <div className="content-wrapper">
-        <MoviesHeader />
+        <MoviesHeader languageLocal={languageLocal} />
         <section className="movies">
           <SearchForm
             handleFindMovies={handleFindMovies}

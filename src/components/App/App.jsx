@@ -34,8 +34,10 @@ function App() {
 
   const mainApi = new MainApi(configMainApi);
   const moviesApi = new MoviesApi(configMoviesApi);
+
   const jwtLocal = new LocalStorage('jwt');
   const moviesLocal = new LocalStorage('movies');
+  const languageLocal = new LocalStorage('lng');
   const searchQueryLocal = new LocalStorage('search-query-movies', {
     movies: '',
     short: false,
@@ -52,7 +54,7 @@ function App() {
   const handleLoginToken = () => {
     const jwt = jwtLocal.load();
     if (jwt) {
-      getUserInfo(jwt);
+      getUserData(jwt);
       setToken(jwt);
     } else {
       clearLocal();
@@ -70,7 +72,7 @@ function App() {
         setToken(jwt);
         setAuthorized(true);
         jwtLocal.save(jwt);
-        getUserInfo(jwt);
+        getUserData(jwt);
         navigate(PAGES.MOVIES);
       })
       .catch(() => {
@@ -101,7 +103,7 @@ function App() {
     navigate(PAGES.MAIN);
   };
 
-  const getUserInfo = (jwt) => {
+  const getUserData = (jwt) => {
     mainApi
       .getUserInfo(jwt)
       .then((user) => {
@@ -178,13 +180,14 @@ function App() {
                 element={<Login handleLogin={handleLogin} />}
               />
             )}
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Main languageLocal={languageLocal} />} />
             <Route
               path={PAGES.MOVIES}
               element={
                 <ProtectedRoute path={PAGES.MOVIES}>
                   <Movies
                     moviesLocal={moviesLocal}
+                    languageLocal={languageLocal}
                     searchQueryLocal={searchQueryLocal}
                     requestAllMovies={requestAllMovies}
                     requestLikeMovies={requestLikeMovies}
@@ -199,6 +202,7 @@ function App() {
               element={
                 <ProtectedRoute path={PAGES.SAVED_MOVIES}>
                   <SavedMovies
+                    languageLocal={languageLocal}
                     searchQuerySavedMoviesLocal={searchQuerySavedMoviesLocal}
                     requestLikeMovies={requestLikeMovies}
                     handleLikeMovieClick={handleLikeMovieClick}
@@ -212,6 +216,7 @@ function App() {
               element={
                 <ProtectedRoute path={PAGES.PROFILE}>
                   <Profile
+                    languageLocal={languageLocal}
                     handleLogout={handleLogout}
                     handleUpdateUser={handleUpdateUser}
                   />
