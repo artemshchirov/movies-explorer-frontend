@@ -1,4 +1,4 @@
-import './Movies.css';
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
@@ -6,6 +6,7 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
+
 import useCardCount from '../../hooks/useCardCount';
 import filterMovies from '../../utils/filterMovies';
 import { formatLikedMovies, setLike } from '../../utils/likes';
@@ -16,6 +17,8 @@ import {
   SHORT_DURATION,
 } from '../../utils/constants';
 
+import './Movies.css';
+
 function Movies({
   moviesLocal,
   languageLocal,
@@ -25,8 +28,8 @@ function Movies({
   handleLikeMovieClick,
   showAlert,
 }) {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-
   const [movieList, setMovieList] = useState([]);
   const [filteredMovieList, setFilteredMovieList] = useState([]);
   const [likedMovies, setLikedMovies] = useState([]);
@@ -129,6 +132,7 @@ function Movies({
             showAlert={showAlert}
           />
           <MoviesCardList
+            languageLocal={languageLocal}
             loading={loading}
             cards={displayedMovies}
             btnType="movie__btn_type_save"
@@ -142,7 +146,7 @@ function Movies({
                 <Button
                   className="movies__btn"
                   btnType="movie__btn_type_save"
-                  title="Ещё"
+                  title={t('movies__btn')}
                   onClick={showMoreMovies}
                 />
               )}

@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import en from './lng/en.json';
 import ru from './lng/ru.json';
 
-let localLang = localStorage.getItem('lng') || JSON.stringify({ lng: 'en' });
-
+const defaultLang = { lng: 'en' };
+const localLang = localStorage.getItem('lng') || JSON.stringify(defaultLang);
 const { lng } = JSON.parse(localLang);
 
 i18next.use(initReactI18next).init({
@@ -16,7 +16,7 @@ i18next.use(initReactI18next).init({
       translation: ru,
     },
   },
-  lng: lng,
+  lng,
 });
 
 export default { i18next };

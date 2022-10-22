@@ -1,18 +1,18 @@
-import './Techs.css';
+import { useTranslation } from 'react-i18next';
 
 import Title from '../../../components/Title/Title';
 
+import './Techs.css';
+
 function Techs() {
+  const { t } = useTranslation();
   return (
     <section className="techs" id="techs">
-      <Title className="techs__subject">Технологии</Title>
+      <Title className="techs__subject">{t('about__subject')}</Title>
       <Title Tag="h3" className="techs__title">
-        7&nbsp;технологий
+        {t('techs__title')}
       </Title>
-      <p className="techs__subtitle">
-        На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые
-        применили в&nbsp;дипломном проекте.
-      </p>
+      <p className="techs__subtitle">{t('techs__subtitle')}</p>
 
       <ul className="techs__grid">
         <li className="techs__grid-item">HTML</li>

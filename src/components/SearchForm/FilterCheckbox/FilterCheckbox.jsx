@@ -1,6 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import './FilterCheckbox.css';
 
 function FilterCheckbox({ checked, onChange }) {
+  const { t } = useTranslation();
   return (
     <div className="filter-checkbox">
       <input
@@ -15,7 +18,7 @@ function FilterCheckbox({ checked, onChange }) {
         className="filter-checkbox__description"
         htmlFor="filter-checkbox-id"
       >
-        Короткометражки
+        {t('checkbox__description')}
       </label>
     </div>
   );

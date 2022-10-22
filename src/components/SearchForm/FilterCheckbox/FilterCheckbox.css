@@ -49,6 +49,7 @@
 
 .filter-checkbox__description {
   padding-left: 13px;
+  min-width: max-content;
   font-size: 11px;
   line-height: 1.64;
   color: #000;

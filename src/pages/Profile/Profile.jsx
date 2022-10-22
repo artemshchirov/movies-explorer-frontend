@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 
@@ -14,6 +15,7 @@ import { VALIDATION_PARAMS } from '../../utils/constants';
 import './Profile.css';
 
 function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
+  const { t } = useTranslation();
   const { currentUser, loading } = useContext(UserContext);
 
   const startValues = {
@@ -52,19 +54,19 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
       <section className="account">
         <div className="account__container">
           <Title Tag="p" className="title_type_profile">
-            {`Привет, ${values.name}!`}
+            {`${t('title_type_profile')}, ${values.name}!`}
           </Title>
 
           <Form className="form account__form">
             <div className="account__input-container">
-              <label className="account__label">Имя</label>
+              <label className="account__label">{t('account__label')}</label>
               <Input
                 className="account__input"
                 type="text"
                 value={values.name}
                 name="name"
                 onChange={handleChange}
-                placeholder="Ваше имя"
+                placeholder={t('account__input_name')}
                 disabled={loading}
               />
             </div>
@@ -76,7 +78,7 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
               <label className="account__label">E-mail</label>
               <Input
                 className="account__input"
-                placeholder="Ваш E-mail"
+                placeholder={t('account__input_email')}
                 type="email"
                 value={values.email}
                 name="email"
@@ -92,7 +94,11 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
           <div className="account__btns">
             <Button
               className="account__btn"
-              title={loading ? 'Редактирование...' : 'Редактировать'}
+              title={
+                loading
+                  ? `${t('account__btn_update_2')}...`
+                  : t('account__btn_update_1')
+              }
               btnType="submit"
               btnDisabled={!isValid}
               onClick={clickUpdateUserButton}
@@ -100,7 +106,11 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
             />
             <Button
               className="account__btn account__btn_last"
-              title={loading ? 'Выход из аккаунта...' : 'Выйти из аккаунта'}
+              title={
+                loading
+                  ? `${t('account__btn_logout_2')}...`
+                  : t('account__btn_logout_1')
+              }
               onClick={handleLogout}
             />
           </div>

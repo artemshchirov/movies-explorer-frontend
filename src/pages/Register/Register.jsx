@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 
@@ -15,6 +16,7 @@ import { VALIDATION_CONFIGS, VALIDATION_PARAMS } from '../../utils/constants';
 import './Register.css';
 
 function Register({ handleRegister }) {
+  const { t } = useTranslation();
   const { loading } = useContext(UserContext);
 
   const initValues = { name: '', email: '', password: '' };
@@ -30,11 +32,11 @@ function Register({ handleRegister }) {
 
   return (
     <Section className="sign">
-      <Sign title="Добро пожаловать!">
+      <Sign title={t('sign_type_register')}>
         <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
             <label htmlFor="name" className="form__title">
-              Имя
+              {t('form__title_name')}
             </label>
             <Input
               name="name"
@@ -70,7 +72,7 @@ function Register({ handleRegister }) {
               </ErrorText>
             )}
 
-            <label className="form__title">Пароль</label>
+            <label className="form__title">{t('form__title_password')}</label>
             <Input
               name="password"
               value={values.password || ''}
@@ -90,7 +92,7 @@ function Register({ handleRegister }) {
 
           <Button
             className="form__btn"
-            title={loading ? 'Регистрация...' : 'Зарегистрироваться'}
+            title={loading ? `${t('link_type_signup')}...` : t('form__btn_reg')}
             btnType="submit"
             btnDisabled={
               !isValid || errors.email || !values.password || loading
@@ -98,8 +100,10 @@ function Register({ handleRegister }) {
           />
         </Form>
         <CustomLink path="/signin" className="link_sign">
-          Уже зарегистрированы?
-          <span className="link_sign link_sign_type_colored">Войти</span>
+          {t('link_sign_reg_1')}
+          <span className="link_sign link_sign_type_colored">
+            {t('link_type_signin')}
+          </span>
         </CustomLink>
       </Sign>
     </Section>

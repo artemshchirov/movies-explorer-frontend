@@ -1,4 +1,4 @@
-import './SearchForm.css';
+import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -10,12 +10,15 @@ import Button from '../Button/Button';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { ALERT_MESSAGES, PAGES } from '../../utils/constants';
 
+import './SearchForm.css';
+
 function SearchForm({
   loading,
   handleFindMovies,
   searchQueryLocal,
   showAlert,
 }) {
+  const { t } = useTranslation();
   const { movie, short } = searchQueryLocal.load();
   const startValue = {
     movie,
@@ -74,7 +77,7 @@ function SearchForm({
         <Input
           name="movie"
           type="text"
-          placeholder="Фильм"
+          placeholder={t('movies_search__input')}
           value={values.movie || ''}
           onChange={handleChange}
           className={`movies-search__input ${
@@ -84,7 +87,7 @@ function SearchForm({
         />
         <Button
           className="movies-search__btn"
-          title="Найти"
+          title={t('search__btn')}
           btnType="submit"
           btnDisabled={!isValid}
         />

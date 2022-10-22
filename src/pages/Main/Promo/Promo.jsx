@@ -6,7 +6,6 @@ import './Promo.css';
 
 function Promo() {
   const { t } = useTranslation();
-
   return (
     <section className="promo">
       <Title Tag="h1" className="promo__title">
