@@ -50,7 +50,7 @@ function Register({ handleRegister }) {
             <span id="name-error" className="form__input-error">
               {errors.name && (
                 <ErrorText type="auth">
-                  {VALIDATION_PARAMS.MESSAGES.NAME}
+                  {VALIDATION_PARAMS.MESSAGES.NAME.EN}
                 </ErrorText>
               )}
             </span>
@@ -68,7 +68,7 @@ function Register({ handleRegister }) {
             />
             {errors.email && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.EMAIL}
+                {VALIDATION_PARAMS.MESSAGES.EMAIL.EN}
               </ErrorText>
             )}
 
@@ -85,7 +85,7 @@ function Register({ handleRegister }) {
             />
             {errors.password && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.PASSWORD}
+                {VALIDATION_PARAMS.MESSAGES.PASSWORD.EN}
               </ErrorText>
             )}
           </fieldset>

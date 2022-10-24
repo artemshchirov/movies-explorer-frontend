@@ -76,7 +76,7 @@ function App() {
         navigate(PAGES.MOVIES);
       })
       .catch(() => {
-        showAlert(ALERT_MESSAGES.ERROR.AUTH);
+        showAlert(ALERT_MESSAGES.ERROR.AUTH.EN);
       })
       .finally(() => {
         setLoading(false);
@@ -91,7 +91,7 @@ function App() {
         handleLogin({ email, password });
       })
       .catch(() => {
-        showAlert(ALERT_MESSAGES.ERROR.AUTH);
+        showAlert(ALERT_MESSAGES.ERROR.AUTH.EN);
       });
   };
 
@@ -112,7 +112,7 @@ function App() {
       })
       .catch(() => {
         clearLocal();
-        showAlert(ALERT_MESSAGES.ERROR.GET_USER);
+        showAlert(ALERT_MESSAGES.ERROR.GET_USER.EN);
         throw new Error();
       })
       .finally(() => {
@@ -125,21 +125,21 @@ function App() {
       .updateUserInfo(user, token)
       .then((newData) => {
         setCurrentUser(newData);
-        showAlert(ALERT_MESSAGES.SUCCESSFULLY.UPDATE_PROFILE);
+        showAlert(ALERT_MESSAGES.SUCCESSFULLY.UPDATE_PROFILE.EN);
       })
       .catch(() => {
-        showAlert(ALERT_MESSAGES.ERROR.UPDATE_PROFILE);
+        showAlert(ALERT_MESSAGES.ERROR.UPDATE_PROFILE.EN);
         throw new Error();
       });
 
   const handleLikeMovieClick = (movieId, movie) =>
     movieId
       ? mainApi.deleteLikeMovie(movieId, token).catch(() => {
-          showAlert(ALERT_MESSAGES.ERROR.DELETE_FILM);
+          showAlert(ALERT_MESSAGES.ERROR.DELETE_FILM.EN);
           throw new Error();
         })
       : mainApi.addLikeMovie(movie, token).catch(() => {
-          showAlert(ALERT_MESSAGES.ERROR.ADD_FILM);
+          showAlert(ALERT_MESSAGES.ERROR.ADD_FILM.EN);
           throw new Error();
         });
 

@@ -71,7 +71,7 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
               />
             </div>
             {!isValidUserName && (
-              <ErrorText>{VALIDATION_PARAMS.MESSAGES.NAME}</ErrorText>
+              <ErrorText>{VALIDATION_PARAMS.MESSAGES.NAME.EN}</ErrorText>
             )}
             <div className="account__divider" />
             <div className="account__input-container">
@@ -87,7 +87,7 @@ function Profile({ languageLocal, handleUpdateUser, handleLogout }) {
               />
             </div>
             {!isValidUserEmail && (
-              <ErrorText>{VALIDATION_PARAMS.MESSAGES.EMAIL}</ErrorText>
+              <ErrorText>{VALIDATION_PARAMS.MESSAGES.EMAIL.EN}</ErrorText>
             )}
           </Form>
 

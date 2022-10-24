@@ -34,7 +34,7 @@ function SearchForm({
       setIsValid(true);
       handleFindMovies({ movie: '', short });
     } else if (!isValid && !values.movie) {
-      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY.EN);
     }
   }, [values]);
 
@@ -52,7 +52,7 @@ function SearchForm({
 
     if (!values.movie) {
       setIsValid(false);
-      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY.EN);
     } else {
       handleFindMovies(values);
     }
@@ -66,7 +66,7 @@ function SearchForm({
       setValues(newValues);
       handleFindMovies(newValues);
     } else {
-      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY);
+      showAlert(ALERT_MESSAGES.ERROR.SEARCH_QUERY.EN);
     }
   };
 

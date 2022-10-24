@@ -4,9 +4,18 @@ const VALIDATION_PARAMS = {
     EMAIL: /[^@\s]+@[^@\s]+\.[^@\s]+/i,
   },
   MESSAGES: {
-    NAME: 'Имя может состоять только из букв, пробелов и "-"',
-    EMAIL: 'Неправильный формат e-mail',
-    PASSWORD: 'Минимальная длина пароля: 1 символ',
+    NAME: {
+      EN: 'Username can use only letters, space and "-"',
+      RU: 'Имя может состоять только из букв, пробелов и "-"',
+    },
+    EMAIL: {
+      EN: 'Enter valid email',
+      RU: 'Неправильный формат e-mail',
+    },
+    PASSWORD: {
+      EN: 'Password field is empty',
+      RU: 'Минимальная длина пароля: 1 символ',
+    },
   },
 };
 
@@ -14,12 +23,12 @@ const VALIDATION_CONFIGS = {
   USER_DATA: {
     INPUTS: ['name', 'email'],
     REGEX: {
-      name: VALIDATION_PARAMS.REGEX.NAME,
-      email: VALIDATION_PARAMS.REGEX.EMAIL,
+      name: VALIDATION_PARAMS.REGEX.NAME.EN,
+      email: VALIDATION_PARAMS.REGEX.EMAIL.EN,
     },
     MESSAGES: {
-      name: VALIDATION_PARAMS.MESSAGES.NAME,
-      email: VALIDATION_PARAMS.MESSAGES.EMAIL,
+      name: VALIDATION_PARAMS.MESSAGES.NAME.EN,
+      email: VALIDATION_PARAMS.MESSAGES.EMAIL.EN,
     },
   },
 
@@ -35,22 +44,48 @@ const VALIDATION_CONFIGS = {
 };
 
 const MESSAGES = {
-  NOT_FOUND: 'Ничего не найдено',
-  ERROR:
-    'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
+  NOT_FOUND: {
+    EN: 'Nothing not found',
+    RU: 'Ничего не найдено',
+  },
+  ERROR: {
+    EN: 'An error occurred during your request. Maybe you have connection problem or server is not available. Wait a bit and try again',
+    RU: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
+  },
 };
 
 const ALERT_MESSAGES = {
   SUCCESSFULLY: {
-    UPDATE_PROFILE: 'Данные пользователя успешно обновлены',
-  },
-  ERROR: {
-    AUTH: 'Неправильные почта или пароль',
-    GET_USER: 'Не удалось получить данные пользователя',
-    ADD_FILM: 'Не удалось добавить фильм',
-    DELETE_FILM: 'Не удалось удалить фильм',
-    SEARCH_QUERY: 'Нужно ввести ключевое слово',
-    UPDATE_PROFILE: 'Не удалось обновить данные профиля',
+    UPDATE_PROFILE: {
+      EN: 'The changes are saved successfully',
+      RU: 'Данные пользователя успешно обновлены',
+    },
+    ERROR: {
+      AUTH: {
+        EN: 'Invalid username or password',
+        RU: 'Неправильные почта или пароль',
+      },
+      GET_USER: {
+        EN: 'Error while fetching user data',
+        RU: 'Не удалось получить данные пользователя',
+      },
+      ADD_FILM: {
+        EN: 'Error while adding movie',
+        RU: 'Не удалось добавить фильм',
+      },
+      DELETE_FILM: {
+        EN: 'Error while deleting movie',
+        RU: 'Не удалось удалить фильм',
+      },
+      SEARCH_QUERY: {
+        EN: 'You need to type a key word',
+        RU: 'Нужно ввести ключевое слово',
+      },
+      UPDATE_PROFILE: {
+        EN: 'Error while updating profile',
+        RU: 'Не удалось обновить данные профиля',
+      },
+    },
   },
 };
 
@@ -105,75 +140,37 @@ export {
 //     EMAIL: /[^@\s]+@[^@\s]+\.[^@\s]+/i,
 //   },
 //   MESSAGES: {
-//     NAME: {
-//       EN: 'Username can use only letters, space and "-"',
-//       RU: 'Имя может состоять только из букв, пробелов и "-"',
-//     },
-//     EMAIL: {
-//       EN: 'Enter valid email',
-//       RU: 'Неправильный формат e-mail',
-//     },
-//     PASSWORD: {
-//       EN: 'Password field is empty',
-//       RU: 'Минимальная длина пароля: 1 символ',
-//     },
+//     NAME: 'Имя может состоять только из букв, пробелов и "-"',
+//     EMAIL: 'Неправильный формат e-mail',
+//     PASSWORD: 'Минимальная длина пароля: 1 символ',
 //   },
 // };
 
 // const MESSAGES = {
-//   NOT_FOUND: {
-//     EN: 'Nothing not found',
-//     RU: 'Ничего не найдено',
-//   },
-//   ERROR: {
-//     EN: 'An error occurred during your request. Maybe you have connection problem or server is not available. Wait a bit and try again',
-//     RU: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
-//   },
+//   NOT_FOUND: 'Ничего не найдено',
+//   ERROR:
+//     'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
 // };
 
 // const ALERT_MESSAGES = {
 //   SUCCESSFULLY: {
-//     UPDATE_PROFILE: {
-//       EN: 'The changes are saved successfully',
-//       RU: 'Данные пользователя успешно обновлены',
-//     },
-//     ERROR: {
-//       AUTH: {
-//         EN: 'Invalid username or password',
-//         RU: 'Неправильные почта или пароль',
-//       },
-//       GET_USER: {
-//         EN: 'Error while fetching user data',
-//         RU: 'Не удалось получить данные пользователя',
-//       },
-//       ADD_FILM: {
-//         EN: 'Error while adding movie',
-//         RU: 'Не удалось добавить фильм',
-//       },
-//       DELETE_FILM: {
-//         EN: 'Error while deleting movie',
-//         RU: 'Не удалось удалить фильм',
-//       },
-//       SEARCH_QUERY: {
-//         EN: 'You need to type a key word',
-//         RU: 'Нужно ввести ключевое слово',
-//       },
-//       UPDATE_PROFILE: {
-//         EN: 'Error while updating profile',
-//         RU: 'Не удалось обновить данные профиля',
-//       },
-//     },
-//     EN: {},
-//     SUCCESSFULLY: {
-//       UPDATE_PROFILE: 'Successful user info update!',
-//     },
-//     ERROR: {
-//       UPDATE_PROFILE: 'Error while updating profile',
-//       SEARCH_QUERY: 'Keyword required',
-//       DELETE_FILM: 'Error while deleting movie',
-//       ADD_FILM: 'Error while adding movie',
-//       GET_USER: 'Error while get user data',
-//       AUTH: 'Incorrect email or password',
-//     },
+//     UPDATE_PROFILE: 'Данные пользователя успешно обновлены',
+//   },
+//   ERROR: {
+//     AUTH: 'Неправильные почта или пароль',
+//     GET_USER: 'Не удалось получить данные пользователя',
+//     ADD_FILM: 'Не удалось добавить фильм',
+//     DELETE_FILM: 'Не удалось удалить фильм',
+//     SEARCH_QUERY: 'Нужно ввести ключевое слово',
+//     UPDATE_PROFILE: 'Не удалось обновить данные профиля',
 //   },
 // };
+
+// ERROR: {
+//   UPDATE_PROFILE: 'Error while updating profile',
+//   SEARCH_QUERY: 'Keyword required',
+//   DELETE_FILM: 'Error while deleting movie',
+//   ADD_FILM: 'Error while adding movie',
+//   GET_USER: 'Error while get user data',
+//   AUTH: 'Incorrect email or password',
+// },

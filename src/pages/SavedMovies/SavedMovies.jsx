@@ -41,7 +41,7 @@ function SavedMovies({
         setErrorMessage('');
       })
       .catch(() => {
-        setErrorMessage(MESSAGES.ERROR);
+        setErrorMessage(MESSAGES.ERROR.EN);
       })
       .finally(() => {
         setLoading(false);
@@ -52,7 +52,7 @@ function SavedMovies({
     const movies = filterMovies(likedMovies, SHORT_DURATION, values);
     setDisplayedMovies(movies);
     if (movies?.length) setErrorMessage('');
-    else setErrorMessage(MESSAGES.NOT_FOUND);
+    else setErrorMessage(MESSAGES.NOT_FOUND.EN);
     // else setErrorMessage(t("search__btn"));
   };
 

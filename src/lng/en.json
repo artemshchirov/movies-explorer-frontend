@@ -38,12 +38,12 @@
   "form__title_password": "Password",
 
   "sign_type_register": "Welcome!",
-  "form__btn_reg": "Register",
-  "link_sign_reg_1": "Have you already registered?",
+  "form__btn_reg": "Sign up",
+  "link_sign_reg_1": "Already a member? Log in here!",
 
   "sign_type_login": "Glad to see you!",
   "form__btn_log": "Sign in",
-  "link_sign_log_1": "Are you a new user?",
+  "link_sign_log_1": "Not a member yet? Sign up here!",
 
   "movies_search__input": "Movie",
   "search__btn": "Search",

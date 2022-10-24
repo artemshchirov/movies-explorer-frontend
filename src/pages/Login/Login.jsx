@@ -48,7 +48,7 @@ function Login({ handleLogin }) {
             />
             {errors.email && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.EMAIL}
+                {VALIDATION_PARAMS.MESSAGES.EMAIL.EN}
               </ErrorText>
             )}
 
@@ -65,7 +65,7 @@ function Login({ handleLogin }) {
             />
             {errors.password && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.PASSWORD}
+                {VALIDATION_PARAMS.MESSAGES.PASSWORD.EN}
               </ErrorText>
             )}
           </fieldset>

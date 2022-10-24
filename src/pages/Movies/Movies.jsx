@@ -64,7 +64,7 @@ function Movies({
       setFilteredMovieList(movies);
 
       if (movies?.length) setErrorMessage('');
-      else setErrorMessage(MESSAGES.NOT_FOUND);
+      else setErrorMessage(MESSAGES.NOT_FOUND.EN);
     }
   }, [movieList, queryValues]);
 
@@ -84,7 +84,7 @@ function Movies({
         setErrorMessage('');
       })
       .catch(() => {
-        setErrorMessage(MESSAGES.ERROR);
+        setErrorMessage(MESSAGES.ERROR.EN);
       })
       .finally(() => {
         setLoading(false);
@@ -99,7 +99,7 @@ function Movies({
         setErrorMessage('');
       })
       .catch(() => {
-        setErrorMessage(MESSAGES.ERROR);
+        setErrorMessage(MESSAGES.ERROR.EN);
       })
       .finally(() => {
         setLoading(false);
