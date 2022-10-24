@@ -7,7 +7,8 @@ import formatDuration from '../../utils/formatDuration';
 
 import './MoviesCard.css';
 
-function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
+function MoviesCard({ languageLocal, btnType, movie, handleLikeMovieClick }) {
+  const { lng } = languageLocal.load();
   const [movieId, setMovieId] = useState('');
   const isSavedMovies = useLocation().pathname === PAGES.SAVED_MOVIES;
   const imageUrl =
@@ -45,7 +46,9 @@ function MoviesCard({ btnType, movie, handleLikeMovieClick }) {
     <article className="movie">
       <div className="movie__container">
         <div className="movie__wrapper">
-          <p className="movie__title">{movie.nameRU}</p>
+          <p className="movie__title">
+            {!lng || lng === 'en' ? movie.nameEN : movie.nameRU}
+          </p>
           <p className="movie__subtitle">{formatDuration(movie.duration)}</p>
         </div>
         <Button

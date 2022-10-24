@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 
@@ -15,6 +16,7 @@ import { VALIDATION_CONFIGS, VALIDATION_PARAMS } from '../../utils/constants';
 import './Login.css';
 
 function Login({ handleLogin }) {
+  const { t } = useTranslation();
   const { loading } = useContext(UserContext);
 
   const initValues = { email: '', password: '' };
@@ -30,7 +32,7 @@ function Login({ handleLogin }) {
 
   return (
     <Section className="sign">
-      <Sign title="Рады видеть!">
+      <Sign title={t('sign_type_login')}>
         <Form className="form form_type_sign" onSubmit={handleSubmitForm}>
           <fieldset className="form__fieldset">
             <label className="form__title">E-mail</label>
@@ -46,11 +48,11 @@ function Login({ handleLogin }) {
             />
             {errors.email && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.EMAIL}
+                {VALIDATION_PARAMS.MESSAGES.EMAIL.EN}
               </ErrorText>
             )}
 
-            <label className="form__title">Пароль</label>
+            <label className="form__title">{t('form__title_password')}</label>
             <Input
               name="password"
               value={values.password || ''}
@@ -63,14 +65,14 @@ function Login({ handleLogin }) {
             />
             {errors.password && (
               <ErrorText type="auth">
-                {VALIDATION_PARAMS.MESSAGES.PASSWORD}
+                {VALIDATION_PARAMS.MESSAGES.PASSWORD.EN}
               </ErrorText>
             )}
           </fieldset>
 
           <Button
             className="form__btn"
-            title={loading ? 'Вход...' : 'Войти'}
+            title={loading ? `${t('form__btn_log')}...` : t('link_type_signin')}
             btnType="submit"
             btnDisabled={
               !isValid || errors.email || !values.password || loading
@@ -78,8 +80,10 @@ function Login({ handleLogin }) {
           />
         </Form>
         <CustomLink path="/signup" className="link_sign">
-          Ещё не зарегистрированы?
-          <span className="link_sign link_sign_type_colored">Регистрация</span>
+          {t('link_sign_log_1')}
+          <span className="link_sign link_sign_type_colored">
+            {t('link_type_signup')}
+          </span>
         </CustomLink>
       </Sign>
     </Section>

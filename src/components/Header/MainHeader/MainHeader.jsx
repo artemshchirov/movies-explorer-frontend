@@ -1,8 +1,9 @@
-import './MainHeader.css';
 import Header from '../Header';
 import Logo from '../../Logo/Logo';
 import SignNav from '../../SignNav/SignNav';
 import SelectLang from '../../SelectLang/SelectLang';
+
+import './MainHeader.css';
 
 function MainHeader({ languageLocal }) {
   return (

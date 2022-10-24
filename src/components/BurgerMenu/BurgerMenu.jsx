@@ -1,8 +1,12 @@
-import './BurgerMenu.css';
+import { useTranslation } from 'react-i18next';
+
 import LinkContainer from '../LinkContainer/LinkContainer';
 import CustomLink from '../CustomLink/CustomLink';
 
+import './BurgerMenu.css';
+
 function BurgerMenu({ isOpen }) {
+  const { t } = useTranslation();
   return (
     <>
       <ul className="burger-btn">
@@ -32,22 +36,23 @@ function BurgerMenu({ isOpen }) {
         <ul className="burger-menu__links ">
           <LinkContainer className="burger-menu__item">
             <CustomLink className="burger-menu__link" path="/">
-              Главная
+              {t('burger__link_1')}
             </CustomLink>
           </LinkContainer>
           <LinkContainer className="burger-menu__item">
             <CustomLink className="burger-menu__link" path="/movies">
-              Фильмы
+              {t('burger__link_2')}
             </CustomLink>
           </LinkContainer>
           <LinkContainer className="burger-menu__item">
             <CustomLink className="burger-menu__link" path="/saved-movies">
-              Сохранённые фильмы
+              {t('burger__link_3')}
             </CustomLink>
           </LinkContainer>
         </ul>
         <CustomLink className="burger-menu__account-btn" path="/profile">
-          Аккаунт <span className="burger-menu__account-icon" />
+          {t('burger__account_btn')}
+          <span className="burger-menu__account-icon" />
         </CustomLink>
       </div>
 

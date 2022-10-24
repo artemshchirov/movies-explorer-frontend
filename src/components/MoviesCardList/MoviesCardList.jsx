@@ -4,6 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import './MoviesCardList.css';
 
 function MoviesCardList({
+  languageLocal,
   loading,
   btnType,
   cards,
@@ -18,6 +19,7 @@ function MoviesCardList({
     <section className="movie-cards">
       {cards?.map((movie) => (
         <MoviesCard
+          languageLocal={languageLocal}
           key={movie.id || movie.movieId}
           movie={movie}
           btnType={btnType}

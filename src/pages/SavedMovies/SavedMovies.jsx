@@ -1,9 +1,11 @@
-import './SavedMovies.css';
 import { useState, useEffect } from 'react';
+
 import MoviesHeader from '../../components/Header/MoviesHeader/MoviesHeader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Footer from '../../components/Footer/Footer';
+
+import './SavedMovies.css';
 
 import filterMovies from '../../utils/filterMovies';
 import { MESSAGES, SHORT_DURATION } from '../../utils/constants';
@@ -39,7 +41,7 @@ function SavedMovies({
         setErrorMessage('');
       })
       .catch(() => {
-        setErrorMessage(MESSAGES.ERROR);
+        setErrorMessage(MESSAGES.ERROR.EN);
       })
       .finally(() => {
         setLoading(false);
@@ -50,7 +52,8 @@ function SavedMovies({
     const movies = filterMovies(likedMovies, SHORT_DURATION, values);
     setDisplayedMovies(movies);
     if (movies?.length) setErrorMessage('');
-    else setErrorMessage(MESSAGES.NOT_FOUND);
+    else setErrorMessage(MESSAGES.NOT_FOUND.EN);
+    // else setErrorMessage(t("search__btn"));
   };
 
   const handleDeleteMovie = (movieId) => {
@@ -70,6 +73,7 @@ function SavedMovies({
             showAlert={showAlert}
           />
           <MoviesCardList
+            languageLocal={languageLocal}
             loading={loading}
             cards={displayedMovies}
             btnType="movie__btn_type_delete"

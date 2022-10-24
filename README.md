@@ -1,45 +1,80 @@
-# movies-explorer-frontend
+# REACT MOVIES EXPLORER FRONTEND
 
-🎬🔎 Project Movies Explorer find movies for you to watch
+## Have a look at the project
 
-Technologies and Techniques Used
-This web page was created with HTML, CSS, and JavaScript, JSX, and the React framework. It has been made adaptive to different screen sizes.
+<https://movies.explorer.project.nomoredomains.sbs/>
 
-`https://movies.explorer.project.nomoredomains.sbs/` - Frontend.
+## Description
 
-`https://github.com/artemshchirov/movies-explorer-frontend/pull/2` - Pull request.
+Client part of a graduation project of the web development course. This is a multiple page website with a simple landing on the main page and search and filter functionality available after user registration. This is a React-based project.
 
-`https://disk.yandex.ru/d/WGeDGjIRHZS-mQ` - Figma template.
+## Functionality
 
-## Running the Project
+### Unauthorized user
 
-`npm run build` — build project.
+- Sees the static landing of the main page
+- Can register using username and email
+- Can log in after the registration
 
-`npm run start` — to launch the project.
+### Authorized user
 
-## Directories
+- Edit their username and email
+- Search for movies in the database under key words
+- Filter movies according to their length
+- Save favorite movies in favorites
+- Delete movies from favorites
 
-`/index.js` — entry point of project.
+### Layout
 
-`/src` — main folder contain components, hooks, utils, models, utils, images, vendor.
+- Layout is created according to individual [Figma template](<https://www.figma.com/file/1QBwqTHjFN6CDo0M39JUaL/Diploma-(Main)?node-id=344%3A0>)
+- Element positioning using grids and flexbox
+- Adaptive layout - optimized for different screen resolutions (mobile, tablet, desktop)
+- The number of displayed cards varies according to the screen size. If search result consists of multiple movies, initial amount of them will be displayed right away, more can be opened when clicking on "more" button.
 
-### Technologies and Techniques Used
+**Important**: according to the brief the page with movies should be empty before user carries out the first search. To see all available movies press SPACE+ENTER when in the search bar.
 
-This web page was created with HTML, CSS, and JavaScript, JSX, and the React framework.
-It has been made adaptive to different screen sizes.
+## API used
 
-### Some of the skills used are
+- [external API](https://api.nomoreparties.co/beatfilm-movies) provided by Beat Film Festival - database with movies
+- [Backend part of the service written in Express.js](https://github.com/artemshchirov/react-movies-explorer-api-full/tree/main/backend) - responsible for user registration, authorization, saving movies in favorites, changing user information
 
-- Basic JSX
-- JSX lists and events
-- Imperative and declarative approaches to programming
-- Functional and Class Components
-- Creating a new project in React
+## Routes
+
+- `/` — main page
+- `/movies` — movies library
+- `/saved-movies` — library with favorite movies
+- `/profile` — user profile
+- `/signin` & `/signup` — pages of registration and authorization
+- `/*` — 404 page
+
+## Technologies used
+
+- HTML, CSS
+- BEM-methodology
+- Grid layout, Flexbox, media queries, adaptive layout
+- JavaScript
+- React.js, JSX
+- React Router DOM
+- Working with forms
+- Localization i18next
+
+## Some of the skills used are
+
 - Project structures
 - Debugging and React DevTools
 - Hooks and effect dependencies
 - Lifting state
-- Global state
 - Creating and subscribing to a context
-- Working with forms
-- Refs
+
+## Start project locally
+
+```bash
+git clone https://github.com/artemshchirov/react-movies-explorer-api-full.git
+cd frontend
+npm install
+npm run start
+```
+
+### Further improvement
+
+Full repository with both frontend ([link to this updated repository](https://github.com/artemshchirov/react-movies-explorer-api-full/tree/main/frontend)) and backend ([link to the repository](https://github.com/artemshchirov/react-movies-explorer-api-full))

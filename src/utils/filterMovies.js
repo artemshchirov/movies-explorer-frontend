@@ -6,7 +6,9 @@ const filterMovies = (
   movies.filter((movie) => {
     const isShortMovie = movie.duration <= shortDuration;
     const movieName = movie.nameRU.toLowerCase();
-    const search = searchQuery.toLowerCase();
+    let search;
+    if (searchQuery) search = searchQuery.toLowerCase();
+    else search = ' ';
 
     return isShort
       ? movieName.includes(search) && isShortMovie
